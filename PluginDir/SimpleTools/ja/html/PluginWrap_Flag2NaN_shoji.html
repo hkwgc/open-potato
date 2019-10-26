@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML language="ja">
+<HEAD>
+  <TITLE>Filter Plugin: Flag to NaN-Data</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../../html/css/matlab_like.css" TYPE="text/css">
+
+</HEAD>
+<BODY>
+
+  <!--  Title -->
+  <TABLE border=0 width="100%">
+    <TR class="mattitle">
+      <TD COLSPAN="10"><H1 class="mattitle">
+        Filter - Plugin : Flagに従い DataにNaNを設定する
+      </H1></TD>
+    </TR>
+
+    <TR> <TD width="4%"></TD> <!-- Left Marge in table -->
+      <TD width="5%"></TD> <!-- Level 1 : section-->
+      <TD width="5%"></TD> <!-- Level 2 : datas-->
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD width="4%"> <br></TD> <!-- Right Marge in table -->
+    </TR>
+
+    <!--  Topics -->
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 概要 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          Header情報に含まれる(Motion-Check)などのFlagに従い
+          DataにNaNを設定する<it>Filter&minus;Plugin</it>関数で
+          連続データ, ブロックデータのどちらにも実行可能.<br>
+          結果はHeaderを更新せず,不要と判断されたデータにNaNを代入する.<br>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 主な用途 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          Flagに未対応のPluginがある場合でも,不要データを確実に使用しないようにする.
+          前もって削除する.Flag未対応のPluginの結果は通常NaNとなる.<br>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <TR class="subsection">
+      <td COLSPAN="10">
+      <p><font size=+2><b> Flagに関して</b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          フラグは連続データでは,
+          各,時系列-チャンネルに対して設定されている.<br>
+          また,ブロックデータでは,
+          各,ブロック-チャンネルに対して設定されている.<br>
+        </p
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+  </TABLE>
+  
+  <table border=0 width="100%" cellspacing="0">
+    <!--  Title -->
+    <TR class="mattitle_"> <td>See also：</td>
+      <td><a href="matlab:PluginWrap"> PACK</a>.</td>
+    </TR>
+  </table>  
+  
+
+  <div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+  </cite></div>
+
+</BODY>
+</html>

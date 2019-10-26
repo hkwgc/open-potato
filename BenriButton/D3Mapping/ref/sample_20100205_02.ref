@@ -1,0 +1,26 @@
+[User]
+Name=namae
+ID=test_20100205_02
+Comment=test02
+Sex=Male
+Age=  0y
+[LeftEar]
+X=-82.0
+Y=-173.4
+Z=-16.6
+[RightEar]
+X=-129.7
+Y=59.6
+Z=-31.4
+[Nasion]
+X=-26.6
+Y=-19.1
+Z=21.6
+[Back]
+X=-187.0
+Y=-41.9
+Z=-136.2
+[Top]
+X=-119.5
+Y=-55.2
+Z=-176.2

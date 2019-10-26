@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--HTML language="ja"-->
+<HTML>
+<HEAD>
+  <TITLE>P3 Extended Sarch</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../html/css/matlab_like.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+<!-- ================================================= -->
+<!-- $Id: FilterDef_MotionCheck.html 180 2011-05-19 09:34:28Z Katura $-->
+<!-- Create  : 21-Jan-2008 : M. Shoji -->
+<!-- ================================================= -->
+
+<a name="0"></a>
+<!--  Title -->
+<TABLE border=0 width="100%" cellspacing="0">
+  <!--  Topics -->
+  <TR class="mattitle">
+    <TD COLSPAN="5">
+        <H1 class="mattitle">Motion Check</H1>
+    </TD>
+  </TR>
+  
+  <!-- Link in page 
+  <tr class="subsection_lk"> 
+    <td>&nbsp;</td>
+    <td COLSPAN="4">
+      <a href="#top">概要</a>
+      &nbsp;
+      <a href="#KeyType">検索キーの種類</a>
+      &nbsp;
+      <a href="#Sort">整列</a>
+    </td>
+  </tr>  -->
+  <!-- Table Size & space  -->
+  <TR> <TD width="4%"></TD> <!-- Left Marge in table 4% -->
+       <TD width="4%"></TD> <!-- Level 1 : Start Link 4% -->
+       <TD width="4%"></TD> <!-- Level 2 : Start explain 4%-->
+       <TD width="86%"></TD> <!-- Data 86%-->
+       <TD width="2%"></TD> <!-- Right Marge in table 2%-->
+  </TR> 
+
+<!-- ===================== 概要  ==================== 
+  <tr>
+    <td COLSPAN="5" class="section">
+      <a name="top">概要</a>
+    </td>
+  </tr> -->
+  
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+    <p class="tmargin">
+    <dl>
+      <dt>Title:</dt>
+        <dd>Function for motion-artifact detection by checking amplitude of signal changes</dd>
+      <dt>Originality:</dt>
+        <dd>This function coded based on the study by Pena, et al. </dd>
+      <dt>Related paper:</dt>
+        <dd>&quot;Sounds and silence: An optical topography study of language recognition at birth&quot;, Proc.Nat. Sci. 100 (2003) 11702-11705</dd>
+     </dl>
+     
+    </p>
+  </tr> 
+
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+     <p class="tmargin">
+In order to exclude measured data which containing motion artifact from signal analysis, this function set a flag when motion artifact were detected by checking amplitudes of signal changes. In the related paper, they set a flag when a difference of amplitude between two consecutive samples was higher than 0.1 mmol mm.
+     </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+     <p class="tmargin">
+    <dl>
+      <dt>Detailed Situations in the related paper:</dt><dd></dd>
+      <dt>Participants:</dt><dd>Fourteen healthy neonates (Italian, 2 to 5 days old)</dd>
+      <dt>Experimental design:</dt><dd>Tests consisted of 10 blocks per condition, presented in random order: FW, BW, and silent control condition (see Fig. 1 in the related paper). Each block contained 15 s of FW followed by 25?35 s of silence, 15 s of BW followed by 25?35 s of silence, or 15 s of silence followed by 25?35 s of silence. The varying durations of the silent periods were introduced to avoid synchronization between stimuli occurrences and spontaneous oscillations.</dd>
+      <dt>Measurement:</dh><dd>The Hitachi ETG-100 OT device records simultaneously from 24 channels on the cortex. Channels mostly measure vascular changes from the surface of the cortex, that is, 2?3 cm below the scalp. The ETG-100 emits infrared light at two wavelengths, 780 and 830 nm, through the fibers. The intensity of each wavelength is modulated at different frequencies ranging from 1 to 6.5 kHz, and the total power output per fiber is 0.7 mW. The reflected light is sampled once every 100 ms and is separated into two modulated signals, one for each wavelength, by a number of corresponding lock-in amplifiers. After analog-to-digital conversion, the signals are transferred to a computer.</dd>
+    </dl>
+     </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+</table>
+
+
+<!-- ===================== Footer ==================== -->
+<table border=0 width="100%" cellspacing="0">
+  <!--  Title -->
+  <tr  class="mattitle_">
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<!-- Copy Right -->
+<div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+</cite></div>
+</BODY>
+</html>

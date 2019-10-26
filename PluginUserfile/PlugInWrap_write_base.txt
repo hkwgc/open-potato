@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function str = write(region, fdata) 
+% Make M-File of PlugInWrap_TEST__NAME
+%%%%%HEADER_FPRINTF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ======================================================================
+% Copyright(c) 2019, 
+% National Institute of Advanced Industrial Science and Technology
+%
+% Released under the MIT license 
+% https://opensource.org/licenses/MIT 
+% ======================================================================
+
+
+   make_mfile('code_separator', 3);   % Level  3, code sep 
+   make_mfile('with_indent', ['% == ' fdata.name ' ==']);
+   make_mfile('with_indent', ['%     TEST__NAME   v1.0 ']);
+   make_mfile('code_separator', 3);  % Level  3, code sep .
+   make_mfile('with_indent', ' ');
+
+
+   NEXT_FPRINTF
+   if fdata.argData.arg1_int < 0,
+      % Launch  - OSP Help Top
+      make_mfile('with_indent','OspHelp');
+   else,
+      % Launch -- Getting start OSP Plugin 
+      %%%%fdata.argData.arg1=arg1-initial;
+      %%%%make_mfile('with_indent', [ fexpression ';']);
+   end
+   make_mfile('with_indent', ' ');
+   make_mfile('code_separator', 12); % Level 12, code sep .
+   make_mfile('with_indent', ' ');
+
+   str='';
+
+return;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ******************************
+% ********* Delete *************
+% ******************************
+%===============================
+%  Now Not in Use. 
+%===============================
+function exe(varargin),
+% Error -> OSP version 1.50
+  error(['Defined nothing about exe command.', ...
+	 mfilename ' is for OSP version 1.50']);
+  % we can ignore this function,
+  % if donot mind setting of error-comment.
+return;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

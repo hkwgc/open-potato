@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML language="ja">
+<HEAD>
+  <TITLE>Filter Plugin: Perfoms Memory Garbage</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../../html/css/matlab_like.css" TYPE="text/css">
+
+</HEAD>
+<BODY>
+
+  <!--  Title -->
+  <TABLE border=0 width="100%">
+    <TR class="mattitle">
+      <TD COLSPAN="10"><H1 class="mattitle">
+        Filter - Plugin : メモリガーベッジ関数
+      </H1></TD>
+    </TR>
+
+    <TR> <TD width="4%"></TD> <!-- Left Marge in table -->
+      <TD width="5%"></TD> <!-- Level 1 : section-->
+      <TD width="5%"></TD> <!-- Level 2 : datas-->
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD width="4%"> <br></TD> <!-- Right Marge in table -->
+    </TR>
+
+    <!--  Topics -->
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 概要 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          Filter&minus;Plugin関数.<br>
+          メモリガーベッジを行うPlugin関数で,
+          データを変更することはありません.<br>
+          メモリガーベッジとは,断片化されたメモリ領域を整理し
+          まとまったメモリ領域を確保することです.<br>
+          処理は通常の
+          <a href="matlab:helpwin pack"> PACK</a>
+          命令と同様です.<br>
+          <font size=-1></font>メモリガーベッジの詳細は
+          <a href="matlab:helpwin pack"> PACK</a>
+          もしくはWebページをご覧下さい.<br>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 主な用途 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          <b>Out of memory Error</b>が頻繁に発生する場合に
+          ご利用ください.<br>
+          本システムにおいて顕著に断片化される処理は
+          Viewerおよび,(Single/Batch)Recipe編集処理です.
+          その為,大きなデータやメモリの小さいPCで解析を行い,
+          <b>Out of memory Error</b>が頻繁に発生する場合に
+          ご利用ください.
+        </p>
+        <p>
+          データの変更は行わないため,
+          どのデータに対しても実行でき,
+          複数回実行しても結果に影響は与えません.<br>
+          また,設定は不要です.
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <TR class="subsection">
+      <td COLSPAN="10">
+      <p><font size=+2><b> 制約 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          本Pluginは MATLAB R2006aを対象に実装しております.</br>
+          MATLABのアップグレードにより
+          PACK関数は,コマンドライン上以外では実行不可能になりました.
+          このため,MALTABの上位バージョンでは実行不可能で警告のみ頻発するようになります.<br>
+          この場合はこの関数は使用できませんのでご注意ください.
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <TR class="subsection">
+      <td COLSPAN="10">
+      <p><font size=+2><b> メモリ量の確保について </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          メモリガーベッジは現状のメモリ内の空きスペースを整理し 
+          再利用できる形に変更します.
+          使用されているメモリや,メモリの絶対量を増やすものではありません.<br>
+          そのため,<b>Out of memory Error</b>の根本的な解決にはならず,
+          メモリ容量自体を増やすことが必要になります.<br>
+          メモリサイズの変更方法はの詳細はMATLABのヘルプをご覧下さい.<br>
+          メモリ容量を増やす方法には,
+          <ol>
+            <li>メモリを増設する方法,</li>
+            <li>メモリの代わりにHDDを代用する方法.</li>
+          </ol>
+          が考えられます.</br>
+          後者の方法はOSの設定で行うことが出来ます.
+          MATLAB Release 2006a, Windows XP の場合,
+          マイコンピュータを右クリックし,仮想メモリを多めに設定する
+          ことにより見かけのメモリ容量を増やすことが出来ます.<br>
+          設定画面の例を以下に示します.<br>
+          <img src="./Mem.JPG" alt="Swap" title="Swap"></img>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  
+  </TABLE>
+  
+  <table border=0 width="100%" cellspacing="0">
+    <!--  Title -->
+    <TR class="mattitle_"> <td>See also：</td>
+      <td><a href="matlab:helpwin pack"> PACK</a>.</td>
+    </TR>
+  </table>  
+  
+
+  <div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+  </cite></div>
+
+</BODY>
+</html>

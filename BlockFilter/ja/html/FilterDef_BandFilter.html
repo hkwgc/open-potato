@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--HTML language="ja"-->
+<HTML>
+<HEAD>
+  <TITLE>P3 Extended Sarch</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../html/css/matlab_like.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+<!-- ================================================= -->
+<!-- $Id: FilterDef_BandFilter.html 180 2011-05-19 09:34:28Z Katura $-->
+<!-- Create  : 21-Jan-2008 : M. Shoji -->
+<!-- ================================================= -->
+
+<a name="0"></a>
+<!--  Title -->
+<TABLE border=0 width="100%" cellspacing="0">
+  <!--  Topics -->
+  <TR class="mattitle">
+    <TD COLSPAN="5">
+        <H1 class="mattitle">Band Filter</H1>
+    </TD>
+  </TR>
+  
+  <!-- Link in page -->
+  <tr class="subsection_lk"> 
+    <td>&nbsp;</td>
+    <td COLSPAN="4">
+      <a href="#top">概要</a>
+      &nbsp;
+      <a href="#KeyType">検索キーの種類</a>
+      &nbsp;
+      <a href="#Sort">整列</a>
+    </td>
+  </tr>
+  <!-- Table Size & space  -->
+  <TR> <TD width="4%"></TD> <!-- Left Marge in table 4% -->
+       <TD width="4%"></TD> <!-- Level 1 : Start Link 4% -->
+       <TD width="4%"></TD> <!-- Level 2 : Start explain 4%-->
+       <TD width="86%"></TD> <!-- Data 86%-->
+       <TD width="2%"></TD> <!-- Right Marge in table 2%-->
+  </TR> 
+
+<!-- ===================== 概要  ==================== -->
+  <tr>
+    <td COLSPAN="5" class="section">
+      <a name="top">概要</a>
+    </td>
+  </tr> 
+  
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+    <p class="tmargin">
+    <dl>
+      <dt>Title:</dt>
+        <dd>帯域フィルタを実行する</dd>
+      <dt>Originality:</dt>
+        <dd></dd>
+      <dt>Related paper:</dt>
+        <dd></dd>
+     </dl>
+    </p>
+  </tr> 
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+  
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+     <p class="tmargin">
+グラフィカルユーザインタフェィス(GUI)により帯域フィルタの設定を行うことの可能なウィンドウです.<br>
+この関数ではフィルタの種類を選択できます.
+MATLABシグナルプロセッシングツールボックスが存在すれば窓関数として&quot;Butter Worth&quot;が選択できます.
+またフィルタの種類として,&quot;帯域通過フィルタ&quot;,&quot;帯域消去フィルタ&quot;,
+&quot;高域通貨フィルタ&quot;,&quot;低域通過フィルタ&quot;があります.<br>
+また周波数領域を数値もしくはGUIにより調整可能です.<br>
+設定のために表示する入力,結果波形は各チャンネル, データの種類から選べます.
+また全チャンネルを表示することも可能です.
+     <div class="myimage">
+     <img src="./FilterDef_BandFilter.jpg" usemap="#map_FD_BandFilter_getArgument" width="523px" height="308px"
+          alt="FD_BandFilter_getArgument" title="FD_BandFilter_getArgument">
+     <map name="map_FD_BandFilter_getArgument">
+       <!-- Axes -->
+       <area href="#P1_4" alt="P1_4" shape="rect" coords="221,135,508,79">
+       <area href="#P1_2" alt="P1_2" shape="rect" coords="372,285,508,181">
+       <area href="#P1_3" alt="P1_3" shape="rect" coords="221,64,508,8">
+       <area href="#P1_1" alt="P1_1" shape="rect" coords="226,285,357,181">
+       <!-- Pushbutton -->
+       <area href="#psb_axisMax_ms" alt="psb_axisMax_ms" shape="rect" coords="170,215,183,210">
+       <area href="#psb_axisMax_pl" alt="psb_axisMax_pl" shape="rect" coords="170,210,183,204">
+       <area href="#psb_axisMin_ms" alt="psb_axisMin_ms" shape="rect" coords="98,215,111,210">
+       <area href="#psb_axisMin_pl" alt="psb_axisMin_pl" shape="rect" coords="98,210,111,204">
+       <area href="#psb_plotall" alt="psb_plotall" shape="rect" coords="121,257,187,228">
+       <area href="#psb_Help" alt="psb_Help" shape="rect" coords="9,303,69,266">
+       <area href="#psb_cancel" alt="psb_cancel" shape="rect" coords="132,303,192,266">
+       <area href="#psb_OK" alt="psb_OK" shape="rect" coords="70,303,130,266">
+       <!-- Edit -->
+       <area href="#edt_axis_max" alt="edt_axis_max" shape="rect" coords="120,215,170,204">
+       <area href="#edt_axis_min" alt="edt_axis_min" shape="rect" coords="48,215,98,204">
+       <area href="#edt_lowpass" alt="edt_lowpass" shape="rect" coords="42,124,183,110">
+       <area href="#edt_highpass" alt="edt_highpass" shape="rect" coords="42,91,183,78">
+       <!-- Popupmenu -->
+       <area href="#CCallback_Channel" alt="CCallback_Channel" shape="rect" coords="42,146,183,131">
+       <area href="#pop_filtertype2" alt="pop_filtertype2" shape="rect" coords="14,62,101,47">
+       <area href="#pop_filtername" alt="pop_filtername" shape="rect" coords="14,45,101,31">
+       <area href="#pop_axes_dist" alt="pop_axes_dist" shape="rect" coords="17,253,112,240">
+       <!-- Listbox -->
+       <area href="#CCallback_DataKind" alt="CCallback_DataKind" shape="rect" coords="43,199,183,148">
+       <!-- Frame -->
+       <area href="#FilterType" alt="frame1" shape="rect" coords="9,224,192,13">
+       <area href="#frame4" alt="frame4" shape="rect" coords="9,264,192,225">
+     </map>
+     </div>
+     </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+
+<!-- ===================== フィルタの選択  ==================== -->
+  <tr>
+    <td COLSPAN="5" class="section">
+      <a name="FilterType">フィルタの選択</a>
+    </td>
+  </tr> 
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+     <p class="tmargin">
+
+     </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+</table>
+
+
+<!-- ===================== Footer ==================== -->
+<table border=0 width="100%" cellspacing="0">
+  <!--  Title -->
+  <tr  class="mattitle_">
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<!-- Copy Right -->
+<div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+</cite></div>
+</BODY>
+</html>

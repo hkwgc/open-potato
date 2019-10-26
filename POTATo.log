@@ -1,0 +1,46 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % Open PoTATo : Version 3.9.0
+ %   Start at : 24-Oct-2019
+ %   Powerd by Matlab
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ === LOAD Data List ===
+PROJECT
+PROJECTPARENT
+WORK_DIRECTORY
+HELP_LANG
+OSP_STIMPERIOD_DIFF_LIMIT
+POTATO_P3MODE
+FILTER_RECIPE_GROUP_TYPE
+P3_BENRIBUTTON_FUNCTION
+ 
+=======================================
+ Project-Parent-Directory was changed 
+     : /Users/kwgc/Desktop/Potato/P3_files/P38/Projects
+=======================================
+
+=== Project is changinge ===
+     : "Empty"
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+[Select Analysis-Mode]
+      Number   : 0
+      Function : POTATo_win_Empty
+
+=== Project is changinge ===
+     : Sample project
+[Select Analysis-Mode]
+      Number   : 1
+      Function : POTATo_win_SingleAnalysis
+
+Filter list I/O Called
+[Select Analysis-Mode]
+      Number   : 1
+      Function : POTATo_win_SingleAnalysis
+
+Filter list I/O Called

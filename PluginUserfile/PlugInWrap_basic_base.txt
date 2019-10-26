@@ -1,0 +1,88 @@
+function varargout = PlugInWrap_TEST__NAME(fcn, varargin)
+% TEST__NAME Function of Wrapper of Plag-In Function 
+%
+%  At least we use 3-internal-function.
+%  That is 'createBasicInfo', 'getArgument', and
+%  'write'.
+%
+% ** CREATE BASIC INFORMATION **
+% Syntax:
+%  basic_info = PlugInWrap_TEST__NAME('createBasicIno');
+%
+%    basic_info.name :
+%       Display-Name of the Plagin-Function.
+%    basic_info.region :
+%       Set Execute allowed Region.
+%       Region indicate by number,
+%         CONTINUOUS   : 2
+%         BLOCKDATA    : 3
+%     if allowed Region-Number  is either Continuos and Blocks
+%        set basic_info.region=[2, 3];
+%
+% ** Set Arguments of Plug-in Function **
+% Syntax:
+%  filterData = PlugInWrap_TEST__NAME('getArgument',filterData, mfilename);
+%
+%%%%%HEADER_FPRINTF
+%
+%     mfilename : M-File, before PlugInWrap-TEST__NAME.
+%
+% ** write **
+% Syntax:
+%  str = PlugInWrap_TEST__NAME('createBasicIno',region, fdata)
+%
+%  Make M-File, correspond to Plug-in function.
+%  by usinge make_mfile.
+%  if str, out-put by str.
+%
+% See also OSPFILTERDATAFCN.
+
+
+
+% ======================================================================
+% Copyright(c) 2019, 
+% National Institute of Advanced Industrial Science and Technology
+%
+% Released under the MIT license 
+% https://opensource.org/licenses/MIT 
+% ======================================================================
+
+
+% == History ==
+% Reversion : 1.00
+%
+
+%======== Launch Switch ========
+   if strcmp(fcn,'createBasicInfo'),
+      varargout{1} = createBasicInfo;
+      return;
+   end
+
+   if nargout,
+      [varargout{1:nargout}] = feval(fcn, varargin{:});
+   else,
+      feval(fcn, varargin{:});
+   end
+return;
+%===============================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%======= Data to Add list ======
+function  basicInfo= createBasicInfo,
+%    basic_info.name :
+%       Display-Name of the Plagin-Function.
+%    basic_info.region :
+%       Set Execute allowed Region.
+%       Region indicate by number,
+%         CONTINUOUS   : 2
+%         BLOCKDATA    : 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   basicInfo.name   = 'Plug-in TEST__NAME';
+   basicInfo.region = [2 3];
+   % Display Kind :
+   % <- Filter Display Mode Variable :: Load
+   DefineOspFilterDispKind;
+   basicInfo.DispKind=0;
+  
+return;

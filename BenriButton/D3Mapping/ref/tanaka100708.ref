@@ -1,0 +1,26 @@
+[User]
+Name=tanaka
+ID=100708
+Comment=
+Sex=Male
+Age=  0y
+[LeftEar]
+X=-33.99
+Y=45.42
+Z=162.27
+[RightEar]
+X=-46.48
+Y=-94.06
+Z=134.25
+[Nasion]
+X=52.63
+Y=-19.17
+Z=113.42
+[Back]
+X=-123.74
+Y=-19.21
+Z=155.44
+[Top]
+X=-72.48
+Y=12.63
+Z=20.07

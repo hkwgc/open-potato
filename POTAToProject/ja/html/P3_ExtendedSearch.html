@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--HTML language="ja"-->
+<HTML>
+<HEAD>
+  <TITLE>P3 Extended Sarch</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../html/css/matlab_like.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+<!-- ================================================= -->
+<!-- $Id: P3_ExtendedSearch.html 180 2011-05-19 09:34:28Z Katura $-->
+<!-- Create  : 21-Jan-2008 : M. Shoji -->
+<!-- ================================================= -->
+
+<a name="0"></a>
+<!--  Title -->
+<TABLE border=0 width="100%" cellspacing="0">
+  <!--  Topics -->
+  <TR class="mattitle">
+    <TD COLSPAN="5">
+        <H1 class="mattitle">拡張検索機能</H1>
+    </TD>
+  </TR>
+  
+  <!-- Link in page -->
+  <tr class="subsection_lk"> 
+    <td>&nbsp;</td>
+    <td COLSPAN="4">
+      <a href="#top">概要</a>
+      &nbsp;
+      <a href="#KeyType">検索キーの種類</a>
+      &nbsp;
+      <a href="#Sort">整列</a>
+    </td>
+  </tr>  
+  <!-- Table Size & space-->
+  <TR> <TD width="4%"></TD> <!-- Left Marge in table 4% -->
+       <TD width="4%"></TD> <!-- Level 1 : Start Link 4% -->
+       <TD width="4%"></TD> <!-- Level 2 : Start explain 4%-->
+       <TD width="86%"></TD> <!-- Data 86%-->
+       <TD width="2%"></TD> <!-- Right Marge in table 2%-->
+  </TR>  
+
+<!-- ===================== 概要  ==================== -->
+  <tr>
+    <td COLSPAN="5" class="section">
+      <a name="top">概要</a>
+    </td>
+  </tr>
+  
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+    <p class="tmargin">
+      拡張検索画面はP3のメイン画面に表示するデータの検索・整列を行います。<br>
+      メイン画面は次のようになります。<br>
+      <div class="myimg">
+        <img src="./P3_ExtendedSearch.jpg" 
+                usemap="#mainwindow" width="277px" height="475px" 
+                alt="Extend Search" title="Extend Search">
+        <map name="mainwindow">
+          <area href="#KeyType" alt="KeyType" shape="rect" coords="150,55,261,70">
+          <area href="#Sort" alt="Sort" shape="rect" coords="10,360,261,401">
+        </map>
+      </div>
+      最初に検索キーを選択し、その検索キーに対して操作を行います。
+    </p>
+  </tr> 
+
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+<!-- ===================== 項目2 ==================== -->
+  <tr><td class="subsection">&nbsp;</td>
+    <td COLSPAN="4" class="subsection">
+    <p>
+      <a name="KeyType">キーの種類</a>
+    </p>
+  </tr>
+
+
+<!-- ===================== 操作  ==================== -->
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+     <p class="tmargin">
+     <table border=1>
+       <tr><th>Type</th><th>実データタイプ</th><th>検索フォーマット</th></tr>
+       <tr><td>Text</td><td>文字列</td><td>正規表現</td></tr>
+       <tr><td>Date</td><td>MATLAB時刻シリアル</td><td>日付文字を&quot;付きで指定(範囲を指定する場合は最大最少をセルで表現)</td></tr>
+       <tr><td>Gender</td><td>数値: 0:男 1:女</td><td>MaleもしくはFemale</td></tr>
+       <tr><td>Cell</td><td>セル</td><td>検索できない</td></tr>
+       <tr><td>Numeric</td><td>数値</td><td>10&gt;や&gt;10の不等号。もしくは配列で最大・最少を指定</td></tr>
+       <tr><td>unknown</td><td>不明</td><td>検索不可能：エラーになる</td></tr>
+     </table>
+     </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+<!-- ===================== 項目2 ==================== -->
+  <tr><td class="subsection">&nbsp;</td>
+    <td COLSPAN="4" class="subsection">
+    <p>
+      <a name="Sort">整列</a>
+    </p>
+  </tr>
+
+
+<!-- ===================== 操作  ==================== -->
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+     <p class="tmargin">
+       ポップアップメニューで指定されたキーに関してデータを
+       昇順で整列するには&quot;Ascending&quot;ボタンを
+       降順で整列するには&quot;Descending&quot;ボタンを押してください。
+       
+     </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+</table>
+
+
+<!-- ===================== Footer ==================== -->
+<table border=0 width="100%" cellspacing="0">
+  <!--  Title -->
+  <tr  class="mattitle_">
+    <td> 
+      <a href="./P3_wizard_plugin.html">概要</a>&nbsp;
+      <a href="#0">Top</a>&nbsp;
+    </td>
+
+    <td align="right">
+      <!--   (Link) 
+      <a href="../ProbePosition.html">
+      <img src="../../../html/img/b_prev.gif" alt="&lt;&minus;" 
+      title="Previous Page : 概要" border=0></a>
+      &nbsp;&nbsp;&nbsp;
+      -->
+      <a href="./P3_wizard_plugin_P1.html">
+      <img src="../../../html/img/b_next.gif" alt="&minus;&gt" 
+      title="Next Page : プラグイン種類の選択" border=0></a>
+      &nbsp;
+    </td>
+  </tr>
+</table>
+<!-- Copy Right -->
+<div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+</cite></div>
+</BODY>
+</html>

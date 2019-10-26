@@ -1,0 +1,26 @@
+[User]
+Name=he
+ID=2
+Comment=
+Sex=Male
+Age=  0y
+[LeftEar]
+X=-0.21
+Y=-5.43
+Z=10.00
+[RightEar]
+X=-1.02
+Y=6.18
+Z=9.75
+[Nasion]
+X=7.40
+Y=0.74
+Z=11.40
+[Back]
+X=-8.80
+Y=-0.19
+Z=6.03
+[Top]
+X=2.38
+Y=1.22
+Z=1.98

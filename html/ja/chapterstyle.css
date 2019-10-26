@@ -1,0 +1,78 @@
+div.top{
+	margin: 10px;
+}
+a {
+ color: #2626aa;
+}
+/* ############# Page ################### */
+div.pagetitle {
+	margin-top: 20px;
+}
+tr.pagetitle td{
+	border-top: solid 5px #000000;
+	border-bottom: solid 5px #000000;
+}
+tr.pagetitle td div{
+	text-align: center;
+	border-top: solid 2px #000000;
+	border-bottom: solid 2px #000000;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+tr.pagetitle td div h1{
+	text-align: center;
+}
+/* ############# Chapter ################### */
+div.chaptertitle {
+	margin-top: 20px;
+}
+tr.chaptertitle td{
+	border-bottom: solid 2px #000000;
+}
+tr.chaptertitle td div{
+	border-bottom: solid 5px #000000;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+tr.chaptertitle td div h2{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+/* ############# Section ################### */
+div.subsectiontitle {
+	margin-top: 10px;
+}
+td.subsectiontitle {
+	border-bottom: solid 1px #999999;
+}
+td.subsectiontitle div{
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+td.subsectiontitle div h3{
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+
+*.space5px{
+	width: 5px;
+}
+
+/* ############# with figure ################### */
+div.left_half{
+	float: left;
+	margin:5px;
+	width: 45%;
+}
+div.right_half{
+	float: right;
+	margin:5px;
+	width: 45%;
+}
+
+/* ############# Other ################### */
+table.caution{
+	width:100%;
+	background-color:#eedd75;
+}

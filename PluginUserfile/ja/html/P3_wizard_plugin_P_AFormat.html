@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--HTML language="ja"-->
+<HTML>
+<HEAD>
+  <TITLE>P3: Plugin-Wizard (AO-Page2)</TITLE>
+
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../html/css/matlab_like.css" TYPE="text/css">
+
+</HEAD>
+
+<BODY>
+<!-- ================================================= -->
+<!-- $Id: P3_wizard_plugin_P_AFormat.html 180 2011-05-19 09:34:28Z Katura $-->
+<!-- Create  : 21-Jan-2008 : M. Shoji -->
+<!-- ================================================= -->
+
+<a name="0"></a>
+<!--  Title -->
+<TABLE border=0 width="100%" cellspacing="0">
+  <!--  Topics -->
+  <TR class="mattitle">
+    <TD COLSPAN="5">
+      <a href="./P3_wizard_plugin.html">
+        <H1 class="mattitle">Plugin 作成Wizard</H1>
+      </a>
+    </TD>
+  </TR>
+  
+  <!-- Link in page -->
+  <TR class="section_lk">
+    <TD COLSPAN="5">
+      <a href="./P3_wizard_plugin.html">概要</a>&nbsp;
+      <A href="./P3_wizard_plugin_P1.html">プラグイン選択</A>&nbsp;
+      <A href="./P3_wizard_plugin_P_Aformat.html">
+        <font class="select">関数呼出しフォーマット</font>
+      </A>
+    </TD>
+  </TR>
+  
+  <!-- SubSection Link in page -->
+  <tr class="subsection_lk"> 
+    <td>&nbsp;</td>
+    <td COLSPAN="4">
+      <a href="#1">簡易設定</a>
+      &nbsp;
+      <a href="#2">フォーマットの記述</a>
+      &nbsp;
+      <a href="#3">予約語の説明</a>
+      &nbsp;
+      <a href="#4">Example</a>
+    </td>
+  </tr>  
+  
+  <!-- Table Size & space-->
+  <TR> <TD width="4%"></TD> <!-- Left Marge in table 4% -->
+       <TD width="4%"></TD> <!-- Level 1 : Start Link 4% -->
+       <TD width="4%"></TD> <!-- Level 2 : Start explain 4%-->
+       <TD width="86%"></TD> <!-- Data 86%-->
+       <TD width="2%"></TD> <!-- Right Marge in table 2%-->
+  </TR>  
+
+
+<!-- ===================== 概要  ==================== -->
+  <tr>
+    <td COLSPAN="5" class="section">
+      <a name="LaunchOSP"> </a>
+      Page 2&nbsp;&nbsp;関数呼出しフォーマット (Axis-Object)
+   </td>
+  </tr>
+  
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+    <p class="tmargin">
+      このページでは表示を実行するための関数の呼出し方法を記述します.<br>
+    </p>
+  </tr> 
+ 
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+    <div class="myimg">
+      <img src="./AFormat.jpg"
+      alt="Execution Format" title="Execution Format">
+    </div>
+    </td>
+  </tr>
+  
+
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+<!-- ===================== 項目1 ==================== -->
+  <tr><td class="subsection">&nbsp;</td>
+    <td COLSPAN="4" class="subsection">
+    <p>
+      <a name="1">Page 2-1&nbsp;&nbsp;簡易設定</a>
+    </p>
+  </tr>
+
+<!-- ===================== 操作  ==================== -->
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+      <p class="tmargin">
+        制御を簡単にするために
+        再描画時にAxis上の全てのオブジェクトを削除する場合に
+        <font class="myfont">(A)</font>にチェックを入れます.<br>
+        この時,出力変数 houtを省略することが可能です.<br>
+      </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  <!-- 注意 -->
+  <tr><td>&nbsp;</td><td>&nbsp;</td>
+    <td COLSPAN="2">
+    <p class="warning">
+      通常,他の描画オブジェクトと同時に使用しない場合にのみチェックをonに設定します.<br>
+      ただしコントロールの組合せによっては問題なく動作しますので,
+      はじめて使用する場合にはチェックをonにすることをお勧めします.
+    </p>
+    </td><td>&nbsp;</td>
+  </tr> 
+  
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+<!-- ===================== 項目2 ==================== -->
+  <tr><td class="subsection">&nbsp;</td>
+    <td COLSPAN="4" class="subsection">
+    <p>
+      <a name="2">Page 2-2&nbsp;&nbsp;フォーマットの記述</a>
+    </p>
+  </tr>
+
+<!-- ===================== 操作  ==================== -->
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+      <p class="tmargin">
+        実行する描画関数の呼出し方法を
+        <font class="myfont">(B)</font>のエディットテキストに書き込みます.<br>
+        この時の使用可能な変数は<a href="#3">予約語</a>として定義されています.
+      </p>
+    </td><td>&nbsp;</td>
+  </tr>
+  <!-- ===================== 項目中のエラー -==================== -->
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="4" class="subsection_err">
+    <p>
+      エラーメッセージ
+    </p>
+    </td><td>
+  </tr>
+ <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+    <!--  エラー1  -->
+    <p class="tmargin">
+      <ul class="warnimg">
+        <li>
+          <font class="emsg">The description of Return-Value is wrong.</font><br>
+          戻り値の変数名が正しく読み取れなかった場合のエラーです.<br>
+        </li>
+        <li>
+          <font class="emsg">The description of Function's name is lack.</font><br>
+          関数名が読み取れなかった場合のエラーです.<br>
+        </li>
+        <li>
+          <font class="emsg">No Function to execute.</font><br>
+          実行関数名が読み取れなかった場合のエラーです.<br>
+        </li>
+        <li>
+          <font class="emsg">Syntax Error : in argument ().</font><br>
+          閉じていない括弧が存在します.<br>
+        </li>
+      </ul>
+    </p>
+    </td><td>&nbsp;</td>
+  </tr>
+
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+<!-- ===================== 項目3 ==================== -->
+  <tr><td class="subsection">&nbsp;</td>
+    <td COLSPAN="4" class="subsection">
+    <p>
+      <a name="3">Page 2-3&nbsp;&nbsp;予約語の説明</a>
+    </p>
+  </tr>
+  
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+      <p class="tmargin">
+        <ul>
+          <li>hdata<br>
+            Platformデータのヘッダ<br>
+            データの種類は状態によります.<br><br>
+          </li>
+          <li>data<br>
+            Platformデータのヘッダ<br>
+            データの種類は状態によります.<br>
+            連続データの場合は [time, channel, kind]の3次元データに,
+            区間データの場合は [block, time, channel, kind]の4次元データになります.
+            <br><br>
+          </li>
+          <li>curdata<br>
+            描画すべき状態を記述したデータです.<br>
+            以前に描画されたControlやAxesにより変更されます.<br><br>
+          </li>
+          <li>objdata<br>
+            Axis-Objectデータです.Plugin作成Wizard使用時には通常使いません.<br>
+            Axis-ObjectのgetArgumentサブ関数で作成され,
+            Layout情報として保存されている変数です.
+            <br><br>
+          </li>
+          <li>hout<br>
+            描画したObjectのハンドルを格納する構造体変数です.<br>
+            hout.h にObjectのハンドルを記述します.<br>
+            hout.tag にhout.hに対応する名称をセル配列で代入します.<br>
+            <br><br>
+          </li>
+        </ul>
+      </p>
+    </td><td>&nbsp;</td>
+  </tr>
+
+  <!-- space line -->
+  <tr><td COLSPAN="5">&nbsp;</td></tr>
+
+<!-- ===================== 項目4 ==================== -->
+  <tr><td class="subsection">&nbsp;</td>
+    <td COLSPAN="4" class="subsection">
+    <p>
+      <a name="4">Page 2-4&nbsp;&nbsp;Example</a>
+    </p>
+  </tr>
+  <tr><td>&nbsp;</td>
+    <td COLSPAN="3">
+      <p class="tmargin">
+        <ul class="listimg">
+        <li><code><pre>hist(data(:,:,curdata.kind(1)));</pre></code>
+          連続データに対し, データの種類１(Oxy)のヒストグラムを作成します.<br><br>
+        </li>
+        <li><code><pre>hout=myplot(curdata,a,b,c);</pre></code>
+          3つの入力引数a, b, c を持つ独自のプロット関数を指定します.<br><br>
+        </li>
+        </ul>
+      </p>
+    </td><td>&nbsp;</td>
+  </tr>
+
+</table>
+
+
+<!-- ===================== Footer ==================== -->
+<table border=0 width="100%" cellspacing="0">
+  <!--  Title -->
+  <tr  class="mattitle_">
+    <td>
+      <a href="./P3_wizard_plugin.html">概要</a>&nbsp;
+      <a href="#0">Top</a>&nbsp;
+    </td>
+
+    <td align="right">
+      <!--   (Link) -->
+      <a href="./P3_wizard_plugin_P1.html">
+      <img src="../../../html/img/b_prev.gif" alt="&lt;&minus;" 
+      title="Previous Page : 概要" border=0></a>
+      &nbsp;&nbsp;&nbsp;
+      <a href="./P3_wizard_plugin_P_argset.html">
+      <img src="../../../html/img/b_next.gif" alt="&minus;&gt" 
+      title="Next Page : マスク設定へ" border=0></a>
+      &nbsp;
+      
+    </td>
+  </tr>
+</table>
+<!-- Copy Right -->
+<div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+</cite></div>
+</body>
+</html>

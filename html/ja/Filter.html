@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja"><head>
+    <title>
+      Platform for Optical topography Analysis Tools Manual Step-Guide
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    <link rel="stylesheet" href="matlab_like.css" type="text/css">
+    <link rel="stylesheet" href="chapterstyle.css" type="text/css">
+</head>
+<body>
+ <div class="top">
+    <table width="100%" border="0" cellspacing="0">
+      <thead><tr>
+        <th class="space5px">&nbsp;</th><!-- Left Marge in table -->
+        <th class="space5px">&nbsp;</th><!-- Level 1 : Start Link -->
+        <th class="space5px">&nbsp;</th><!-- Level 2 : Start explain -->
+        <th                 >&nbsp;</th><!-- Data -->
+        <th class="space5px">&nbsp;<br></th><!-- Right Marge in table -->
+      </tr></thead>
+      <tbody>
+      <!-- ================== Header ==================== -->
+      <tr><td colspan="5"><div class="pagetitle">&nbsp;</div></td></tr>
+      <tr class="pagetitle">
+        <td colspan="5">
+          <div><h1>Platform for Optical topography Analysis Tools<br/>付録：フィルタ</h1></div>
+        </td>
+      </tr><!-- Link in page -->
+      
+      <!--========= 概要 ===================-->
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>&nbsp;</p>
+          <p>
+            POTAToにおいてフィルタとは
+            ”Baseline Correction”や”区間化 (Blocking)”など
+            １つの実験データに対して行う解析処理のことを意味します。<br>
+            フィルタは通常プラグインにより作成されており、
+            プラグイン状況により増減があります。
+            ここでは、主なプラグインについて説明します。
+          </p>
+          <table class="caution">
+          <tr><td colspan="2">警告</td></tr>
+          <tr><td style="width:10px">&nbsp;</td>
+              <td>ここで示す資料は2011年の改定版です。<br>
+                  プラグイン関数のバージョンアップにより変更される可能性があります。
+                  オンラインマニュアルと相違がある場合はオンラインマニュアルを優先してください。
+              </td></tr>
+          </table>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+
+      <!--================= Chapter Tittle  ====================-->
+      <tr><td colspan="5"><div class="chaptertitle">&nbsp;</div></td></tr>
+      <tr class="chaptertitle">
+        <td colspan="5">
+          <div><h2>フィルタ情報</h2></div>
+        </td>
+      </tr>
+      <!--========= Band Filter ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/BandFilter.pdf">Band Filter</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>周波数フィルタを実施する。。<br>
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <!--========= Baseline Correctin ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/BaselineCorrection.pdf">Baseline Correctin</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>ベースライン補正を行います。<br>
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <!--========= 体動チェック ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/MotionDetection.pdf">Motion Check</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>体動を検出し、体動があった箇所にフラグを設定します。
+             続く処理にてフラグを利用することにより体動による不良データを削除できます。<br>
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <!--========= Weblet 体動チェック ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/Wavelet_MotionDetection.pdf">Motion Check [Weblet]</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>Waveletを用いて体動を検出し、体動があった箇所にフラグを設定します。
+             続く処理にてフラグを利用することにより体動による不良データを削除できます。<br>
+             この時、Wevelet Toolboxが必要になります。
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <!--========= 移動平均 ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/MovingAverage.pdf">MovingAverage</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>移動平均を実施します。
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <!--========= PCAフィルタ ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/PCA.pdf">PCA</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>PCAフィルタはPCAを実施し一部の主成分のみでデータを再構築しその結果を返します。
+             PCAによる結果比較ではありません。
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <!--========= 多項式フィッティング　+差分 ===================-->
+      <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="subsectiontitle">
+          <div><h3><a href="./FilterPlugin/Polyfit_Difference.pdf">Polyfit Difference</a></h3></div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td>
+        <td colspan="2">
+          <p>Polyfit Differenceは元データに対して多項式フィッティングを行い、
+             元データから多項式フィッティング結果の差分を出力します。
+          </p>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody></table>
+  </div> <!-- top -->
+</body></html>

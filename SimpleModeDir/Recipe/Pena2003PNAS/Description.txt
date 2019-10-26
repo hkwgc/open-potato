@@ -1,0 +1,47 @@
+100624
+
+Summary
+刺激は2種類（Forward: FW, Backward: BW）；各条件10試行
+刺激期間15 秒‐レスト期間25～35 秒
+
+Bandpass Filtering によってノイズ除去
+Motion Checkによって体動検出
+刺激開始前5秒間、刺激開始後30秒間からなる35秒を用いてブロック化
+各ブロックの最初の5秒と最後の5秒を用いて1次フィッティングによるベースライン補正
+刺激開始後の30秒間の信号値の平均をブロック間で加算平均
+
+Information
+Tag:		Pena, 2003 PNAS
+Title:	Sounds and silence: An optical topography study of language recognition at birth 
+Authors:	Pena M, Maki A, Kovaci? D, Dehaene-Lambertz G, Koizumi H, Bouquet F, Mehler J.
+Journal:	Proc Natl Acad Sci U S A. 2003 Sep 30;100(20):11702-5.
+
+Description of Recipi
+* Total-Hb signal was used in this study. 
+* Continuous Hb signal (total-Hb) data were first subjected to a "noise detection procedure."
+1. Bandpass filtering
+	- Filter Function: FFT (* Not specified in the original article)
+　　　　- Filter Type: BandPassFilter
+　　　　- HighPassFilter: 0.02 [Hz]
+　　　　- LowPassFilter: 1 [Hz]
+　　　　   
+2. Motion Check
+　　　　- HighPassFilter: 0.02 [Hz]
+　　　　- LowPassFilter: 1 [Hz]
+　　　　- Criterion: 0.1 [mM*mm]
+　　　　- Filter Type: BandPassFilter
+　　　　- DataKind: 3 [= total-Hb]
+　　　　- DCInterval: 2 [counts (i.e., 0.2 s)] 
+　　　　
+3. Blocking
+　　　　- Pre-task period: 5 [s]
+　　　　- Task period: 15 [s]
+　　　　- Post-task period: 15 [s]
+　　　　
+4. Local Fitting
+　　　　- Degree: 1
+　　　　- UnFitPeriod: [0: 0.1: 25]
+　　　　- (using first 5 s and final 5 s of each block)
+　　　　  
+5. Mean-Value
+　　　　- MeanPeriod: [0 30]

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML language="ja">
+<HEAD>
+  <TITLE>Filter Plugin: Perfoms Memory Garbage</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../../../html/css/matlab_like.css" TYPE="text/css">
+
+</HEAD>
+<BODY>
+
+  <!--  Title -->
+  <TABLE border=0 width="100%">
+    <TR class="mattitle">
+      <TD COLSPAN="10"><H1 class="mattitle">
+        Multi&minus;Analysis Plugin : Block-Data作成関数
+      </H1></TD>
+    </TR>
+
+    <TR> <TD width="4%"></TD> <!-- Left Marge in table -->
+      <TD width="5%"></TD> <!-- Level 1 : section-->
+      <TD width="5%"></TD> <!-- Level 2 : datas-->
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD width="4%"> <br></TD> <!-- Right Marge in table -->
+    </TR>
+
+    <!--  Topics -->
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 概要 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          Multi&minus;Analysis&minus;Plugin関数.<br>
+          セル形式のデータを、
+          シングル解析モードのブロックデータに変換する関数です。<br>
+          Multi&minus;Analysisモードでは複数の計測データを扱います。
+          そのため、Multi&minus;Analysisデータの開始直後のデータ形式は
+          シングル解析モードやバッチ解析モードで使用するデータを
+          セル配列にまとめたけデータになっております。<br>
+          ただし、このままではシングル解析モードで使用した関数や表示レイアウトを使用できず、
+          取扱いが不便な場合も多くあります。<br>
+          そこで、これらを1つのブロックデータに変換して取り扱うことでこれらの不都合を回避します。
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 詳細説明 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          Multi&minus;Analysisモードに存在するデータには次の4種類のデータがあります。<br>
+          <table border="1">
+             <tr><td>&nbsp;</td><td>Normal</td><td>Cell</td></tr>
+             <tr><td>Continuous</td><td>C</td><td>CC</td></tr>
+             <tr><td>Block</td><td>B</td><td>CB</td></tr>
+          </table>
+          Single解析モードで各Plugin関数が取り扱っているデータは、
+          通常Continuousデータ(連続データ)とよばれるC型か、
+          Blockデータ(区間データ)と呼ばれるB型になります。<br>
+          Multi&minus;Analysis開始直後のデータは
+          Multi&minus;Analysisを形成する個々の解析ファイルのRecipeで
+          Time&minus;Blockingを行っていない場合CC型に、
+          Time&minus;Blockingを行っている場合はCB型になります。<br>
+          この関数はこれらのファイルをB型に変換する関数です。<br>
+          CC型の場合、Addボタン実行時に設定された値に従いBlockingが実行され、
+          CB型の場合は、Addボタン実行時に設定された値と既に設定されえているBlock範囲の最小値で
+          Blockingが実行されます。
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <TR class="subsection">
+      <td COLSPAN="10">
+      <p><font size=+2><b> 制約 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          現状、CB⇒B変換は動作チェック中です。
+          一部不具合が発生する可能性がありますので不具合がある場合はご一報ください。<br>
+          CB⇒B変換ではTime&minus;Seriezeデータの変換が実行できておりません。
+          将来的に追加する予定ですが、あらかじめご了承ください。<br>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    
+  </TABLE>
+  
+  <table border=0 width="100%" cellspacing="0">
+    <!--  Title -->
+    <TR class="mattitle_"> <td>See also：</td>
+      <td>&nbsp;</td>
+    </TR>
+  </table>  
+  
+
+  <div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; National Institute of Advanced Industrial Science and Technology </font>
+  <font size="2"> $Data: $</font>
+  </cite></div>
+
+</BODY>
+</html>
+
+

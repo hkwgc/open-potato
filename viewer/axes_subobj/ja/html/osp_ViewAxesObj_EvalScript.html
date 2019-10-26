@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML language="ja">
+<HEAD>
+  <TITLE>VAO: Script</TITLE>
+
+  <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <LINK REL="stylesheet" HREF="../../../../html/css/matlab_like.css" TYPE="text/css">
+
+</HEAD>
+<BODY>
+
+  <!--  Title -->
+  <TABLE border=0 width="100%">
+    <TR class="mattitle">
+      <TD COLSPAN="10"><H1 class="mattitle">
+        Viewer用 Object : Script 
+      </H1></TD>
+    </TR>
+
+    <TR> <TD width="4%"></TD> <!-- Left Marge in table -->
+      <TD width="5%"></TD> <!-- Level 1 : section-->
+      <TD width="5%"></TD> <!-- Level 2 : datas-->
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD width="4%"> <br></TD> <!-- Right Marge in table -->
+    </TR>
+
+    <!--  Topics -->
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 概要 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          <a href="matlab:OspHelp('ViewerAxesObject')">Axes内 Object描画関数</a>。<br>
+          描画時にデータとして、Scriptを設定します。<br>
+          ViewerはObjectの描画時にScript を実行します。<br>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> 主な用途 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          <ol type=1>
+            <li>
+              Axisのコントロール。
+            </li>
+            <li>
+              簡単なObjectの描画。    
+            </li>
+          </ol>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+
+    <TR class="subsection">
+      <td COLSPAN="10">
+      <p><font size=+2><b> 変数一覧 </b></fond></p>
+      </td>
+    </TR>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          Scriptで使用可能な主な変数は、次の通りです。
+          <table border=1>
+          <thead>
+          <tr><td>変数名</td><td>内容</td></tr>
+          </thead>
+          <tr><td>curdata</td><td>カレントデータ</td></tr>
+          <tr><td>obj{idx}</td><td>View-Axis-Object (idxは現行のVAO==Scritを示す)</td></tr>
+          <tr><td>handles</td><td>主なハンドル</td></tr>
+          <tr><td>h.axes</td><td>gcaと同じ</td></tr>
+          </table>
+          (基本的にはView-Axis-Object == control で使用可能な変数と同じです。)
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  
+  
+    <TR class="subsection">
+      <td COLSPAN="10">
+        <p><font size=+2><b> Script例 1 </b></fond></p>
+      </td>
+    </tr>
+    <tr></tr>
+    <tr><td>&nbsp;</td>  <!-- Information -->
+      <td COLSPAN="8">
+        <p>
+          例としてデータの大きさを表示し、AxisをTightにするスクリプトを示します。
+          <code><pre>
+          f=curdata.gcf;                                                   
+          [hdata,data]=osp_LayoutViewerTool('getCurrentDataRaw',f,curdata);
+          text(0,0.1,['Data Size is ' num2str(size(data))]);               
+          axis('tight');
+          </code></pre>
+        </p>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+
+
+  </TABLE>
+  
+  <table border=0 width="100%" cellspacing="0">
+    <!--  Title -->
+    <TR class="mattitle_"> <td>&nbsp;</td></TR>
+  </table>  
+
+  <div  COLSPAN="2" align="right"><cite>
+  <font size="2">&copy; 2019, National Institute of Advanced Industrial Science and Technology</font>
+  <font size="2"> $Data: $</font>
+  </cite></div>
+
+</BODY>
+</html>

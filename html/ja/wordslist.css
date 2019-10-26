@@ -1,0 +1,8 @@
+table.words_table tbody tr td{
+	border-bottom: solid 1px;
+}
+table.words_table thead tr td{
+	background-color:#dddddd;
+	border-top: double 3px;
+	border-bottom: double 3px;
+}

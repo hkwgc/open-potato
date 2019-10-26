@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function varargout=getArgument(varargin),
+% Set Data
+%%%%%HEADER_FPRINTF
+
+
+
+% ======================================================================
+% Copyright(c) 2019, 
+% National Institute of Advanced Industrial Science and Technology
+%
+% Released under the MIT license 
+% https://opensource.org/licenses/MIT 
+% ======================================================================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   data0 = varargin{1}; % Filter Data
+   if isfield(data0, 'argData')
+      % Use Setting Value.
+      % ( Change )
+      data = data0.argData;
+   else
+      data = [];
+   end
+
+   NEXT_FPRINTF
+
+   % Default Value for start
+   if isempty(data) || ~isfield(data,'arg1_int'),
+      data.arg1_int=0;
+      data.arg2_char ='test';
+   end
+
+   % Display Prompt words
+   prompt = {' Enter : arg1  ( integer )', ...
+	    ' Enter : arg2  ( Character )'};
+   % Default value
+   def    = {num2str(data.arg1_int), data.arg2_char};
+
+   % Open Input-Dialog
+   while 1,
+      % input-dlg
+      def = inputdlg(prompt, data0.name, 1, def);
+      if isempty(def),
+        data=[]; break; %while
+      end
+
+      % Check Argument 
+
+      % int-format?
+      styleck=regexp(def{1}, '^\s*[\+\-]?\s*\d+\s*$'); 
+      if ~isempty(styleck)
+	% Integer
+	data = struct('arg1_int',str2num(def{1}));
+      else
+	% not integer format
+	errordlg({' Input Error : ', ...
+		'   Your inputerror is outof Format.', ...
+		'   Argument must be integer'});
+	continue;
+      end
+      data.arg2_char = def{2};
+      break;
+   end
+   if isempty(data)
+     data0=[]; % Not inputed ( cancel )
+   else
+     data0.argData=data;
+   end
+   varargout{1}=data0;
+return;

@@ -1,0 +1,257 @@
+
+/* Base Text */
+H1 { color:#000000; font-size:16 }
+
+/* --- Image --- */
+/*DIV.myimg {float: right; margin:1em;}*/
+DIV.myimg {
+	float: right;
+	margin:1em 0 1em 0;
+	margin-top:1em;
+	margin-bottom:1em;
+}
+DIV.myimg_0 {
+	float: right;
+}
+DIV.myimgl {float: left; margin:1em;}
+DIV.myimg_cl {clear: right;}
+
+b.default {
+	vertidql-qlitn: midle;
+}
+td.imgcap {
+    text-align: center;
+    font-weight:bold;
+}
+
+/* --- font for graph --- */
+FONT.myfont {
+	background-color:#ffe58f;
+	color: #005588;
+	font-weight: bold; 
+}
+FONT.select {
+	/*color:#ff9d00;  orange */
+	color:#f0750f;
+	font-weight: bold; 
+}
+
+/* ---- P ----*/
+P.tmargin {margin:1em 0 0 0;}
+
+/* ---- UL ----*/
+UL.listimg {list-style-image: url(ar2.gif);}
+UL.listsquare {
+	list-style-image: none;
+	list-style-type: square;
+}
+UL.listnone {
+	margin:5px;
+	list-style-image: none;
+	list-style-type: none;
+}
+UL.warnimg {
+	list-style-image: url(warn.gif);
+	list-style-position: inside;
+}
+
+/* ---- Table ----*/
+table.default {
+	background-color:#FFFFFF;
+	width:100%;
+	margin:auto;
+	padding:3px
+}
+table.nonespace {
+	background-color:#FFFFFF;
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+	
+/* Link & titles */
+TR.mattitle {
+	/* background-color:#c0c0f4; */
+	background-color:#ddad65;
+}
+H1.mattitle {
+	/* color: #004477; */
+	color: #262602;
+	font-weight: bold; 
+	font-style: italic; 
+	font-size: 40;   
+}
+*.mattitle_ {
+	/* background-color:#c0c0f4; */
+	background-color:#ddad65;
+	color: #262602;
+	font-weight: bold 
+}
+*.section_lk {
+	background-color:#cd9d55;
+	font-size: 12; 
+	color: #262602;
+	/*font-size: x-small */
+}
+*.menusize {
+	color: #005588;
+	font-size: 12; 
+}
+*.chapter {
+	background-color:#c0c0f4;
+}
+*.chapter_ft {
+	color: #005588;
+	font-weight: bold; 
+	font-size: 16 
+}
+*.contents_ft {
+	color: #005588;
+	font-weight: bold; 
+	font-size: 14; 
+	/*font-size: medium */
+}
+/*******************************
+*.mattitle {
+	background-color:#d0d0f0;
+	color: #004477;
+}
+*.section {
+	background-color:#f0f0ff;
+	color:#005588;
+	font-size:16 
+}
+*.section_ft {
+	color: #005588;
+	font-weight: bold; 
+	font-size: large 
+}
+*.subsection {
+	background-color: #f4f4ff;
+}
+*.subsection_ft {
+	color: #005588;
+	font-weight: bold; 
+	font-size: medium
+}
+*.subsection_err {
+	background-color: #f8f8ff;
+}
+*********************************/
+*.section {
+	color: #005588;
+	font-weight: bold; 
+	font-size: 16; 
+	/*font-size: large; */
+	background-color:#c0c0f4;
+}
+*.subsection_lk {
+	background-color: #d0d0f0;
+	font-size: 12; 
+	/*font-size: x-small */
+}
+*.subsection {
+	color: #005588;
+	font-weight: bold; 
+	font-size: 14; 
+	/*font-size: medium;*/ 
+	background-color: #d0d0f0;
+}
+*.subsection_err {
+	background-color: #f0f0ff;
+}
+*.section_err {
+	background-color: #f0f0ff;
+}
+*.warning {
+	font-size: 12; 
+	/*font-size: x-small;*/ 
+	background-color: #ffe58f;
+}
+
+
+tr.seclink {
+	/**background-color:#ffe4b0;**/
+	background-color:#c0c0f4; /* temporary */
+}
+tr.subseclink {
+	/**background-color:#fff4d0;**/
+	background-color: #d0d0f0; /* temporary */
+}
+tr.chap_bg {
+	/**background-color:#ffe4b0;**/
+	background-color:#c0c0f4; /* temporary */
+}
+*.sec_bg {
+	background-color:#E0ffff;
+}
+*.sbsec_bg {
+	background-color:#D0FFD0;
+}
+
+tr#chap_bg {
+	/** background-color:#ffe4b0;**/
+	background-color:#c0c0f4; /* temporary */
+}
+*#sec_bg {
+	background-color:#E0ffff;
+}
+*#sbsec_bg {
+	background-color:#D0FFD0;
+}
+
+/* ----- FAQ -------*/
+td.FAQ_title { 
+	font-size:16;
+}
+td.FAQ_QUESTION { 
+	font-size:12;
+	font-weight: bold; 
+    	vertical-align: top;
+}
+td.FAQ_ANSWER { 
+	font-size:12;
+	font-weight: bold; 
+    	vertical-align: top;
+}
+
+/* ----- Link -------
+a:link {
+	color:#0050FF;
+}
+a:visited {
+	color:#1010A0;
+}
+a:hover {
+	font-weight:bold;
+}
+a:active {
+	color:#FF5050;
+}
+A:active {
+	/*color:#ccffcc;*/
+	/*color:#ff9d00;  orange */
+	color:#ffe58f;
+}
+*/
+a:link {
+ 	color: #262652;
+}
+a:visited {
+ 	color: #262602;
+}
+a:hover {
+	/*font-weight:bold;*/
+}
+a:active {
+ 	color: #e6a602;
+}
+/* Other */	
+hr.tail { /*color:#e0a000;*/
+	color:#c0c0f4;}
+cite.* {width:100%;}
+
+
+/* ========= Debug =========== */
+*.unfinished { display:none}

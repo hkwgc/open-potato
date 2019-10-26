@@ -1,0 +1,50 @@
+/* Title */
+/*========= Default Setting ========*/
+td.default {vertical-align:top;}
+td.x       {vertical-align:top;}
+td.menusize{
+	vertical-align:top;
+	/*color: #005588;*/
+	color: #262602;
+	font-size: 12; 
+}
+/*========= font Control ========*/
+span.menu_chapter{
+	font-size: 108%;
+}
+span.menu_section{
+	font-size: 98$;
+}
+
+/*========= Visible Control ========*/
+.top_lvl {
+	position:relative;
+} 
+.mancap {
+	position:relative;
+} 
+.mansec {
+	display:none;
+} 
+.mansecX {
+	position:relative;
+} 
+
+.minus {
+	display:none;
+} 
+
+
+/*========= Link (Over-Write) ========*/
+a:link {
+ 	color: #262652;
+}
+a:visited {
+ 	color: #262602;
+}
+a:hover {
+	/*font-weight:bold;*/
+}
+a:active {
+ 	color: #e6a602;
+}
