@@ -1,17 +1,18 @@
  ------------------------------------------- 
  OSP  : Version 2.5.30.2
 
-    Start at : 26-Oct-2019 22:06:55
+    Start at : 30-Oct-2019 09:34:53
  ------------------------------------------- 
- === SAVE Data List ===
-PROJECT
-PROJECTPARENT
-WORK_DIRECTORY
-HELP_LANG
-OSP_STIMPERIOD_DIFF_LIMIT
-POTATO_P3MODE
-FILTER_RECIPE_GROUP_TYPE
-P3_BENRIBUTTON_FUNCTION
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- %    Done at : 26-Oct-2019 22:06:55
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+Filter list I/O Called
+start
+setup default
+Search path:/Users/kwgc/Desktop/Potato/release-3.9.0/op/PluginDir
+Search path2:/Users/kwgc/Desktop/Potato/release-3.9.0/op/PluginDir
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+start
+setup default
+Search path:/Users/kwgc/Desktop/Potato/release-3.9.0/op/PluginDir
+Search path2:/Users/kwgc/Desktop/Potato/release-3.9.0/op/PluginDir
+ ====> Launch POTATo! 

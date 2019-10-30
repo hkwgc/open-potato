@@ -1,6 +1,6 @@
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  % Open PoTATo : Version 3.9.0
- %   Start at : 24-Oct-2019
+ %   Start at : 30-Oct-2019
  %   Powerd by Matlab
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  === LOAD Data List ===
@@ -15,7 +15,7 @@ P3_BENRIBUTTON_FUNCTION
  
 =======================================
  Project-Parent-Directory was changed 
-     : /Users/kwgc/Desktop/Potato/P3_files/P38/Projects
+     : /Users/kwgc/Desktop/Potato/release-3.9.0/op/Projects
 =======================================
 
 === Project is changinge ===
@@ -33,14 +33,69 @@ Filter list I/O Called
       Function : POTATo_win_Empty
 
 === Project is changinge ===
+     : Test
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+[Select Analysis-Mode]
+      Number   : 0
+      Function : POTATo_win_Empty
+
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+[Select Analysis-Mode]
+      Number   : 0
+      Function : POTATo_win_Empty
+
+=== Project is changinge ===
      : Sample project
 [Select Analysis-Mode]
-      Number   : 1
-      Function : POTATo_win_SingleAnalysis
+      Number   : 51
+      Function : POTATo_win_Research_PreSingle
 
 Filter list I/O Called
+=== Project is changinge ===
+     : Sample project
 [Select Analysis-Mode]
-      Number   : 1
-      Function : POTATo_win_SingleAnalysis
+      Number   : 51
+      Function : POTATo_win_Research_PreSingle
 
 Filter list I/O Called
+GroupData to M-File at 30-Oct-2019 09:36:17
+  File Name :/Users/kwgc/Desktop/Potato/release-3.9.0/op/ospData/ana_20191030T093617.m
+  Data Name :sample_LT1
+[Select Analysis-Mode]
+      Number   : 51
+      Function : POTATo_win_Research_PreSingle
+
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+GroupData to M-File at 30-Oct-2019 09:37:20
+  File Name :/Users/kwgc/Desktop/Potato/release-3.9.0/op/ospData/ana_20191030T093720.m
+  Data Name :sample_LT2
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+Filter list I/O Called
+ === SAVE Data List ===
+PROJECT
+PROJECTPARENT
+WORK_DIRECTORY
+HELP_LANG
+OSP_STIMPERIOD_DIFF_LIMIT
+POTATO_P3MODE
+FILTER_RECIPE_GROUP_TYPE
+P3_BENRIBUTTON_FUNCTION
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ %    Done at : 30-Oct-2019 09:37:40
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 

@@ -1,6 +1,8 @@
 function varargout = preproTemplateSample(fcn, varargin)
 %
 
+% DO NOT EDIT START (from here to L 28)
+
 % ======================================================================
 % Copyright(c) 2019, 
 % National Institute of Advanced Industrial Science and Technology
@@ -22,6 +24,8 @@ else
   feval(fcn, varargin{:});
 end
 %===============================
+
+% Do NOT EDIT END
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function  basicInfo= createBasicInfo
