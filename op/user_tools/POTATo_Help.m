@@ -73,7 +73,7 @@ end
 % PDF or HTML
 %================================
 if exist(tag,'file') 
-  [p f e ] = fileparts(tag);
+  [p, f, e ] = fileparts(tag);
   if (strcmpi(e,'.pdf') || strcmpi(e,'.html'))
     if ck, flg=true;return;  end % Check only
     view_file(tag);
@@ -152,23 +152,29 @@ end
 function view_toppage(help_path)
 %helpview([help_path 'index.html']);
 
-s=POTATo_MessageString('Help_Dialog_BetaVerNoticeMessage_JP');
-uiwait(msgbox(s,'Notice!','help','modal'));
+% s=POTATo_MessageString('Help_Dialog_BetaVerNoticeMessage_JP');
+% uiwait(msgbox(s,'Notice!','help','modal'));
 
-if ispc
-  view_file([help_path 'index.html"']);
-else
-  view_file([help_path 'menu_man.html']);
-end
+% HK comment out
+% if ispc
+%   view_file([help_path 'index.html"']);
+% else
+%   view_file([help_path 'menu_man.html']);
+% end
+
+view_file([help_path 'index.html']);
 
 %======================================================
 % View Execution
 %======================================================
 function view_file(myfile)
-global FOR_MCR_CODE;
+% global FOR_MCR_CODE;
 
-if ispc || FOR_MCR_CODE
-  eval(['!start "POTATo" "' myfile '"']);
-else
-  helpview(myfile);
-end
+web(myfile)
+
+% HK comment out
+% if ispc || FOR_MCR_CODE
+%   eval(['!start "POTATo" "' myfile '"']);
+% else
+%   helpview(myfile);
+% end
