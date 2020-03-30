@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BasicOperation.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="/Users/kwgc/Desktop/Project_Potato/manuals/doc2md/.\github-markdown.css" type="text/css">
+</head>
+<body>
+<h1 id="%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">基本操作</h1>
+<p><a href="index.md">Open PoTAToドキュメントリストへ</a></p>
+<!-- TOC -->
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">基本操作</a></li>
+<li><a href="#%E6%A6%82%E8%A6%81">概要</a>
+<ul>
+<li><a href="#%E8%A7%A3%E6%9E%90%E3%83%A2%E3%83%BC%E3%83%89">解析モード</a></li>
+<li><a href="#%E8%B5%B7%E5%8B%95%E3%81%A8%E7%B5%82%E4%BA%86">起動と終了</a></li>
+</ul>
+</li>
+<li><a href="#open-potato%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF">Open PoTAToのデータ</a>
+<ul>
+<li><a href="#%E5%AE%9F%E9%A8%93%E3%83%87%E3%83%BC%E3%82%BF">実験データ</a>
+<ul>
+<li><a href="#%E3%83%98%E3%83%A2%E3%82%B0%E3%83%AD%E3%83%93%E3%83%B3%E6%BF%83%E5%BA%A6%E5%A4%89%E5%8C%96">ヘモグロビン濃度変化</a></li>
+<li><a href="#%E6%99%82%E9%96%93%E6%83%85%E5%A0%B1%E3%81%A8%E5%88%BA%E6%BF%80%E6%83%85%E5%A0%B1">時間情報と刺激情報</a></li>
+<li><a href="#%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1">位置情報</a></li>
+<li><a href="#%E5%AE%9F%E9%A8%93%E6%83%85%E5%A0%B1">実験情報</a></li>
+<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%83%85%E5%A0%B1">その他の情報</a></li>
+</ul>
+</li>
+<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E8%A7%A3%E6%9E%90%E6%89%8B%E9%A0%86%E3%81%AE%E9%96%A2%E4%BF%82">データと解析手順の関係</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9F%E9%A8%93%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%A8%E7%AE%A1%E7%90%86">実験データの読み込みと管理</a>
+<ul>
+<li><a href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">プロジェクトの作成</a></li>
+<li><a href="#%E5%AE%9F%E9%A8%93%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">実験データの読み込み</a>
+<ul>
+<li><a href="#%E8%A9%B3%E7%B4%B0%E8%A8%AD%E5%AE%9A">詳細設定</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E3%81%AE%E6%A4%9C%E7%B4%A2">データの検索</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A4%9C%E7%B4%A2%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%83%85%E5%A0%B1%E3%81%AE%E7%A2%BA%E8%AA%8D">基本的な検索とデータ情報の確認</a></li>
+<li><a href="#%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E6%A4%9C%E7%B4%A2">正規表現を利用した検索</a></li>
+</ul>
+</li>
+<li><a href="#%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">メインウィンドウメニュー</a>
+<ul>
+<li><a href="#project%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Projectメニュー</a>
+<ul>
+<li><a href="#new%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Newメニュー</a></li>
+<li><a href="#open%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Openメニュー</a></li>
+<li><a href="#modify%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Modifyメニュー</a>
+<ul>
+<li><a href="#rename%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Renameメニュー</a></li>
+<li><a href="#import%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Importメニュー</a></li>
+<li><a href="#export%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Exportメニュー</a></li>
+<li><a href="#merge%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Mergeメニュー</a></li>
+<li><a href="#remove%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Removeメニュー</a></li>
+</ul>
+</li>
+<li><a href="#data-import-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Data Import メニュー</a></li>
+<li><a href="#exit%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Exitメニュー</a></li>
+</ul>
+</li>
+<li><a href="#edit-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Edit メニュー</a>
+<ul>
+<li><a href="#copy-data-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Copy Data メニュー</a></li>
+<li><a href="#data-delete-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Data Delete メニュー</a></li>
+</ul>
+</li>
+<li><a href="#setting-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Setting メニュー</a>
+<ul>
+<li><a href="#stim-diff-limit-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Stim-Diff-Limit メニュー</a></li>
+<li><a href="#my-filter-list-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">My Filter List メニュー</a></li>
+<li><a href="#project-directory%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Project Directoryメニュー</a></li>
+<li><a href="#p3-mode-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">P3 Mode メニュー</a></li>
+</ul>
+</li>
+<li><a href="#tools-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Tools メニュー</a>
+<ul>
+<li><a href="#layout-editor-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Layout Editor メニュー</a></li>
+<li><a href="#plugin-wizard-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Plugin Wizard メニュー</a></li>
+<li><a href="#position-setting-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Position Setting メニュー</a></li>
+<li><a href="#reset-layout-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Reset Layout メニュー</a></li>
+<li><a href="#project-repair-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Project Repair メニュー</a></li>
+</ul>
+</li>
+<li><a href="#help-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Help メニュー</a>
+<ul>
+<li><a href="#about-potato-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">About POTATo メニュー</a></li>
+<li><a href="#help-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Help メニュー</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#open-potato%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">Open PoTAToのデータフォーマット</a>
+<ul>
+<li><a href="#%E9%80%A3%E7%B6%9A%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">連続データのフォーマット</a></li>
+<li><a href="#%E5%8C%BA%E9%96%93%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">区間データのフォーマット</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="%E6%A6%82%E8%A6%81">概要</h1>
+<p>Open PoTAToの起動方法と基本操作について説明します。また、Open Open PoTAToにおける解析概要について説明します。</p>
+<p>Open POTATo では実験データを選択し、解析手法、描画方法を設定することにより解析を行います。最初に解析の準備として、Open POTATo の起動・実験データの読込を行います。実験データはPoTATo  データと呼ばれる形式で保存されます。 解析時にデータを選択する場合は、検索が利用出来ます。 解析手法以降の操作は解析モードにより異なりますので、別章で説明します。また、Open POTATo への機能追加に関しても別章で説明します。</p>
+<h2 id="%E8%A7%A3%E6%9E%90%E3%83%A2%E3%83%BC%E3%83%89">解析モード</h2>
+<p>Open PoTAToにはNormal, Research, Developersの３つのモードが存在します。</p>
+<p>Normalモードでは実験データ、既存の解析手法（レシピ）、表示方法（レイアウト）の３つを選択することにより、煩雑な設定なしに解析を実施することが可能です。</p>
+<p>Researchモードは確立した解析手法を組み合わせることにより比較的自由に解析するためのモードです。</p>
+<p>Normalモードでは解析手法を選択しますが、Researchモードでは解析を行う関数やパラメータを変更出来ます。また、解析関数を組み込む（プラグイン）ことにより、新しい解析関数を導入することが可能です。</p>
+<p>Developersモードは主にプラットフォーム開発者が試験的に用いるモードで、通常利用しません。</p>
+<p>本書では、主にNormalモードとResearchモードについて説明します。以下の表に、各モードとその内容についてまとめます。</p>
+<table>
+<thead>
+<tr>
+<th>状態</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal モード</td>
+<td>あらかじめ定めた手順で解析する。</td>
+</tr>
+<tr>
+<td>Research モード</td>
+<td>解析の手順をカスタマイズする。</td>
+</tr>
+<tr>
+<td>Developers モード</td>
+<td>プラットフォーム開発者向け。 通常利用しない。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E8%B5%B7%E5%8B%95%E3%81%A8%E7%B5%82%E4%BA%86">起動と終了</h2>
+<p>Matlabを起動します。</p>
+<p>MATLAB 起動後、P3 をインストールしたディレクトリに移動し、Command Window 上で P3 とタイプ し、Enter キーを押してください。</p>
+<p><img src="BasicOperation.assets/image-20200311132302663.png" alt="image-20200311132302663"></p>
+<p>PoTAToが起動すると、下記のようなメインウィンドウが表示されます。</p>
+<p><img src="BasicOperation.assets/image-20200311132702992.png" alt="image-20200311132702992"></p>
+<p>終了する場合は、ウィンドウを閉じるためのボタンを押してください。また、Project メニューの Exit を押しても終了します。</p>
+<h1 id="open-potato%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF">Open PoTAToのデータ</h1>
+<h2 id="%E5%AE%9F%E9%A8%93%E3%83%87%E3%83%BC%E3%82%BF">実験データ</h2>
+<p>fNIRSでは脳の表面付近の血液量の変化を計測します。近赤外光を脳表面に照射し、離れた位置で検出される近赤外光の量(吸光度)を検出します。 このとき、照射位置から検出位置まで光が通った箇所にある物質や濃度の違い、測定波長によって吸光度が変わります。</p>
+<p>このことを利用して、fNIRSでは2波長以上の近赤外光の吸光度の変化量から頭部組織の血液にあるオキシヘモグロビンおよびデオキシヘモグロビンの濃度の変化量(正確にはヘモグロビンの濃度変化量と光路長の積)を計算します。実験データとして装置から出力されるものは、吸光度やヘモグロビン濃度変化です。また、照射位置や検出位置を複数設けて計測することもできます。</p>
+<p>fNIRSの実験や解析に関連する情報として、実験内容や被験者の情報などがあります。</p>
+<h3 id="%E3%83%98%E3%83%A2%E3%82%B0%E3%83%AD%E3%83%93%E3%83%B3%E6%BF%83%E5%BA%A6%E5%A4%89%E5%8C%96">ヘモグロビン濃度変化</h3>
+<p>各時刻、各測定位置におけるオキシ/デオキシヘモグロビンの変化量を取得します。</p>
+<h3 id="%E6%99%82%E9%96%93%E6%83%85%E5%A0%B1%E3%81%A8%E5%88%BA%E6%BF%80%E6%83%85%E5%A0%B1">時間情報と刺激情報</h3>
+<p>血流変化の計測は連続的に行われます。ひとつの計測から次の計測までの時間をサンプリング間隔といいます。
+Open PoTAToで行うfNIRSの実験モデルでは、ある時刻に被験者に何らかの刺激を与え、その刺激による血流の変化を調べます。そのため、いつ、どのような刺激を行ったかというデータが重要となります。そこで、刺激時刻、刺激の種類、刺激前の時間、刺激後の時間が重要となります。</p>
+<p>Open PoTAToでは、刺激がある時刻に行われたか、それともある時間枠をもっておこなわれたか、により名称を変えています。ある時刻に起こった刺激をEvent,ある程度の時間幅をもって行われた刺激をBlockと定義しています。
+これを図にすると下記のようになります。BがEvent、A,CがBlockです。</p>
+<p><img src="BasicOperation.assets/image-20200311134749381.png" alt="image-20200311134749381"></p>
+<h3 id="%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1">位置情報</h3>
+<p>fNIRSでは複数の測定位置からデータを取得することがあります。ここで各々の測定位置のことをチャンネルと呼んでいます。</p>
+<p>チャンネルの位置情報はデータの表示や管理に使われます。</p>
+<h3 id="%E5%AE%9F%E9%A8%93%E6%83%85%E5%A0%B1">実験情報</h3>
+<p>実験や解析に関連するデータとして、被験者の情報や、実験開始時刻、情報 整理のための番号、コメント等があります。これらはデータの整理に使用されます。</p>
+<h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%83%85%E5%A0%B1">その他の情報</h3>
+<p>fNIRS装置から出力されるデータは、複数の波長の近赤外光の吸光度です。 その時の検出器のゲイン等、測定に関わる情報があります。また、fNIRSと同時に測定できる被験者の心拍や実験の動画等なども有用な情報です。</p>
+<h2 id="%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E8%A7%A3%E6%9E%90%E6%89%8B%E9%A0%86%E3%81%AE%E9%96%A2%E4%BF%82">データと解析手順の関係</h2>
+<p>Open PoTATo で1つの実験データを解析するときの流れを下図で示します。</p>
+<p><img src="BasicOperation.assets/image-20200311140900512.png" alt="image-20200311140900512"></p>
+<p>まず、装置から出力された実験データを読み込みます。これは、Open PoTAToで<strong>連続データ</strong>として取り込まれます。この連続データに対して、何かしらの解析処理をすると、連続データが更新されます。</p>
+<p>また、連続データはブロッキング処理により<strong>区間データ</strong>に変換することができます。この区間データに対して、何かしらの解析処理をすると、 区間データが更新されます。</p>
+<p>区間データは連続データから一定の区間のデータを取り出したものです。Open PoTAToではこの処理をブロック化(ブロッキング: Blocking)と呼びます。</p>
+<p><img src="BasicOperation.assets/image-20200312140552629.png" alt="image-20200312140552629"></p>
+<p>区間データには刺激時間のデータだけではなく、その前後の時間(Pre期間、Posr期間)のデータも含まれます。また、それぞれの区間データには固有の番号が割り当てられ、個々に区別できるようになっています。</p>
+<p><img src="BasicOperation.assets/image-20200312140818268.png" alt="image-20200312140818268"></p>
+<p>区間データでは各々の区間で同様な刺激をしていることを前提にしています。</p>
+<h1 id="%E5%AE%9F%E9%A8%93%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%A8%E7%AE%A1%E7%90%86">実験データの読み込みと管理</h1>
+<p>Open PoTAToで解析を行うために実験データを読み込みむと、読み込んだ実験データはOpen PoTAToのデータ形式に変換・保存された上で、管理されます。Open PoTAToでは、いくつかの実験データをまとめて管理しています。このデータのまとまりのことを<strong>プロジェクト</strong>と呼びます。解析手順の一部を修正したときに全てのデータにその方法を一括して適用したりできます。</p>
+<p>解析の前にデータを格納する”プロジェクト”を作成し、そのプロジェクトに実験データを読み込みます。</p>
+<h2 id="%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">プロジェクトの作成</h2>
+<p>Open PoTAToをインストールしたばかりのときにはProjectがありません。初めて起動したときには下図のようなウィンドウが起動します。</p>
+<p><img src="BasicOperation.assets/image-20200312143910328.png" alt="image-20200312143910328"></p>
+<p>Projectを作成するには、[Make Project]ボタン(A)を押します。また、新規プロジェクトを作成するときはProject メニューから New を選択します。すると、プロジェクト作成ウィンドウが開きます。</p>
+<p><img src="BasicOperation.assets/image-20200312145151192.png" alt="image-20200312145151192"></p>
+<p>(A)にプロジェクト名を、(B)に利用者名を、(C)にコメントを記述します。</p>
+<p>プロジェクト名はプロジェクトを選択するときに利用されます。プロジェクト名に使える文字はそれぞれのOSのディレクトリ名に使えるもののみです。また、プロジェクト名を重複して設定することはできません。記入が済んだら、Newボタン(D)を押してください。問題が無ければ、正常にプロジェクトが作成され、新しいプロジェクトが開かれます。</p>
+<pre class="hljs"><code><div>ヒント:
+ プロジェクトを細分化しすぎるとデータが分散し、管理が難しくなります。 また、大きくしすぎると処理が遅くなる、データ選択の操作が煩雑になるなどのデメリットが発生します。実験プロジェクトごとに適切な管理をしてください。
+</div></code></pre>
+<h2 id="%E5%AE%9F%E9%A8%93%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">実験データの読み込み</h2>
+<p>新規作成したプロジェクトに実験データをプロジェクトに読込み、解析データとして保存する方法を説明します。
+Open PoTAToでは実験データを読み込むことをインポートと呼びます。新規作成したプロジェクトに実験データをインポートする場合はImport Dataボタン(A)を押します。ProjectメニューのData Importを選択してもに実験データをインポートできます。</p>
+<p><img src="BasicOperation.assets/image-20200312160907657.png" alt="image-20200312160907657"></p>
+<p>上記操作を実施するとData Importウィンドウが表示されます。</p>
+<p>まず、データフォーマットを選択します。Open PoTAToでは複数のfNIRS装置が出力したフォーマットの実験データのを読み込むことができます。File Typeポップアップメニュー(A)から適切なデータフォーマットを選択してください。</p>
+<p>次にインポートしたいファイルのリストを作ります。Add file(s)ボタン(B)を押してファイルを選択します。その結果、ファイル選択ウィンドウが表示されますのでfNIRS装置から出力されたファイルを選択します。インポートしたいファイルは複数選択することもできます。ファイルが選択されるとリスト(C)にファイルが追加されます。また、リスト(C)で選択中のファイルの情報は(D)の枠内に表示されます。選択中のファイルをリストから除く場合はRemove fileボタン(E)を押します。</p>
+<p>次にリストにあるファイルをインポートします。インポートするときに、被験者名を匿名化するには Anonymous チェックボックス(F)をチェックします。Execute ボタン(G)を押すとインポートが開始されます。バー(H)で進捗状況を確認できます。</p>
+<pre class="hljs"><code><div>ヒント:
+ ファイル読み込みには多少時間が掛かることがあります。
+</div></code></pre>
+<p><img src="BasicOperation.assets/image-20200312163417225.png" alt="image-20200312163417225"></p>
+<h3 id="%E8%A9%B3%E7%B4%B0%E8%A8%AD%E5%AE%9A">詳細設定</h3>
+<p>インポートのときに詳細な設定を行いたい場合は、Data Importウィンドウ右上にある [&gt;&gt;]ボタンをクリックします。クリックすると、以下のウィンドウが表示されます。</p>
+<p><img src="BasicOperation.assets/image-20200312164044287.png" alt="image-20200312164044287"></p>
+<p>詳細設定では、ファイル読み込み後の付加的な処理の設定やデータ名のカスタマイズができます。(デフォルトではデータ名は実験ファイル名から自動的に生成されます。)</p>
+<p>ファイル読み込み後の付加的な処理によって、実験データに情報を加えたり加工したりするできます。付加処理を行うときには、まず、追加で行いたい処理をポップアップメニュー(B)から選択します。オンラインヘルプがある場合、処理内容はヘルプボタン(C)で確認できます。追加したい処理を(B)で選択後、Add ボタン(D)を押してください。その結果、追加処理リスト(E)が更新されます。追加処理リストを編集するには(E)の右にある[UP]や[Enable]などのボタンを使います。</p>
+<p>データ名をカスタマイズする場合には、[Rename with] チェックボックスに チェックをし、データ名の命名規則(F)を選択します。</p>
+<p>また、詳細設定のメニューを閉じる場合は [&lt;&lt;]ボタン(A)を押してください。</p>
+<h1 id="%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E3%81%AE%E6%A4%9C%E7%B4%A2">データの検索</h1>
+<p>Open PoTAToではプロジェクト内の多くのデータのなかから、データを検索できます。</p>
+<p>Open POTATo には2種類の検索機能があります。1つはデータ名により絞り込む機能です。データ名に含まれる文字列を条件としてデータを検索します。もう1つ は拡張検索と呼ばれる機能です。解析データ内の被験者名、年齢などの条件で検索します。また、検索するための値を解析データに追加することも可能です。</p>
+<p>まず、データ情報を確認する方法を説明し、データ名による検索機能について説明します。 なお、拡張検索機能に関してはマニュアル『拡張検索機能』をご参照ください。</p>
+<h2 id="%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A4%9C%E7%B4%A2%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%83%85%E5%A0%B1%E3%81%AE%E7%A2%BA%E8%AA%8D">基本的な検索とデータ情報の確認</h2>
+<p>メインウィンドウの左側にはデータの情報が表示されます。</p>
+<p><img src="BasicOperation.assets/image-20200313160612386.png" alt="image-20200313160612386"></p>
+<p>Project Information (A) にはプロジェクトに関する情報が表示されます。</p>
+<p>データを検索するときには検索ボックス(B)に文字列を入力します。(B)が空のときにはプロジェクトの全てのデータが(D)にリスト表示されます。(B)に文字列を入力してEnterキーを押すと、その文字列をデータ名に含むファイルだけが(D)に表示されます。</p>
+<p>データリスト(D)をクリックするとデータを選択できます。データを選択すると選択しているデータの詳細な情報は(F)に表示されます。複数のデータを選択しているときには、ポップアップメニュー(E)で情報を表示するデータを切り替えることができます。</p>
+<p>また、データに関する情報が(D)のリストやその周辺に表示されることもあります。例えば、上の図では選択中データ数/表示中データ数が(d1)に表示されています。</p>
+<p>また、データリスト(D)でデータを選択すると、選択中のデータ数などから自動で解析状態 (ANA-Stat)が変わる場合があります。解析状態が変わるとステータスログ情報(G)に変更状況が追加されます。</p>
+<p>また、ボタン(b1)を押すと拡張検索ができます。(このボタンは表示されていないこともあります。)</p>
+<h2 id="%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E6%A4%9C%E7%B4%A2">正規表現を利用した検索</h2>
+<p>検索ボックスに入力する文字列には正規表現を使うこともできます。正規表現とは文字列の集合を一つの文字列で表現する方法です。正規表現を使うと高度なデータの検索ができます。</p>
+<p>正規表現を利用した検索の例として、下記の図のような名称を持つ10個のデータの検索を行います</p>
+<p><img src="BasicOperation.assets/image-20200313171938881.png" alt="image-20200313171938881"></p>
+<p>例えば、この中から002, 003, 004のデータを取得したい場合には、&quot;00[2-4]&quot;と入力してください。そうすると、TEST 002, TEST 003などのデータのみが検索されます。</p>
+<p>TEST もしくは COST を含むデータを取得したい場合、”(TEST)|(COST)”と入力してください。その結果、TEST_001~TEST_003, COST_001~COST_005 が表示されます。</p>
+<p>同様に、最初の文字が T もしくは C で始まるデータを取得したい場合は”^[TC]”をと入力してください</p>
+<p>検索に用いる正規表現は MATLAB の regexp 関数に従います。詳細は regexp のヘルプをご参照ください。上記の例の他にも様々な正規表現があります。</p>
+<h1 id="%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">メインウィンドウメニュー</h1>
+<p>メインウィンドウにはProject, Edit, Setting, Tool, Helpの5つのメニューがあります。</p>
+<p><img src="BasicOperation.assets/image-20200313221339964.png" alt="image-20200313221339964"></p>
+<h2 id="project%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Projectメニュー</h2>
+<p>プロジェクトに関する操作を行います。</p>
+<p><img src="BasicOperation.assets/image-20200313221358528.png" alt="image-20200313221358528"></p>
+<h3 id="new%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Newメニュー</h3>
+<p>新たにプロジェクトを作成する際に実行します。詳細は<a href="%E3%83%95%E3%82%9A%E3%83%AD%E3%82%B7%E3%82%99%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">プロジェクトの作成</a>を ご参照ください。</p>
+<h3 id="open%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Openメニュー</h3>
+<p>Open メニューは既存のプロジェクトを開くときに使います。</p>
+<p>メニューを選択すると下図のようなダイアログが開きます。</p>
+<p>この時、ポップアップメニュー(A)からプロジェクトを選択して、Open ボタン(B)を押すと選択したプロジェクトが開きます。</p>
+<p><img src="BasicOperation.assets/image-20200313174743479.png" alt="image-20200313174743479"></p>
+<h3 id="modify%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Modifyメニュー</h3>
+<p>プロジェクトを編集できまう。</p>
+<h4 id="rename%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Renameメニュー</h4>
+<p>Rename メニューはプロジェクトの名称を変更するときに使います。</p>
+<p>Modify メニューの Rename を選択すると下図のようなダイアログが開きます。</p>
+<p>このとき、Project Name エディットテキスト(A)のプロジェクト名を変更し、Edit ボタン(B)を押すと名称が変更 されます。また、Operator や Comment も変更できます。</p>
+<p><img src="BasicOperation.assets/image-20200313174731478.png" alt="image-20200313174731478"></p>
+<h4 id="import%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Importメニュー</h4>
+<p>Import メニューはプロジェクトを取り込む時に使います。</p>
+<p>ModifyメニューのImportを選択するとファイルを選択するダイアログが開きます。 zip形式で圧縮されたプロジェクトデータを選択してください。該当ファイルを選択すると下図のような Project Import ダイアログが表示されます。</p>
+<p>内容を確認しインポートボタンを押すとインポートが開始されます。</p>
+<p><img src="BasicOperation.assets/image-20200313174822539.png" alt="image-20200313174822539"></p>
+<h4 id="export%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Exportメニュー</h4>
+<p>Export メニューはプロジェクトを外部へ出力する時に使います。</p>
+<p>Modify メニューの Export を選択すると下図のようなダイアログが開きます。</p>
+<p>この時、ポップアップメニュー(A)から出力するプロジェ クトを選択し、Export(エクスポート)ボタン(B)を押します。</p>
+<p>そうするとファイル出力ダイアログが表示されるので、 ファイル名を記載します。</p>
+<p>その結果既存のプロジェクトをエクスポートし、zip ファイルが作成されます。 ここで作成したファイルは Import メニューから読み込むができます。</p>
+<p><img src="BasicOperation.assets/image-20200313175201147.png" alt="image-20200313175201147"></p>
+<h4 id="merge%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Mergeメニュー</h4>
+<p>Merge メニューは現在開いているプロジェクトに別のプロジェクトのデータをすべて読み込み、1つにまとめる場合に使います。</p>
+<p>Modify メニューの Merge を選択すると下図のようなダイアログが開きます。</p>
+<p>この時、ポップアップメニュー(A)からマージしたいプロジェクトを選択し、Open ボタン(B)を押します。</p>
+<p>そうすると選択したプロジェクト内のデータが、現在 開いているプロジェクトに追加されます。</p>
+<p><img src="BasicOperation.assets/image-20200313175355426.png" alt="image-20200313175355426"></p>
+<h4 id="remove%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Removeメニュー</h4>
+<p>Remove メニューはプロジェクトを削除する際に使います。</p>
+<p>Modify メニューの Remove を選択すると下図のよう なダイアログが開きます。</p>
+<p>この時、ポップアップメニュー(A)から削除したいプロ ジェクトを選択し、Remove ボタン(B)を押すと、選択した プロジェクトが削除されます。</p>
+<p>削除後は Close ボタンを押してください。</p>
+<p><img src="BasicOperation.assets/image-20200313175509315.png" alt="image-20200313175509315"></p>
+<h3 id="data-import-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Data Import メニュー</h3>
+<p>Data Import メニューは実験データファイルを読み込み、POTATo にインポートします。詳細は<a href="%E5%AE%9F%E9%A8%93%E3%83%86%E3%82%99%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">実験データの読み込み</a>をご参照ください。</p>
+<h3 id="exit%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Exitメニュー</h3>
+<p>Exit メニューはOpen  PoTATo を終了します。</p>
+<h2 id="edit-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Edit メニュー</h2>
+<p>Edit メニューではデータのコピー・削除を行います。</p>
+<p><img src="BasicOperation.assets/image-20200313221424716.png" alt="image-20200313221424716"></p>
+<h3 id="copy-data-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Copy Data メニュー</h3>
+<p>データリストにあるデータを1つ選択し、 Copy Data メニューを選択すると下図のようなダイアログが開きます。</p>
+<p>テキストボックス(A)にコピー先のデータ名を入力し、OK ボタン(B)を押します。テキストボックス(A)に記載した名前でデータがコピーされ、リストに追加されます。</p>
+<p><img src="BasicOperation.assets/image-20200313214805333.png" alt="image-20200313214805333"></p>
+<h3 id="data-delete-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Data Delete メニュー</h3>
+<p>データリストにあるデータを1つ選択し、Data Delete メニューを選択すると選択中のデータを削除します。 削除するときには下図のような確認ダイアログが開きます。</p>
+<p>選択したデータが統計的検定などの処理で利用されている場合は、依存関係から削除すべきデータをリストアップします。</p>
+<p>削除してもよい場合は、Yesボタン(A)を、削除したくない場合 は Noボタン(B)を押してください。</p>
+<p>また、常にYesとする場合は、Always ボタン(C)を押してください。</p>
+<p><img src="BasicOperation.assets/image-20200313215151404.png" alt="image-20200313215151404"></p>
+<h2 id="setting-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Setting メニュー</h2>
+<p>Setting メニューは全般に影響する設定を行います。</p>
+<p><img src="BasicOperation.assets/image-20200313221442468.png" alt="image-20200313221442468"></p>
+<h3 id="stim-diff-limit-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Stim-Diff-Limit メニュー</h3>
+<p>解析データを刺激毎に分け区間データにしたときの、各区間の時間が異なる場合があります。</p>
+<p>Stim-Diff-Limit メニューではこの時間差の最大値を設定します。</p>
+<p>Stim-Diff-Limit メニューを選択すると、下図のようなダイアログ が開きます。許容する最大時間差を msec 単位で 設定します。</p>
+<p><img src="BasicOperation.assets/image-20200313215823909.png" alt="image-20200313215823909"></p>
+<h3 id="my-filter-list-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">My Filter List メニュー</h3>
+<p>My Filter List メニューでは頻繁に利用する使うフィルタのリストを編集できます。My Filter List メニューを選択すると下図のようなウィンドウが表示されます。</p>
+<p><img src="BasicOperation.assets/image-20200313220012083.png" alt="image-20200313220012083"></p>
+<p>テキストボックス(A)にはフィルタリストの名称が表示されます。これを編集することでフィルタリストの名称を変更できます。ここでは例として「My Filters」という名称を使って説明をします。</p>
+<p>左のリスト(B) には全てのフィルタが、右のリスト(C)にはMy Filtersのフィルタが表示されています。</p>
+<p>My Filtersにフィルタを追加したいときは、左のリスト(B)から追加したいフィルタを選択し、[&gt;&gt;]ボタン(D)を押します。My Filtersから除外したいときは、右のリストで除外したいフィルタを選択し[&lt;&lt;]ボタン(E)を押します。</p>
+<p>編集が終了したらOKボタン(F)を、キャンセルしたい場合は Cancel ボタン(G)を押すとウィンドウが閉じます。</p>
+<h3 id="project-directory%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Project Directoryメニュー</h3>
+<p>Project DirectoryとはOpen PoTAToのプロジェクトを保存しているディレクトリのことです。Project Directory メニューでは、解析に使うProject Directoryを変更できます。</p>
+<p>Project Directory メニューを選択すると、ディレクトリ選択ダイアログが開きます。解析に使う Project Directory を選択してください。</p>
+<p>デフォルトのProject DirectoryはOpen PoTAToをインストールしたフォルダのop/Projectsディレクトリです。</p>
+<p><strong>ヒント</strong> ディレクトリ選択ダイアログは OS に依存します。ダイアログの詳細は MATLAB の uigetdir をご参照ください。また、Windows系OSでは、ディレクトリはフォルダとして表示されます。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">## 警告 ###</span></span>
+同時に複数の Open PoTATo から1つの Projects Directory を操作した場合、データが破損する恐れがあります。そのため、複数ユーザが使用する環境ではユーザーごとにProject Directory を分けて操作してください。
+</div></code></pre>
+<h3 id="p3-mode-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">P3 Mode メニュー</h3>
+<p>Open PoTATo のモードを選択します。モードについて<a href="#%E8%A7%A3%E6%9E%90%E3%83%A2%E3%83%BC%E3%83%89">解析モード</a>をご参照ください。</p>
+<h2 id="tools-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Tools メニュー</h2>
+<p>ToolsメニューにはOpen  POTATo で利用可能なツールがリストアップされています。</p>
+<p><img src="BasicOperation.assets/image-20200313223721335.png" alt="image-20200313223721335"></p>
+<h3 id="layout-editor-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Layout Editor メニュー</h3>
+<p>描画方法を記録したレイアウトの編集ツールを起動します。レイアウトの編集方法は、マニュア ル『表示とレイアウト』をご参照ください。</p>
+<h3 id="plugin-wizard-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Plugin Wizard メニュー</h3>
+<p>POTATo にプログラムを組み込む(プラグイン)際の補助ツールを起動します。詳細は別紙『3 解析ツール作成のためのステップガイド.pdf』をご参照ください。</p>
+<h3 id="position-setting-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Position Setting メニュー</h3>
+<p>本メニューをクリックすると、POTATo の位置設定ツールを起動します。詳細はマニュアル『位置 設定』をご参照ください。</p>
+<h3 id="reset-layout-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Reset Layout メニュー</h3>
+<p>Reset Layout メニューを押すと Layout ファイルの再検索を実施します。レイアウトファイルを手動でコピーした場合など、POTATo メインウィンドウにレイアウトが反映されていない場合に使うことが出来ます。</p>
+<h3 id="project-repair-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Project Repair メニュー</h3>
+<p>計算途中で PC がシャットダウンされたとき、なんらかの原因でプロジェクトのファイルが破損したときに修復を試みるツールを起動します。</p>
+<p><img src="BasicOperation.assets/image-20200313224605767.png" alt="image-20200313224605767"></p>
+<p>全てのチェック、修復をする場合は All ボタン(A)を選択してください。 Fix Path ボタン(B)は内部データのパスの間違いを検出し、訂正します。 Check Relation ボタン(C)はデータの依存関係をチェックし、無効な依存関係を削除します。LostFile ボタン(D)は消失したデータを検知し完 全に削除します。Raw-Data Check ボタン(E)は不要なデータを削除します。exit ボタン(F)は Project Repair を終了します。</p>
+<p>なお、依存関係が修復不可能なほど壊れている場合、Remake Relation ボタン(G)でファイルの依存関係を作成し直します。</p>
+<h2 id="help-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Help メニュー</h2>
+<p>ヘルプが表示されます。</p>
+<p><img src="BasicOperation.assets/image-20200313224752412.png" alt="image-20200313224752412"></p>
+<h3 id="about-potato-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">About POTATo メニュー</h3>
+<p>PoTAToのバージョンを表示します。</p>
+<h3 id="help-%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">Help メニュー</h3>
+<p>マニュアルを表示します。</p>
+<h1 id="open-potato%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">Open PoTAToのデータフォーマット</h1>
+<p>POTAToのデータフォーマットはヘッダとデータからなります。</p>
+<h2 id="%E9%80%A3%E7%B6%9A%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">連続データのフォーマット</h2>
+<p>連続データのデータ部は各時刻、各チャンネルにおけるオキシ/デオキシヘモグロビンの変化量で、 時系列×チャンネル×データの種類の3次元データです。</p>
+<p>ヘッダ部分には刺激のあったタイミングや位置等、実験に関わるデータが入っています。</p>
+<p>ヘッダは構造体で、具体的には以下のフィールドを持ちます。</p>
+<p><img src="BasicOperation.assets/image-20200311142051376.png" alt="image-20200311142051376"></p>
+<p>ここで、表の区分に必須と記載されているもの常に必要です。一方、予約と記載されているものはある場合とない場合があります。 また、必須でも予約でもないフィールドに関しては記載していません。</p>
+<p>このなかでTAGs構造体は下記のフィールドを持ちます。</p>
+<p><img src="BasicOperation.assets/image-20200311142335482.png" alt="image-20200311142335482"></p>
+<p>ここで、TAGs.data はfNIRSの実験装置に依存して内容が変わったり、場合によってはないこともあります。
+TAGs.data の第2次元はチャンネル毎にN種類の波長のデータが入っているため、チャンネル×N の長さになります。
+また、装置が出力したデータに記載されているもののうち POTATo データのフォーマットに記載されていないデータは新たにフィールドを作成することでPoTAToデータに含めることができます。例えば、波長は TAGs.wavelength として含めることができます。</p>
+<p>位置情報はmeauremodeとPos構造体で管理しています。Pos構造体では詳細な位置情報を記録しています。一方、meauremodeはPos構造体を参照するか、規定の位置情報を参照するかを区別するための整数です。meauremodeが-1のときPos構造体の情報を参照します。また、下記の表に示されたmeauremode番号を指定すると照射・検出位置をM x Nの格子状としたときの配置を読み出します。</p>
+<table>
+<thead>
+<tr>
+<th>meauremode番号</th>
+<th>照射・検出位置の格子サイズ/内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>Pos構造体を参照</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3 x 3 (2箇所)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4 x 4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3 x 5</td>
+</tr>
+<tr>
+<td>50</td>
+<td>8 x 8</td>
+</tr>
+<tr>
+<td>51</td>
+<td>4 x 4</td>
+</tr>
+<tr>
+<td>52</td>
+<td>3 x 5</td>
+</tr>
+<tr>
+<td>53</td>
+<td>3 x 9</td>
+</tr>
+<tr>
+<td>54</td>
+<td>3 x 11</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>199</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>200</td>
+<td>2 x 10</td>
+</tr>
+<tr>
+<td>201</td>
+<td>2 x 8</td>
+</tr>
+<tr>
+<td>202</td>
+<td>2 x 4</td>
+</tr>
+</tbody>
+</table>
+<p>例えば、measuremodeが2のときには、照射/検出位置が下左図のように4 x 4の格子状で配置されていることを示しています。この情報は解析結果をグラフで表示するときなどに参照されます。例えば、下右図では、meauremodeが2のときのグラフのレイアウトを示しています。</p>
+<p><img src="BasicOperation.assets/image-20200311153915784.png" alt="image-20200311153915784"></p>
+<p>また、格子状のmeauremodeのグラフレイアウトはMATLABで確認することもできます。グラフレイアウトの確認にはtime_axes_position関数を使います。</p>
+<pre class="hljs"><code><div>time_axes_position(m, [<span class="hljs-number">1</span> <span class="hljs-number">1</span>], [<span class="hljs-number">0</span> <span class="hljs-number">0</span>],<span class="hljs-number">1</span>);
+</div></code></pre>
+<p>mにはmeauremode番号を指定します。</p>
+<p>measuremodeが-1のときは、Pos構造体を使って詳細な位置情報を管理します。下記の表はPos構造体の内容です。2次元の情報のほかに、位置デジタイザなどで取得した3次元座標を読み込むこともできます。</p>
+<p><img src="BasicOperation.assets/image-20200311143357058.png" alt="image-20200311143357058"></p>
+<p>また、グループとは例えば下図のように、複数のプローブ配置で計測された実験データを1つのファイルにまとめるときに使われます。トポグラフィマップを作成するときなどデータを補間する際には、適切にグループを設定しなければなりません。Pos内のチャンネル番号は1から始まる通し番号になるように再計算されます。このとき、装置の出力でで付与されていたされていたチャンネル番号はOriginalChとして保存されます。</p>
+<p><img src="BasicOperation.assets/image-20200311160149883.png" alt="image-20200311160149883"></p>
+<h2 id="%E5%8C%BA%E9%96%93%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">区間データのフォーマット</h2>
+<p>区間データのデータ部分は「区間番号」 ×「時系列」×「チャンネル」×「データの種類」の4次元データです。</p>
+<p>ヘッダ部分は具体的には以下のフィールドを持つ構造体になります。時間や刺激データ、フラグデータが含まれますが、連続データとは内容が異なるものがあります。基本的には連続データと同じ構造で、相違点は赤文字で示して います。</p>
+<p><img src="BasicOperation.assets/image-20200312141245689.png" alt="image-20200312141245689"></p>
+<p>区間データでは各々の区間で同様な刺激をしていることを前提にしています。その為、刺激情報(stim)や刺激の種類(stimTC)はブロック毎ではなく区間データに1つの値 になっています。この情報では足りないような解析を行う場合は stimTC2 を用います。</p>
+
+</body>
+</html>

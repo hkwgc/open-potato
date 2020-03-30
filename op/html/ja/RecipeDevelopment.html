@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RecipeDevelopment.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="/Users/kwgc/Desktop/Project_Potato/manuals/doc2md/.\github-markdown.css" type="text/css">
+</head>
+<body>
+<h1 id="%E8%A7%A3%E6%9E%90%E3%81%AE%E6%8B%A1%E5%BC%B5">解析の拡張</h1>
+<p><em>このドキュメントは校正が済んでいません。貢献頂ける方を歓迎します!</em></p>
+<p><a href="index.md">Open PoTAToドキュメントリストへ</a></p>
+<!-- TOC -->
+<ul>
+<li><a href="#%E8%A7%A3%E6%9E%90%E3%81%AE%E6%8B%A1%E5%BC%B5">解析の拡張</a></li>
+<li><a href="#%E8%A7%A3%E6%9E%90%E6%A9%9F%E8%83%BD">解析機能</a>
+<ul>
+<li><a href="#open-potato%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E8%A7%A3%E6%9E%90">Open PoTAToにおける解析</a></li>
+<li><a href="#%E8%A7%A3%E6%9E%90%E5%87%A6%E7%90%86">解析処理</a></li>
+</ul>
+</li>
+<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">データ構造</a>
+<ul>
+<li><a href="#%E8%A7%A3%E6%9E%90%E3%83%87%E3%83%BC%E3%82%BF">解析データ</a></li>
+<li><a href="#%E3%83%AC%E3%82%B7%E3%83%94">レシピ</a></li>
+</ul>
+</li>
+<li><a href="#%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%81%AE%E6%8B%A1%E5%BC%B5">フィルタの拡張</a>
+<ul>
+<li><a href="#%E9%96%A2%E6%95%B0%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9">関数インタフェイス</a></li>
+<li><a href="#createbasicinfo%E3%82%B5%E3%83%96%E9%96%A2%E6%95%B0">createBasicInfoサブ関数</a></li>
+<li><a href="#getargument%E3%82%B5%E3%83%96%E9%96%A2%E6%95%B0">getArgumentサブ関数</a></li>
+<li><a href="#write%E3%82%B5%E3%83%96%E9%96%A2%E6%95%B0">writeサブ関数</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A3%9C%E5%8A%A9%E9%96%A2%E6%95%B0">補助関数</a>
+- <a href="#ucdataload%E9%96%A2%E6%95%B0">ucdataload関数</a>
+- <a href="#nanfcn%E9%96%A2%E6%95%B0">nanfcn関数</a>
+- <a href="#uihelp%E9%96%A2%E6%95%B0">uihelp関数</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="%E8%A7%A3%E6%9E%90%E6%A9%9F%E8%83%BD">解析機能</h1>
+<h2 id="open-potato%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E8%A7%A3%E6%9E%90">Open PoTAToにおける解析</h2>
+<p>ここではOpen PoTAToのResearchモードの解析準備(Preprocessor)における単体データ解析の拡張方法を説明します。</p>
+<p>Open PoTAToでは解析の手順をレシピと呼んでいます。レシピはファイルに保存することもできます。またレシピは複数の解析関数（フィルタ）から構成されており、変数や実行順序を変更可能です。</p>
+<ul>
+<li>レシピは再利用・配布可能</li>
+<li>レシピは編集可能</li>
+<li>解析関数（フィルタ）を追加可能</li>
+</ul>
+<p>ここでは解析関数の追加に関して説明します。</p>
+<p>簡単な解析関数の追加方法は別途【解析ツール作成のためのステップガイド.pdf】をご参照ください。ここでは、関連する内容も含めOpen PoTAToの内部構造に近い説明を行います。</p>
+<p>なお、ここではプログラムコードの作成を前提としていますので、プログラム開発者向けの説明になります。</p>
+<h2 id="%E8%A7%A3%E6%9E%90%E5%87%A6%E7%90%86">解析処理</h2>
+<p>Researchモードの解析準備(Preprocessor)における単体データ解析では解析データ(Analysisデータ)内になるレシピ(解析手順)を編集し、解析を実施します。</p>
+<p>その結果、POTAToデータを出力します。</p>
+<p>解析データは、実験データ(Rawデータ)の名前とレシピを持っています。</p>
+<p>このレシピを編集するため、POTAToは解析関数のリストとその特徴を取得します。その後、ユーザの操作により解析関数を加えたり削除したりすることによりレシピを編集します。</p>
+<p>解析の実施では解析データから解析用のM-ファイルを作成します。M-ファイルの作成では、実験データ名からデータの読込処理を、レシピに登録されている関数からフィルタ処理をファイルに書き出します。</p>
+<p>作成したM-Fileを実行することにより、解析後のPOTAToデータが取得できます。</p>
+<p><img src="RecipeDevelopment.assets/image-20200326141041693.png" alt="image-20200326141041693"></p>
+<h1 id="%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">データ構造</h1>
+<h2 id="%E8%A7%A3%E6%9E%90%E3%83%87%E3%83%BC%E3%82%BF">解析データ</h2>
+<p>解析を実施するために必要なデータは解析データです。解析データの構造を図に示します。
+解析データは１つの実験データ（旧バージョンは複数可）と１つのレシピを持っています。レシピは複数のフィルタから出来ています。
+ここでフィルタには、連続データに対して行うフィルタ、ブロッキング用フィルタ、区間データに対して行うフィルタの3種類があります。</p>
+<p>具体的にはレシピは解析データ(AnalysisData)以下にAnalysisData.data.filterdataに構造体として保存されます。</p>
+<p><img src="RecipeDevelopment.assets/image-20200326141132503.png" alt="image-20200326141132503"></p>
+<h2 id="%E3%83%AC%E3%82%B7%E3%83%94">レシピ</h2>
+<p>レシピは解析手順を示します。レシピは以下のような構造体になっています。</p>
+<table>
+<thead>
+<tr>
+<th>フィールド名</th>
+<th>内容</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dummy</td>
+<td>空構造体を避けるための ダミーフィールド</td>
+<td>No Effective Data'</td>
+</tr>
+<tr>
+<td>HBdata</td>
+<td>連続データに対するフィルタリスト</td>
+<td>{ FilterData, FilterData}</td>
+</tr>
+<tr>
+<td>block_enable</td>
+<td>ブロック有効フラグ</td>
+<td>1</td>
+</tr>
+<tr>
+<td>BlockPeriod</td>
+<td>ブロック期間</td>
+<td>[5 15]</td>
+</tr>
+<tr>
+<td>TimeBlocking</td>
+<td>ブロック化フィルタ</td>
+<td>{ FilterData}</td>
+</tr>
+<tr>
+<td>BlockData</td>
+<td>区間化データに対するフィルタリスト</td>
+<td>{ FilterData, FilterData}</td>
+</tr>
+</tbody>
+</table>
+<p>全てのフィールドは対象とする解析を実施しない場合省略できますが、レシピは空でない構造体にする必要があります。そこで、解析がなく、レシピ構造体が空になる場合はdummyフィールドで何かの値を設定します。
+解析は、最初に連続データに対してフィルタを適用し、次にブロッキングを行い、最後に区間データに対してフィルタを適用します。ここでフィルタに関するデータ、フィルタデータ（FilterData）に関しては後述します。
+ここで、ブロッキングに関しては複数の設定があります。block_enableはブロック化の有効/無効を示します。block_enable==0の場合はブロック化以降の処理を行いません。
+BlockPeriodはブロッキングの共通設定項目で、この項目がない場合もブロック化以降の処理を行いません。
+TimeBlockignはブロッキング用のフィルタですが、省略時はデフォルトのブロッキング処理が行われます。なおデフォルトの処理では全刺激の種類に対してブロッキングを行います。</p>
+<h1 id="%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%81%AE%E6%8B%A1%E5%BC%B5">フィルタの拡張</h1>
+<h2 id="%E9%96%A2%E6%95%B0%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9">関数インタフェイス</h2>
+<p>フィルタはPOTATo内のPluginDirフォルダ以下にPlugInWrap*.mというファイル名で作成します。POTAToはサブフォルダ以下も検索しますので、フォルダを分けることで整理することができます。また、pコード化したファイルも検索しますので、必要があればpコード化してください。</p>
+<p>この関数は以下のようなインタフェィスを持ちます。</p>
+<pre class="hljs"><code><div>PlugInWrap_*(‘subfncname’,[arg1,arg2,・・・])
+</div></code></pre>
+<p>ここでsubfncnameにサブ関数名が入り、arg1,arg2・・・はサブ関数の引数です。用意すべきサブ関数は以下3つになります。</p>
+<table>
+<thead>
+<tr>
+<th>サブ関数名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>createBasicInfo</td>
+<td>基本情報設定</td>
+</tr>
+<tr>
+<td>getArgument</td>
+<td>フィルタデータを作成する</td>
+</tr>
+<tr>
+<td>write</td>
+<td>解析を実施するための M-File を作成する</td>
+</tr>
+</tbody>
+</table>
+<p>それぞれのサブ関数の引数や用途は決まっており、ここでは各サブ関数について説明します。なお、これらの関数の骨格となるコードは、他のフィルタ関数をコピーするか、”P3_wizard_plugin“のFilterPlug-inで作成できます。</p>
+<p>また、関数ヘルプ用のコメント（M-ファイルの最初のコメント）はヘルプとして利用されますので、わかりやすく入力することを推奨します。</p>
+<h2 id="createbasicinfo%E3%82%B5%E3%83%96%E9%96%A2%E6%95%B0">createBasicInfoサブ関数</h2>
+<p>createBasicInfoサブ関数はフィルタ関数の基本的な情報を返します。POTAToでレシピを編集する際など、システムの制御に利用します。なお、結果である基本情報は固定値にしてください。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>シンタックス</td>
+<td>info=createBasicInfo</td>
+</tr>
+<tr>
+<td>機能</td>
+<td>指定したname,IDに対応するAO関連データを更新する</td>
+</tr>
+<tr>
+<td>入力</td>
+<td><strong>info</strong> 基本情報（構造体）</td>
+</tr>
+</tbody>
+</table>
+<p>ここで、基本情報構造体は以下のフォーマットです。</p>
+<table>
+<thead>
+<tr>
+<th>フィールド名</th>
+<th>内容</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>フィルタ名</td>
+<td>'MyFilter'</td>
+</tr>
+<tr>
+<td>region</td>
+<td>利用可能領域を示す配列<br>2: 連続データに対応<br>3: 区間データに対応<br>-1:ブロッキング(この場合配列不可)</td>
+<td>[2,3]</td>
+</tr>
+<tr>
+<td>DispKind</td>
+<td>表示種別</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>M-File作成時のフィルタの説明</td>
+<td>‘MyFilter:band-pass’</td>
+</tr>
+</tbody>
+</table>
+<p>ここでnameは表示するフィルタ名です。nameはPOTATo内でユニークであるべきです。もし同一の名前が記載されると起動時、毎回警告が出力されます。</p>
+<p>regionはそのフィルタが実行可能なデータを示します。通常、 3連続データ）もしくは3（区間データ）を記載します。両方のデータに対応する場合は[2,3]と複数記載できます。</p>
+<p>DispKindはそのフィルタの種別を示します。BookMarkなど、表示するフィルタリストの絞込みに使われていましたが、現在は普通のフィルタでは使われていません。</p>
+<p>ただし、Developer-Modeで利用する1st-Level-Analysis用のフィルタを作成する場合はF_1stLvlAnaを指定してください。</p>
+<h2 id="getargument%E3%82%B5%E3%83%96%E9%96%A2%E6%95%B0">getArgumentサブ関数</h2>
+<p>解析を行うための引数設定を行います。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>シンタックス</td>
+<td>fdata=getArgument(fdata, mfile)</td>
+</tr>
+<tr>
+<td>機能</td>
+<td>解析を行うためのフィルタデータを設定する</td>
+</tr>
+<tr>
+<td>入力</td>
+<td><strong>varargin</strong> その他の引数。<br>現行バージョンのPOTAToには<br>varargin{1}にフィルタ実施直前のデータを<br>作成するためのスクリプトファイルが入っている。</td>
+</tr>
+<tr>
+<td>入出力</td>
+<td><strong>fdata</strong> フィルタデータ</td>
+</tr>
+</tbody>
+</table>
+<p>POTATo内のGUIより呼び出されます。新規作成時は初期データのみ与えられますが、更新時、
+fdataには以前のfdataが設定されます。キャンセルする場合はreturn前にfdata=[]；と設定します。フィルタデータのフォーマットは以下の通りです。</p>
+<table>
+<thead>
+<tr>
+<th>フィールド名</th>
+<th>内容</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>フィルタ名、基本情報と同じ。</td>
+<td>変更不可</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>関数名</td>
+<td>変更不可</td>
+</tr>
+<tr>
+<td>argData</td>
+<td>解析で利用するデータ</td>
+<td>構造体<br>自由に作成可能</td>
+</tr>
+</tbody>
+</table>
+<p>ここでフィルタデータはPOTATo内ではenableフィールドを持ちます。enableは’on’もしくは’off’の値をとり、フィルタの有効/無効を示しています。
+レシピ内(参照：表2.1 レシピ構造体)のフィルタデータはこのenableフィールドが付加されています。</p>
+<p>また、引数設定前のPOTAToデータを取得したい場合、以下のように利用してください。</p>
+<pre class="hljs"><code><div>mfile=varargin{<span class="hljs-number">1</span>};
+[data, hdata]=scriptMeval(mfile, ‘data’,’hdata’);
+</div></code></pre>
+<p>ここで、この関数で得られるPOTAToデータは周辺のレシピが変更されることにより変更されます。変更時には引数設定直前のPOTAToデータが取得できます。</p>
+<h2 id="write%E3%82%B5%E3%83%96%E9%96%A2%E6%95%B0">writeサブ関数</h2>
+<p>解析実施時、POTAToはレシピより一旦M-Fileを作成し、その後作成したM-Fileを実行することで解析を実施します。
+そのため、writeサブ関数では解析を実施するためのM-File作成を行います。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>シンタックス</td>
+<td>str=write(region,fdata)</td>
+</tr>
+<tr>
+<td>機能</td>
+<td>AO：描画処理のための文字列作成</td>
+</tr>
+<tr>
+<td>入力</td>
+<td><strong>region</strong> 領域を示す文字列。連続データ：’HBdata’、区画データ:‘BlockData’</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>fdata</strong> フィルタデータ</td>
+</tr>
+<tr>
+<td>出力</td>
+<td><strong>str</strong> Axis-Area内のAO描画処理で実行する</td>
+</tr>
+</tbody>
+</table>
+<p>文字列ここで、M-Fileの作成時のPOTAToとフィルタの関係を示します。</p>
+<p><img src="RecipeDevelopment.assets/image-20200326143204390.png" alt="image-20200326143204390"></p>
+<p>あらかじめPOTAToは1.getArgumentをフィルタに実施し、FilterDataを作成します。この時FilterDataはレシピ内に保存さます。</p>
+<p>次にPOTAToはPOTATo内の補助関数make_mfile関数を用いて作成するMファイルを開きます。その後、レシピに従いフMファイルを作成します。このときフィルタに対してcreateBasicInfoを用いて、ヘルプ用のヘッダ等も作成します。</p>
+<p>POTAToがフィルタ実施用コードの記載が必要になると、フィルタに対して3.writeを実施します。</p>
+<p>フィルタのwriteサブ関数内でMファイルに直接書き込みをする場合、make_mfileを用いて書き込みを実施します。</p>
+<p>その後、POTAToはフィルタwriteサブ関数の戻り値、strを書き込んだり、残りのMファイルの作成を行ったりします。</p>
+<p>最後にmake_mfileに4closeを実施し、必要に応じて作成されたMファイルを実施したり、開いたりします。</p>
+<p>典型的なwriteサブ関数の例を示します。</p>
+<p>フィルタがMファイルを作成する際、適切なインデント（行頭の空白）をいれたり、統一されたルール沿ってコードの区切り文いれたりすることで読みやすいMファイルが作成できます。このようにファイルを整形するためのツールとしてmake_mfile関数が提供しています。make_mfileのシンタックスは以下のようになります。</p>
+<pre class="hljs"><code><div>make_mfile(‘サブ関数名’,引数);
+</div></code></pre>
+<p>主な利用方法は以下になります。</p>
+<table>
+<thead>
+<tr>
+<th>サブ関数</th>
+<th>引数</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>write</td>
+<td>Str</td>
+<td>文字列StrをM-Fileに出力</td>
+</tr>
+<tr>
+<td>with_indent</td>
+<td>Str</td>
+<td>インデント付きで文字列StrをM-Fileに出力</td>
+</tr>
+<tr>
+<td>code_separator</td>
+<td>level</td>
+<td>levelに応じた区切り文を出力の整数で小さいほど重要な区切りとする</td>
+</tr>
+<tr>
+<td>indent_fcn</td>
+<td>‘up’ <br>‘down’</td>
+<td>インデントを上げる（空白文字を増やす）<br>インデントを下げる</td>
+</tr>
+</tbody>
+</table>
+<p>ここでStrは整形済みのchar配列としてください。cellで記載することも可能ですが、非推奨です。</p>
+<p>writeサブ関数は通常以下の様に開始します。</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">str</span> = <span class="hljs-title">write</span><span class="hljs-params">(region, fdata)</span> %#<span class="hljs-title">ok</span> </span>
+<span class="hljs-comment">% input : fdata</span>
+str=<span class="hljs-string">''</span>;
+bi=createBasicInfo;
+</div></code></pre>
+<p>ここで、strで結果を返すとインデント調整ができないので、初期値として空白で返すよう予め設定しておきます。
+基本情報はgetArgumentにより作成されたfdataのバージョンとwriteサブ関数実行時のバージョンを比較すること、またM-Fileにwriteサブ関数のバージョンを残すことに利用します。</p>
+<p>次にフィルタ用のヘッダを記載することを推奨しています。コードの区切りをレベル3にし、フィルタ名、writeサブ関数のバージョン表示を行います。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">% *****************************</span>
+<span class="hljs-comment">%  Header Area</span>
+<span class="hljs-comment">% *****************************</span>
+make_mfile(<span class="hljs-string">'code_separator'</span>, <span class="hljs-number">3</span>);
+make_mfile(<span class="hljs-string">'with_indent'</span>, [<span class="hljs-string">'% == '</span> fdata.name <span class="hljs-string">' =='</span>]);
+make_mfile(<span class="hljs-string">'with_indent'</span>, sprintf(<span class="hljs-string">'%% Version %f'</span>,bi.Version));
+make_mfile(<span class="hljs-string">'code_separator'</span>, <span class="hljs-number">3</span>);
+make_mfile(<span class="hljs-string">'with_indent'</span>, <span class="hljs-string">''</span>);
+</div></code></pre>
+<p>次に実際の実行部分を記載します。実行部分はtry-catch文で括るべきです。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">% *****************************</span>
+<span class="hljs-comment">%  Execute Area</span>
+<span class="hljs-comment">% *****************************</span>
+make_mfile(<span class="hljs-string">'with_indent'</span>, <span class="hljs-string">'try'</span>);
+make_mfile(<span class="hljs-string">'indent_fcn'</span>, <span class="hljs-string">'down'</span>); <span class="hljs-comment">% インデントを下げる</span>
+
+<span class="hljs-comment">% &lt;&lt;&lt; ここに実行部分を記載 &gt;&gt;</span>
+
+make_mfile(<span class="hljs-string">'indent_fcn'</span>, <span class="hljs-string">'up'</span>); <span class="hljs-comment">% インデントを戻す</span>
+make_mfile(<span class="hljs-string">'with_indent'</span>, <span class="hljs-string">'catch'</span>);
+make_mfile(<span class="hljs-string">'indent_fcn'</span>, <span class="hljs-string">'down'</span>);
+<span class="hljs-comment">% エラー処理</span>
+make_mfile(<span class="hljs-string">'with_indent'</span>, <span class="hljs-string">'errordlg(lasterr);'</span>);
+make_mfile(<span class="hljs-string">'indent_fcn'</span>, <span class="hljs-string">'up'</span>);
+make_mfile(<span class="hljs-string">'with_indent'</span>, <span class="hljs-string">'end'</span>);
+make_mfile(<span class="hljs-string">'with_indent'</span>, <span class="hljs-string">''</span>);
+</div></code></pre>
+<p>最後に実行部分を記載します。実行部分を記載する際、変数の有効範囲（スコープ）に注意してください。</p>
+<p>writeサブ関数内で使える変数は引数のregion,fdataおよびフィルタ基本情報です。ここで引数が格納されているフィルタデータ（fdata)は作成するMファイル中には存在しません。</p>
+<p>作成するMファイル内で使える変数はPOTAToデータです。</p>
+<table>
+<thead>
+<tr>
+<th>サブ関数</th>
+<th>引数</th>
+<th>内容</th>
+<th>スコープ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>region</td>
+<td>引数</td>
+<td>領域を示す文字列。 <br>連続データ:’HBdata’、区画データ: ‘BlockData’</td>
+<td>write サブ関数内</td>
+</tr>
+<tr>
+<td>fdata</td>
+<td>引数</td>
+<td>フィルタデータ (表 3.3 フィルタデータ )</td>
+<td>write サブ関数内</td>
+</tr>
+<tr>
+<td>bi</td>
+<td>定数</td>
+<td>フィルタ基本情報(表 3.2 フィルタ基本情報)<br>createBasicInfo で取得</td>
+<td>write サブ関数内</td>
+</tr>
+<tr>
+<td>dataname</td>
+<td>入力</td>
+<td>計算対象実験データファイル名(セル)</td>
+<td>作成M ファイル内</td>
+</tr>
+<tr>
+<td>hdata<br>data</td>
+<td>計算対象</td>
+<td>POTATo データ<br>フィルタ実行直前</td>
+<td>作成M ファイル内</td>
+</tr>
+<tr>
+<td>chdata<br>cdata</td>
+<td>計算結果</td>
+<td>POTATo データ<br>ブロック化直前の連続データ(ブロック化後のみ)</td>
+<td>作成M ファイル内</td>
+</tr>
+<tr>
+<td>bhdata<br>bdata</td>
+<td>計算結果</td>
+<td>POTATo データ<br>解析完了後の区間データ(通常なし)</td>
+<td>作成M ファイル内</td>
+</tr>
+</tbody>
+</table>
+<p>writeサブ関数内の変数はサブ関数内で定義することにより、追加されます。ここで変更したデータは他に影響を及ぼしません。</p>
+<p>作成Mファイル内の変数は他のフィルタにより変更されたり追加されたりします。もし、作成するフィルタが他のフィルタを必要とする場合、適切な説明やエラー文を入れることを推奨します。</p>
+<h1 id="%E8%A3%9C%E5%8A%A9%E9%96%A2%E6%95%B0">補助関数</h1>
+<p>フィルタを実施する上で利用可能な補助関数を示します。</p>
+<table>
+<thead>
+<tr>
+<th>関数名</th>
+<th>サブ関数名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uc_dataload</td>
+<td>-</td>
+<td>データ読込</td>
+</tr>
+<tr>
+<td>nan_fcn</td>
+<td>‘mean’</td>
+<td>NaNデータを除いたmean(x,dim)</td>
+</tr>
+<tr>
+<td></td>
+<td>‘std0’</td>
+<td>NaNデータを除いたstd(x,0,dim)</td>
+</tr>
+<tr>
+<td></td>
+<td>‘std1’</td>
+<td>NaNデータを除いたstd(x,1,flag)を計算。</td>
+</tr>
+<tr>
+<td>make_mfile</td>
+<td>-</td>
+<td>Mファイル作成用ツール。<br>writeサブ関数で利用する。</td>
+</tr>
+<tr>
+<td>msglistbox</td>
+<td>-</td>
+<td>msgboxと同じ。<br>ただしメッセージ部分がリストボックスになり<br>多くの文字列を表示できる。</td>
+</tr>
+<tr>
+<td>uihelp</td>
+<td>-</td>
+<td>ヘルプを表示する</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ucdataload%E9%96%A2%E6%95%B0">uc_dataload関数</h3>
+<p>実験データからPOTATo連続データを読み込む。</p>
+<pre class="hljs"><code><div>[data,hdata]=uc_dataload(‘ファイル名’);
+</div></code></pre>
+<p>ここで、Mファイル作成時、ファイル名はdataname{1}で与えられる。</p>
+<h3 id="nanfcn%E9%96%A2%E6%95%B0">nan_fcn関数</h3>
+<p>POTAToデータにはNaNが混在している場合があります。POTAToデータにおけるNaNは多くの場合、単に無効なデータという意味です。
+そのためこれらのデータを無視する関数を提供します</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>シンタックス</td>
+<td>[data,n]=nan_fcn(fcn,data,dim)</td>
+</tr>
+<tr>
+<td>機能</td>
+<td>NaNを無視した平均値・標準偏差の計算。</td>
+</tr>
+<tr>
+<td>入力</td>
+<td><strong>fcn</strong> 関数タイプ：<br>‘mean’→mean(data,dim)を実施<br>‘std0’→std(data,0,dim)を実施<br>‘std1’→std(data,1,dim)を実施</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>data</strong> 計算対象データ</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>dim</strong> 対象次元</td>
+</tr>
+<tr>
+<td>出力</td>
+<td><strong>data</strong> 結果</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>n</strong> 計算に利用した有効なデータ数。</td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># NaN 設定の経緯:##</span></span>
+POTATo の Motion Check(体動)フィルタは体動と判断した時点の測定データに対 してフラグを立てます。連続データの場合はその時刻、チャンネルに対してフラグを立て、区間データの場合はブロック、チャンネルに対してフラグを立てます。
+このフラグの扱いは解析方法の指針により異なります。対応方法のひとつとして、フラグが立っているデータを無効にするため、対応箇所のデータを NaN に設定する方法があります。
+</div></code></pre>
+<h3 id="uihelp%E9%96%A2%E6%95%B0">uihelp関数</h3>
+<p>フィルタプラグインのヘルプはuihelp関数により表示されます。作成するフィルタプラグインは以下のヘルプ機能に対応することを推奨します。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>シンタックス</td>
+<td>h = uihelp(fname)</td>
+</tr>
+<tr>
+<td>機能</td>
+<td>関数のヘルプ表示</td>
+</tr>
+<tr>
+<td>入力</td>
+<td><strong>fname</strong> 関数名</td>
+</tr>
+<tr>
+<td>出力</td>
+<td><strong>h</strong> uihelp の figure ハンドル</td>
+</tr>
+</tbody>
+</table>
+<p>uihelpは入力関数からヘルプドキュメントを取得し表示します。</p>
+<p>また、PDFやhtmlによるヘルプドキュメントがある場合はヘルプドキュメントを開くためのボタンを有効化します。PDFやhtmlのヘルプドキュメントの検索は関数と同じパスの以下のファイルを検索し、最初に見つかったものを開きます。</p>
+<ul>
+<li>XXX/関数名.pdf</li>
+<li>XXX/関数名.html</li>
+<li>関数名.pdf</li>
+<li>関数名.html</li>
+</ul>
+<p>ここで、XXXはPOTATo内の言語設定名で、現在は日本語&quot;ja&quot;です。</p>
+
+</body>
+</html>
