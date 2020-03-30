@@ -6,7 +6,6 @@ function varargout = P3_wizard_plugin_P_Save(fnc,varargin)
 % $Id: P3_wizard_plugin_P_Save.m 180 2011-05-19 09:34:28Z Katura $
 
 
-
 % ======================================================================
 % Copyright(c) 2019, 
 % National Institute of Advanced Industrial Science and Technology
@@ -58,21 +57,21 @@ switch mydata.PluginType
     %ud.fname   = genvarname(mydata.PluginName);
     ud.fname   = genvarname(mydata.UiFunction.Function);
     ud.default = [ud.path ud.base ud.fname '.m'];
-    ud.create  = 'P3_wizard_plugin_createMA(mydata,fname);';
+    ud.create  = 'P3_wizard_plugin_create(mydata,fname,''MA'');';
   case '1st-Level-Analysis Plug-in'
     ud.path    = [pathname filesep 'PluginDir' filesep];
     ud.base    = 'PlugInWrapP1_';
     %ud.fname   = genvarname(mydata.PluginName);
     ud.fname   = genvarname(mydata.UiFunction.Function);
     ud.default = [ud.path ud.base ud.fname '.m'];
-    ud.create  = 'P3_wizard_plugin_createM1(mydata,fname);';
+    ud.create  = 'P3_wizard_plugin_create(mydata,fname,''M1'');';
   otherwise
     ud.path    = [pathname filesep 'PluginDir' filesep];
     ud.base    = 'PlugInWrap_';
     %ud.fname   = genvarname(mydata.PluginName);
     ud.fname   = genvarname(mydata.UiFunction.Function);
     ud.default = [ud.path ud.base ud.fname '.m'];
-    ud.create  = 'P3_wizard_plugin_createMF(mydata,fname);';
+    ud.create  = 'P3_wizard_plugin_create(mydata,fname,''MF'');';
 end
 if ~isfield(ud,'current')
   ud.current = ud.default;

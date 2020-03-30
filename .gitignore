@@ -1,2 +1,43 @@
+### .gitignore-boilerplates/Global/Windows.gitignore
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+
+### .gitignore-boilerplates/Global/OSX.gitignore
+
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+### MATLAB
+# backup file
+*~
+
+### PoTATo Specific setting
+op/OSP.log
+op/POTATo.log
+op/POTAToProject/P3_Project_History.mat
+op/POTAToProject/P3_preprocessor.txt
+op/ospData/POTAToSettingInfo.mat
+op/ProjectData.mat
+op/op/ospData/ana_*.m
+op/Projects/
+op/tmp_pplugin.m
 

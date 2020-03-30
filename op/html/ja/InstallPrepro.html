@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>InstallPrepro.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="/Users/kwgc/Desktop/Project_Potato/manuals/doc2md/.\github-markdown.css" type="text/css">
+</head>
+<body>
+<h1 id="%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">読み込みプラグインのインストール</h1>
+<p><a href="index.md">Open PoTAToドキュメントリストへ</a></p>
+<!-- TOC -->
+<ul>
+<li><a href="#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">読み込みプラグインのインストール</a>
+<ul>
+<li><a href="#%E5%85%A5%E6%89%8B%E6%96%B9%E6%B3%95">入手方法</a></li>
+<li><a href="#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">読み込みプラグインのインストール</a></li>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E7%A2%BA%E8%AA%8D">インストールの確認</a></li>
+<li><a href="#%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">問い合わせ</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="%E5%85%A5%E6%89%8B%E6%96%B9%E6%B3%95">入手方法</h2>
+<p>Open PoTAToの読み込みプラグインはfNIRS装置のメーカー・ベンダー各社よりご提供いただいております。</p>
+<p>読み込みプラグインの一覧は<a href="https://github.com/hkwgc/open-potato-plugins/list_prepro.md">こちら</a>です。</p>
+<h2 id="%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">読み込みプラグインのインストール</h2>
+<p>ここでは各社の読み込みプラグインをインストールするときに共通する内容を説明します。</p>
+<p>独自のインストール方法が定められている場合は、その方法に従ってください。</p>
+<p>読み込みプラグインはMatlabのファイル(MファイルもしくはPファイル)で、ファイル名は「prepro_XXXX.m」もしくは「prepro_YYYY.p」です。XXXXやYYYYはファイルごとに異なります。</p>
+<p>これを Open PoTAToを起動するときの<strong>opフォルダ</strong>の<strong>preprocessorフォルダ</strong>に入れてください。</p>
+<p><img src="InstallPrepro.assets/image-20200327165905133.png" alt="image-20200327165905133"></p>
+<p>インストール作業はこれで完了です。</p>
+<h2 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E7%A2%BA%E8%AA%8D">インストールの確認</h2>
+<p>Projectの設定が既に完了しており、Open PoTAToのメインウィンドウが開いているとします。</p>
+<p>メインウィンドウのProjectメニューからData Importを選択してください。</p>
+<p>![スクリーンショット 2020-03-27 17.03.50](InstallPrepro.assets/スクリーンショット 2020-03-27 17.03.50-5296383.png)</p>
+<p>データインポートダイアログが開くので、ポップアップメニューを選択します。</p>
+<p><img src="InstallPrepro.assets/image-20200327170741147.png" alt="image-20200327170741147"></p>
+<p>読み込みプラグインが正しくインストールされていると、リストにその装置の読み込みプラグインの名称が新たに追加されていることが確認できます。</p>
+<p><img src="InstallPrepro.assets/image-20200327170846412.png" alt="image-20200327170846412"></p>
+<h2 id="%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">問い合わせ</h2>
+<p>読み込みプラグインに関するご質問はプラグインの作成元にお問い合わせください。</p>
+
+</body>
+</html>

@@ -10,10 +10,6 @@ function s=POTATo_MessageString(name)
 % ======================================================================
 
 
-
-
-
-
 [names,str]=subMake;
 
 s=str{strcmp(names,name)};

@@ -1,9 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="ja"><head>
     <title>
-      Platform for Optical topography Analysis Tools Manual Step-Guide
+      Open PoTATo Step-Guide
     </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
     <link rel="stylesheet" href="matlab_like.css" type="text/css">
     <link rel="stylesheet" href="chapterstyle.css" type="text/css">
 </head>
@@ -22,20 +22,19 @@
       <tr><td colspan="5"><div class="pagetitle">&nbsp;</div></td></tr>
       <tr class="pagetitle">
         <td colspan="5">
-          <div><h1>Platform for Optical topography Analysis Tools<br/>�X�e�b�v�K�C�h</h1></div>
+          <div><h1>Open PoTATo<br/>ステップガイド</h1></div>
         </td>
       </tr><!-- Link in page -->
       
-      <!--========= �T�v ===================-->
+      <!--========= 概要 ===================-->
       <tr>
         <td>&nbsp;</td><td>&nbsp;</td>
         <td colspan="2">
           <p>&nbsp;</p>
           <p>
-            �{��Platform for Optical topography Analysis Tools (POTATo) Version3��
-            �ւ���X�e�b�v�K�C�h�ł��B
-            �����ł͓T�^�I�Ȏ��s��̑���ЂƂЂƂ�������邱�Ƃ�
-            POTATo�̑����������܂��B�Ȃ��A�X�e�b�v�K�C�h��MATLAB&reg;�ł̂��̂ł��B
+            Open PoTAToのステップガイドです。
+            ここでは典型的な実行例の操作ひとつひとつを説明することで
+            Open PoTAToの操作を説明します。
           </p>
         </td>
         <td>&nbsp;</td>
@@ -45,63 +44,63 @@
       <tr><td colspan="5"><div class="chaptertitle">&nbsp;</div></td></tr>
       <tr class="chaptertitle">
         <td colspan="5">
-          <div><h2>��{����</h2></div>
+          <div><h2>基本操作</h2></div>
         </td>
       </tr>
-      <!--========= ��͂��Ă݂悤 ===================-->
+      <!--========= 解析してみよう ===================-->
       <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
       <tr>
         <td>&nbsp;</td>
         <td colspan="4" class="subsectiontitle">
-          <div><h3><a href="./StepGuide/stepguide_normal.pdf">��͂��Ă݂悤</a></h3></div>
+          <div><h3><a href="./StepGuide/stepguide_normal.pdf">解析してみよう</a></h3></div>
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td><td>&nbsp;</td>
         <td colspan="2">
           <p>
-            POTATo�͗l�X�Ȏ������u����o�͂��ꂽ�f�[�^��Ǎ��ނ��Ƃ��\�ł��B
-            �܂��A�����̎����f�[�^���ȒP�ȑ���ŉ�͂��邱�Ƃ��\�ł��B<br>
-            ���̑�����@���APOTATo��Normal���[�h��p������͗�Ő������܂��B
-            �����ł́A�v���W�F�N�g�̍쐬�A�����f�[�^�̓ǂݍ��݁A��͂̑I���A���ʂ̕\�����s���܂��B
+            POTAToは様々な実験装置から出力されたデータを読込むことが可能です。
+            また、それらの実験データを簡単な操作で解析することが可能です。<br>
+            この操作方法を、POTAToのNormalモードを用いた解析例で説明します。
+            ここでは、プロジェクトの作成、実験データの読み込み、解析の選択、結果の表示を行います。
           </p>
         </td>
         <td>&nbsp;</td>
       </tr>
-      <!--========= ��͕��@�̐ݒ�  ===================-->
+      <!--========= 解析方法の設定  ===================-->
       <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
       <tr>
         <td>&nbsp;</td>
         <td colspan="4" class="subsectiontitle">
-          <div><h3><a href="./StepGuide/stepguide_research.pdf">��͕��@�̐ݒ�</a></h3></div>
+          <div><h3><a href="./StepGuide/stepguide_research.pdf">解析方法の設定</a></h3></div>
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td><td>&nbsp;</td>
         <td colspan="2">
           <p>
-             POTATo�ł͉�͎�@(Recipe)��ݒ肷�邱�ƂŁA
-             ��r�I�ȒP�ɍė��p�E�ύX�ȉ�͕��@�����R�x�̍�����͂��\�ł��B
-             ���̑�����@���APOTATo��Research���[�h��p������͗�Ő������܂��B
+             POTAToでは解析手法(Recipe)を設定することで、
+             比較的簡単に再利用・変更な解析方法を自由度の高い解析が可能です。
+             この操作方法を、POTAToのResearchモードを用いた解析例で説明します。
           </p>
         </td>
         <td>&nbsp;</td>
       </tr>
-      <!--========= �f�[�^�̊Ǘ�  ===================-->
+      <!--========= データの管理  ===================-->
       <tr><td colspan="5"><div class="subsectiontitle">&nbsp;</div></td></tr>
       <tr>
         <td>&nbsp;</td>
         <td colspan="4" class="subsectiontitle">
-          <div><h3><a href="./StepGuide/stepguide_datamanage.pdf">�f�[�^�̊Ǘ�</a></h3></div>
+          <div><h3><a href="./StepGuide/stepguide_datamanage.pdf">データの管理</a></h3></div>
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td><td>&nbsp;</td>
         <td colspan="2">
           <p>
-            POTATo�ł͑����̎����f�[�^���瓝�v�I������s�����Ƃ��\�ł��B
-            ���̂Ƃ��A���v���s�����߂ɑ�������f�[�^�ړI�̏W�������o�����Ƃ��d�v�ɂȂ�܂��B<br>
-            �����ŁA�g��������p�����f�[�^�̊Ǘ���������܂��B
+            POTAToでは多くの実験データから統計的検定を行うことが可能です。
+            このとき、統計を行うために多数あるデータ目的の集合を取り出すことが重要になります。<br>
+            そこで、拡張検索を用いたデータの管理例を示します。
           </p>
         </td>
         <td>&nbsp;</td>
@@ -111,7 +110,7 @@
       <tr><td colspan="5"><div class="chaptertitle">&nbsp;</div></td></tr>
       <tr class="chaptertitle">
         <td colspan="5">
-          <div><h2>��͂̎���</h2></div>
+          <div><h2>解析の実際</h2></div>
         </td>
       </tr>
 
@@ -119,14 +118,14 @@
       <tr>
         <td>&nbsp;</td>
         <td colspan="4" class="subsectiontitle">
-          <div><h3><a href="./stepguide_normal.pdf">2nd��͂Ȃ�</a></h3></div>
+          <div><h3><a href="./stepguide_normal.pdf">2nd解析など</a></h3></div>
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td><td>&nbsp;</td>
         <td colspan="2">
           <p>
-            ��͊T�v
+            解析概要
           </p>
         </td>
         <td>&nbsp;</td>
