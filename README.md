@@ -85,7 +85,7 @@ PoTAToはGUIで動作します。
 * 4 LayoutEditorステップガイド.pdf
 ```
 
-
+[マニュアル](/op/html/ja/index.md)はオンラインでも読めます。
 
 ## 開発への貢献
 
