@@ -1,11 +1,11 @@
 # Open PoTATo for fNIRS
 #### Open Platform of Tranparent Analysis Tools for functional near infrared spectroscopy
 
-
-
 [English](/README_EN.md)
 
-PoTAToは**fNIRSデータ解析の多彩なツールを統合的に活用**できるソフトウェア(=プラットフォーム)です。多様な機種からのデータ読み込み、信号前処理、統計解析、可視化など様々な機能を備えています。解析初心者からエキスパートまで活用できます。
+
+
+Open PoTAToは**fNIRSデータ解析の多彩なツールを統合的に活用**できるソフトウェア(=プラットフォーム)です。多様な機種からのデータ読み込み、信号前処理、統計解析、可視化など様々な機能を備えています。解析初心者からエキスパートまで活用できます。
 
 
 
@@ -21,7 +21,7 @@ PoTAToは**fNIRSデータ解析の多彩なツールを統合的に活用**で�
 
 ## 必要条件
 
-PoTAToを利用するには The Mathwork 社の製品MATLABが必要です。
+Open PoTAToを利用するには Mathwork 社の製品MATLABが必要です。
 また、一部の機能では同社のMATLAB Toolboxのうち下記のものを使用しています。
 
 ```
@@ -50,12 +50,12 @@ open-potato-master.zip
 ダウンロード時点で[ライセンス](LICENCE)に同意したものとします。
 ダウンロードしたzipファイルを適当なところに解凍してください。
 
-3. ダウンロードしたopen-potato-master.zipを適当なフォルダに解凍してください。[^1] ここでは、
+3. ダウンロードしたopen-potato-master.zipを適当なフォルダに解凍してください。[^1] 
 解凍後のフォルダ構成は以下のようになります。
 ```
 -\op
 -\man
--LISENCE.txt
+-LISENCE
 -README.md
 -README_EN.md
 ```
@@ -68,49 +68,30 @@ op\
 に設定します。設定は MATLAB メイン画面中の MATLAB ツールバー:「現在のフォルダー」からできます。
 
 5. PoTAToを起動します。MATLABコマンドラインに
-``` Matlab Command Line
+``` matlab
 >> P3
 ```
 のように入力し、Enterキーを押すとPoTAToのGUIが起動します。[^2]
 
 
-## 使用方法
 
-PoTAToはGUIで動作します。
-詳細は「簡易マニュアル」フォルダの下記pdfファイルをご覧ください。
-```
-* 1 ステップガイド入門編.pdf
-* 2 ステップガイド応用編その１.pdf
-* 3 解析ツール作成のためのステップガイド.pdf
-* 4 LayoutEditorステップガイド.pdf
-```
+## マニュアル
 
-[マニュアル](/op/html/ja/index.md)はオンラインでも読めます。
+[こちら](op/html/ja/index.md)で読めます。
 
-## 開発への貢献
 
-1. Fork (https://github.com/hkwgc/open-potato)
 
-2. Create a feature branch
+## 開発者向け情報
 
-3. Commit your changes
+[マニュアル](op/html/ja/index.md)の開発者向け情報をごらんください。
 
-4. Rebase your local changes against the master branch
-
-5. Create a new Pull Request
-
-   
+ 
 
 ## ライセンス
 
-MITライセンス
+Open PoTAToはMITライセンスに準拠します。
 
-
-
-
-## メンテナ
-
-[Hiroshi KAWAGUCHI](https://github.com/hkwgc)
+著作権は国立研究開発法人産業技術総合研究所が保有しています。
 
 
 

@@ -4,8 +4,9 @@
 ## 初心者向け
 
 #### [Open PoTATo 概要](Abstract.md)
-#### [ステップガイド](Step-Guide.md)
+#### [Open PoTAToのインストール](install-potato.md)
 #### [読み込みプラグインのインストール](InstallPrepro.md)
+#### [ステップガイド](Step-Guide.md)
 
 
 
@@ -37,6 +38,7 @@
 ## 開発者向け
 
 #### [レシピ・プラグインの開発](RecipeDevelopment.md)
+#### [Open PoTATo本体の開発](open-potato-developper.md)
 
 
 
