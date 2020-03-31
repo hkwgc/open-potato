@@ -30,13 +30,6 @@ Wavelet toolbox (特定の解析関数でのみ使用)
 これらの利用に当たってはThe Mathwork 社の利用規約，制限事項を遵守ください。MATLABおよびToolboxは本ソフトウェアには含まれていません。
 
 
-
-## ご注意
-
-Open PoTAToはプラグインを利用して機能を拡張できます。プラグインをインストールする場合，配布元が信頼できることを十分ご確認ください。悪意のあるプラグイン関数はシステム破壊等の重大な問題につながります。
-
-
-
 ## インストール
 
 [インストールマニュアル](op/html/ja/install-potato.md)を御覧ください。
@@ -45,9 +38,19 @@ Open PoTAToはプラグインを利用して機能を拡張できます。プラ
 
 ## マニュアル
 
-[こちら](op/html/ja/index.md)にマニュアルのリストがあります。
+[こちら](op/html/ja/index.md)に最新のマニュアルのリストがあります。
+Open PoTAToにはPDFのマニュアルを同梱してありますが、今後PDFのマニュアルを更新する予定はありません。
 
-manディレクトリにもPDFのマニュアルを残してありますが、情報がやや古いです。
+
+## 関連サイト
+
+- [アドオンのリスト](https://github.com/hkwgc/open-potato-add-on-lists)
+
+プラグインやレシピの入手先のリストです。
+
+- [ユーザーフォーラム](https://github.com/hkwgc/open-potato-forum)
+
+ユーザーの交流のサイトです。マニュアルではわからない操作方法の質問などにご利用ください。FAQも掲載予定です。
 
 
 
@@ -57,17 +60,22 @@ manディレクトリにもPDFのマニュアルを残してありますが、�
 
  
 
-## ライセンス
+## ライセンスと著作権
 
-Open PoTAToはMITライセンスに準拠します。
+Open PoTAToはMITライセンスに準拠したオープンソースソフトウェアです。
 
 著作権は国立研究開発法人産業技術総合研究所が保有しています。
 
 
+## 更新履歴と今後の予定
+- 2019/07/01 産総研での開発が始まりました。 
+- 2020/03/31 Open PoTATo 3.9.0 Public betaを公開しました。
+- 2020/07/01 Open PoTATo 3.9.0 正式版リリース予定
+
 
 ## 謝辞
 
-Open PoTAToは株式会社日立製作所基礎研究所で開発されたソフトウェアPlatform for Optical topography Analysis Tools (通称POTATo)を基に開発しています。POTAToの開発者およびご関係者の皆様に心より感謝申し上げます。
+Open PoTAToは株式会社日立製作所で開発されたソフトウェアPlatform for Optical topography Analysis Tools (通称POTATo)を基に開発しています。POTAToの開発者およびご尽力いただいたご関係者の皆様に心より感謝申し上げます。
 
 
 
