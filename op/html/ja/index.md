@@ -5,7 +5,10 @@
 
 #### [Open PoTATo 概要](Abstract.md)
 #### [Open PoTAToのインストール](install-potato.md)
+
+
 #### [読み込みプラグインのインストール](InstallPrepro.md)
+
 #### [ステップガイド](Step-Guide.md)
 
 
