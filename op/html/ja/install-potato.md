@@ -5,8 +5,8 @@
 1. MATLABをインストールしてください。
 
 2. [トップページ](https://github.com/hkwgc/open-potato)からファイルをダウンロードします。
-下図のトップページの左上方の赤丸の箇所が**[Branch: master]**であることを確認してください。
-右上方の**[Clone or Download]**をクリックするとポップアップが表示されるので、**[Download ZIP]**をクリッします。
+下図のトップページの左上方の赤丸の箇所が **[Branch: master]** であることを確認してください。
+右上方の **[Clone or Download]** をクリックするとポップアップが表示されるので、 **[Download ZIP]** をクリックします。
 
 ![image-20200331115438748](install-potato.assets/image-20200331115438748.png)
 
