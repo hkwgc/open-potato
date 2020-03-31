@@ -36,7 +36,7 @@ Projectの作成が完了すると、メインウィンドウの表示が変わ�
 
 ![image-20200331132303620](install-potato.assets/image-20200331132303620.png)
 
- **Data Import** ダイアログでは **Add file(s)**ボタンをクリックするとファイルが選択できるようになります。
+ **Data Import** ダイアログでは **Add file(s)** ボタンをクリックするとファイルが選択できるようになります。
 
 
 
@@ -65,3 +65,5 @@ Open PoTAToではこのような状態のメインウィンドウをつかって
 
 ![image-20200331140001320](install-potato.assets/image-20200331140001320.png)
 
+[Open PoTAToドキュメントリストへ](index.md)
+`
