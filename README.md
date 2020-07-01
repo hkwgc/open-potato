@@ -8,7 +8,7 @@ Open PoTAToは**fNIRSデータ解析の多彩なツールを統合的に活用**
 
 ##### 関連サイト
 
-- [**アドオンのリンク集**](https://github.com/hkwgc/open-potato-add-on-lists)　プラグインやレシピの入手先のリストです。
+- [**アドオンのリンク集**](https://github.com/hkwgc/open-potato-add-on-lists)　プラグインやレシピの入手先のリストです。各社の読み込みプラグインの入手先もございます。
 - [**ユーザーフォーラム**](https://github.com/hkwgc/open-potato-forum)　ユーザーの交流のサイトです。マニュアルではわからない操作方法の質問などにご利用ください。FAQも掲載しています。
 
 
@@ -54,10 +54,10 @@ Open PoTAToは株式会社日立製作所で開発されたソフトウェアPla
 
 ## メンテナ
 
-[Hiroshi KAWAGUCHI, Ph.D.](https://github.com/hkwgc)
-[Neurorehabilitation Group](https://unit.aist.go.jp/hiiri/nrehrg/index.html)
-[Human Information and Interaction Research Institute](https://unit.aist.go.jp/hiiri/index.html)
-[National Institute of Advanced Industrial Science and Technology(AIST)](https://www.aist.go.jp/)
+[Hiroshi KAWAGUCHI, Ph.D.](https://github.com/hkwgc), 
+[Neurorehabilitation Group](https://unit.aist.go.jp/hiiri/nrehrg/index.html), 
+[Human Information and Interaction Research Institute](https://unit.aist.go.jp/hiiri/index.html), 
+[National Institute of Advanced Industrial Science and Technology(AIST)](https://www.aist.go.jp/),
 Tsukuba, Japan.
 
 
