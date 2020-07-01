@@ -69,8 +69,8 @@ Sutoko et al., "Tutorial on platform for optical topography analysis tools," Neu
 
 ## Maintainer
 
-[Hiroshi KAWAGUCHI, Ph.D.](https://github.com/hkwgc)
-[Neurorehabilitation Group](https://unit.aist.go.jp/hiiri/nrehrg/english/index.html)
-[Human Information and Interaction Research Institute](https://unit.aist.go.jp/hiiri/index-en.html)
-[National Institute of Advanced Industrial Science and Technology(AIST)](https://www.aist.go.jp/index_en.html)
+[Hiroshi KAWAGUCHI, Ph.D.](https://github.com/hkwgc), 
+[Neurorehabilitation Group](https://unit.aist.go.jp/hiiri/nrehrg/english/index.html), 
+[Human Information and Interaction Research Institute](https://unit.aist.go.jp/hiiri/index-en.html), 
+[National Institute of Advanced Industrial Science and Technology(AIST)](https://www.aist.go.jp/index_en.html), 
 Tsukuba, Japan
