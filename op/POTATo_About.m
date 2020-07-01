@@ -133,5 +133,6 @@ h03=h3;
 h04=h4;
 
 function s=subString4VersionMessage
-matlabinfo = ver('MATLAB');
-s=['Platform ver. %s\n (developed on MATLAB ' matlabinfo.Release ')'];
+% matlabinfo = ver('MATLAB');
+% s=['Platform ver. %s\n (developed on MATLAB ' matlabinfo.Release ')'];
+s=['Platform ver. %s\n (developed on MATLAB 2018a-2020a)'];

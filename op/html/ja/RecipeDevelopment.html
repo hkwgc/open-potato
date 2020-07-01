@@ -79,9 +79,18 @@
 	font-weight: bold;
 }
 </style>
-<link rel="stylesheet" href="/Users/kwgc/Desktop/Project_Potato/manuals/doc2md/.\github-markdown.css" type="text/css">
+<link rel="stylesheet" href="file:///Users/kwgc/Desktop/GitHub/op/html/ja/.%5Cgithub-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
 <h1 id="%E8%A7%A3%E6%9E%90%E3%81%AE%E6%8B%A1%E5%BC%B5">解析の拡張</h1>
 <p><em>このドキュメントは校正が済んでいません。貢献頂ける方を歓迎します!</em></p>
 <p><a href="index.md">Open PoTAToドキュメントリストへ</a></p>
@@ -109,8 +118,8 @@
 </ul>
 </li>
 <li><a href="#%E8%A3%9C%E5%8A%A9%E9%96%A2%E6%95%B0">補助関数</a>
-- <a href="#ucdataload%E9%96%A2%E6%95%B0">ucdataload関数</a>
-- <a href="#nanfcn%E9%96%A2%E6%95%B0">nanfcn関数</a>
+- <a href="#uc_dataload%E9%96%A2%E6%95%B0">uc_dataload関数</a>
+- <a href="#nan_fcn%E9%96%A2%E6%95%B0">nan_fcn関数</a>
 - <a href="#uihelp%E9%96%A2%E6%95%B0">uihelp関数</a></li>
 </ul>
 <!-- /TOC -->

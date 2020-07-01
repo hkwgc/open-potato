@@ -18,7 +18,7 @@
 
 Open PoTAToの読み込みプラグインはfNIRS装置のメーカー・ベンダー各社よりご提供いただいております。
 
-読み込みプラグインの一覧は[こちら](https://github.com/hkwgc/open-potato-plugins/list_prepro.md)です。
+読み込みプラグインの一覧は[こちら](https://github.com/hkwgc/open-potato-add-on-lists/blob/master/list-add-on.md#読み込みプラグイン)です。
 
 
 
@@ -68,6 +68,10 @@ Projectの設定が既に完了しており、Open PoTAToのメインウィン�
 ## 問い合わせ
 
 読み込みプラグインに関するご質問はプラグインの作成元にお問い合わせください。
+
+
+
+[Open PoTAToドキュメントリストへ](index.md)
 
 
 

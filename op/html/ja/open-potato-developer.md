@@ -1,6 +1,19 @@
-# Open PoTATo Developper Manual
+# Open PoTATo Developer Manual
 
+<!-- TOC -->
 
+- [Open PoTATo Developer Manual](#open-potato-developer-manual)
+    - [概要](#概要)
+    - [開発環境](#開発環境)
+        - [gitとgithub](#gitとgithub)
+        - [MATLAB](#matlab)
+        - [ドキュメント](#ドキュメント)
+            - [ドキュメント作成用ソフトウェアの紹介](#ドキュメント作成用ソフトウェアの紹介)
+    - [開発方針](#開発方針)
+        - [ブランチ](#ブランチ)
+    - [ご意見・ご質問](#ご意見・ご質問)
+
+<!-- /TOC -->
 
 ## 概要
 
@@ -28,7 +41,7 @@ Open PoTAToの開発や運営に関わるissueはOpen PoTATo本体のリポジ�
 
 アドオンリストには読み込みプラグイン、開発プラグイン、レシピのリストのみを掲載します。
 
-フォーラムにはユーザーからの質問とFAQのみを掲載します。ユーザーからの質問はこのリポジトリのissueに記載していただくこととします。
+フォーラムにはユーザーからの質問とFAQのみを掲載します。ユーザーからの質問はフォーラムのissueに記載していただくこととします。
 
 
 

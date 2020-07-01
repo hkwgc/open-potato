@@ -79,184 +79,224 @@
 	font-weight: bold;
 }
 </style>
-<link rel="stylesheet" href="/Users/kwgc/Desktop/Project_Potato/manuals/doc2md/github-markdown.css" type="text/css">
+<link rel="stylesheet" href="file:///Users/kwgc/Desktop/GitHub/op/html/ja/.%5Cgithub-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
-<h1 id="layout-%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF-%E6%93%8D%E4%BD%9C%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB">Layout エディタ 操作マニュアル</h1>
-<p><em>このドキュメントは校正が済んでいません。貢献頂ける方を歓迎します!</em></p>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="layout%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB">LAYOUTマニュアル</h1>
 <p><a href="index.md">Open PoTAToドキュメントリストへ</a></p>
-<h1 id="%E6%A6%82%E8%A6%81">概要</h1>
-<h2 id="open-potato%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD">Open PoTAToにおける表示機能</h2>
-<p>本書はOpen PoTAToにおける表示について説明します。
-Open Open PoTAToでは以下のような表示機能を備えています。</p>
+<!-- TOC -->
 <ul>
-<li>様々な表示方法を選択可能</li>
-<li>表示された図をインタラクティブに変更可能</li>
-<li>表示方法を変更可能</li>
-<li>表示する内容を拡張可能</li>
+<li><a href="#layout%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB">LAYOUTマニュアル</a></li>
+<li><a href="#%E6%A6%82%E8%A6%81">概要</a>
+<ul>
+<li><a href="#open-potato%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%8F%8F%E7%94%BB%E6%A9%9F%E8%83%BD">Open PoTAToのデータ描画機能</a></li>
+<li><a href="#layout">LAYOUT</a></li>
+<li><a href="#%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E5%86%85%E5%AE%B9">ドキュメントの内容</a></li>
 </ul>
-<h2 id="%E8%A1%A8%E7%A4%BA%E5%87%A6%E7%90%86">表示処理</h2>
-<p>Open PoTAToでは表示内容が記述されたLAYOUTファイルに基づきデータを描画します。このLAYOUTファイルはOpen PoTAToの補助ツールの一つであるLayout Editorを用いて作成，編集します。</p>
-<p>Open PoTAToは作成されたLAYOUTとOpen PoTAToデータを用いて表示を実行します。ここでOpen PoTATo
-データとはOpen PoTAToの解析結果として得られる連続データや区間データおよび要約統計量です。</p>
-<p>Open PoTAToにおける表示処理は以下の流れになります。</p>
+</li>
+<li><a href="#open-potato%E3%81%AE%E6%8F%8F%E7%94%BB%E6%A9%9F%E8%83%BD">Open PoTAToの描画機能</a>
+<ul>
+<li><a href="#%E6%8F%8F%E7%94%BB%E3%81%AE%E5%AE%9F%E8%A1%8C">描画の実行</a></li>
+<li><a href="#%E6%8F%8F%E7%94%BB%E5%86%85%E5%AE%B9%E3%81%AE%E5%A4%89%E6%9B%B4">描画内容の変更</a></li>
+</ul>
+</li>
+<li><a href="#layout-editor%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">Layout Editorの使い方</a>
+<ul>
+<li><a href="#layout%E3%81%AE%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0">LAYOUTの構成要素</a></li>
+<li><a href="#layout%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E6%83%85%E5%A0%B1%E3%81%AE%E5%BC%95%E7%B6%99%E3%81%8E">LAYOUTの構造と情報の引継ぎ</a></li>
+<li><a href="#layout-editor%E6%A6%82%E8%A6%81">Layout Editor概要</a>
+<ul>
+<li><a href="#%E8%B5%B7%E5%8B%95">起動</a></li>
+<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABio">ファイルI/O</a></li>
+<li><a href="#%E3%83%86%E3%82%B9%E3%83%88%E8%A1%A8%E7%A4%BA">テスト表示</a></li>
+</ul>
+</li>
+<li><a href="#layout%E3%83%84%E3%83%AA%E3%83%BC">LAYOUTツリー</a>
+<ul>
+<li><a href="#%E3%83%84%E3%83%AA%E3%83%BC%E3%81%AE%E8%A1%A8%E7%A4%BA">ツリーの表示</a></li>
+<li><a href="#%E3%83%84%E3%83%AA%E3%83%BC%E3%81%AE%E6%93%8D%E4%BD%9C">ツリーの操作</a></li>
+</ul>
+</li>
+<li><a href="#layout-overview">LAYOUT Overview</a></li>
+<li><a href="#figure%E3%81%AE%E8%A8%AD%E5%AE%9A">Figureの設定</a></li>
+<li><a href="#area%E3%81%AE%E8%A8%AD%E5%AE%9A">Areaの設定</a>
+<ul>
+<li><a href="#area%E3%81%AEprimary%E8%A8%AD%E5%AE%9A">AreaのPrimary設定</a></li>
+<li><a href="#area%E3%81%AEvariables%E8%A8%AD%E5%AE%9A">AreaのVariables設定</a></li>
+<li><a href="#area%E3%81%AEothers%E8%A8%AD%E5%AE%9A">AreaのOthers設定</a></li>
+</ul>
+</li>
+<li><a href="#co-control-object">CO: Control-Object</a></li>
+<li><a href="#axis-area%E3%81%AE%E8%A8%AD%E5%AE%9A">Axis-Areaの設定</a></li>
+<li><a href="#aoaxis-object%E8%A8%AD%E5%AE%9A">AO:Axis-Object設定</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="%E6%A6%82%E8%A6%81">概要</h1>
+<h2 id="open-potato%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%8F%8F%E7%94%BB%E6%A9%9F%E8%83%BD">Open PoTAToのデータ描画機能</h2>
+<p>本書はOpen PoTAToにおけるデータの描画機能について説明します。
+Open PoTAToは以下のような表示機能を備えています。</p>
+<ul>
+<li>
+<p>様々な表示方法を選択できます</p>
+</li>
+<li>
+<p>表示された図をインタラクティブに変更できます</p>
+</li>
+<li>
+<p>表示方法を変更できます (中級者以上向け)</p>
+</li>
+</ul>
+<h2 id="layout">LAYOUT</h2>
+<p>Open PoTAToではLAYOUTを使ってデータを描画します。<strong>LAYOUT</strong>とはグラフや画像で表示する内容やそれらの配置を決める仕組みのことです。Open PoTAToではLAYOUTを自由に作成、編集できます。LAYOUTの作成や編集にはLayout Editorを使います。</p>
+<p>Open PoTAToではデータをLAYOUTに従って表示します。ここでデータとはOpen PoTAToの解析結果として得られる連続データや区間データおよび要約統計量です。</p>
+<p>下図はOpen PoTAToにおける描画の処理の流れです。</p>
 <p><img src="LayoutEditor.assets/image-20200326113732530.png" alt="image-20200326113732530"></p>
-<h2 id="%E8%AA%AC%E6%98%8E%E5%86%85%E5%AE%B9">説明内容</h2>
-<p>以下、2章でOpen PoTAToの表示機能として、操作方法とLAYOUTで出来ることを説明します。次に3章でLAYOUTの編集方法を説明します。編集に必要な知識として、LAYOUTの構成要素や変数(curdata)のスコープについても説明します。
-最後に4章でLAYOUTの拡張方法を説明します。ここではFigureの制御を行うCOや、実際のデータの描画を行うAOの作成方法について説明します。</p>
-<h1 id="open-potato%E3%81%AE%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD">Open PoTAToの表示機能</h1>
-<h2 id="open-potato%E3%81%A8%E8%A1%A8%E7%A4%BA%E5%87%A6%E7%90%86">Open PoTAToと表示処理</h2>
-<p>Open PoTAToメイン画面と表示処理の対応を示します。</p>
+<h2 id="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E5%86%85%E5%AE%B9">ドキュメントの内容</h2>
+<p>まず、「Open PoTAToの表示機能」として、操作方法とLAYOUTでできることを説明します。</p>
+<p>次に「LAYOUTの編集方法」を説明します。編集に必要となるLAYOUTの構成要素や変数(curdata)の影響範囲(スコープ)についても説明します。</p>
+<p>最後に「LAYOUTの拡張方法」を説明します。ここではFigureの制御を行うCOや、実際のデータの描画を行うAOの作成方法について説明します。</p>
+<h1 id="open-potato%E3%81%AE%E6%8F%8F%E7%94%BB%E6%A9%9F%E8%83%BD">Open PoTAToの描画機能</h1>
+<h2 id="%E6%8F%8F%E7%94%BB%E3%81%AE%E5%AE%9F%E8%A1%8C">描画の実行</h2>
+<p>Open PoTAToメイン画面から描画するまでの流れを説明します。</p>
 <p><img src="LayoutEditor.assets/image-20200326113802423.png" alt="image-20200326113802423"></p>
-<p>解析領域(A)で、表示する解析データを選択し、解析方法の編集を行います。解析方法は目的により異なります。</p>
-<p>表示方法としてLAYOUTをポップアップメニュー(B)から選びます。選択中のLAYOUTを編集したい場合はEditボタン(C)を押します。</p>
-<p>最後にDrawボタン(D)を実施すると、(A)で指定した解析に従いOpen PoTAToデータが作成され、(B)のLAYOUTに従い描画処理が実行されます。</p>
-<h2 id="%E7%89%B9%E5%BE%B4">特徴</h2>
-<p>Open PoTAToではデフォルトで数十個のLAYOUTを用意しています。また、描画した図に対してチャンネルやデータの種類等を変更するための制御するものがあります。</p>
+<p>描画の前段階として、解析領域(A)で、表示する解析データを選択しましょう。また、解析手順を適切に編集しましょう。</p>
+<p>描画処理を表示するにはLAYOUTをポップアップメニュー(B)から選びます。Open PoTAToではデフォルトで多くのLAYOUTを用意しています。</p>
+<p>次にDrawボタン(D)を押すと、(A)で指定した解析に従いOpen PoTAToデータが作成され、(B)のLAYOUTに従ってデータが描画されます。</p>
+<p>また、LAYOUTを編集したい場合はEditボタン(C)を押します。ここで編集できるLAYOUTは(B)で選択しているものです。</p>
+<h2 id="%E6%8F%8F%E7%94%BB%E5%86%85%E5%AE%B9%E3%81%AE%E5%A4%89%E6%9B%B4">描画内容の変更</h2>
+<p>描画した図のチャンネルやデータの種類等を変更することができます。</p>
+<p>描画内容は、ポップアップメニューやリストボックスで制御パーツを使って変更できます。それぞれの制御パーツはグラフや画像などの描画パーツと関連付けられています。</p>
+<p>下図の2つのグラフ(D1), (D2)の描画内容を制御パーツを使って変更する例を説明します。データの種類を制御するリストボックス(A)は(D1)および(D2)に関連付けられていますので、この制御パーツを使うと2つの図を同時に変更できます。一方、チャンネル番号を制御するポップアップメニュー(B)と(C)はそれぞれその上部にあるグラフのみに関連付けられています。つまり、(B)を操作すると(D1)のみが書き換えられ、(C)を操作すると(D2)のみが書き換えられます。</p>
+<p>これらの関連付けはLAYOUTの設定で決められています。LAYOUTの設定を編集するにはLayout Editorを使います。</p>
 <p><img src="LayoutEditor.assets/image-20200326113835203.png" alt="image-20200326113835203"></p>
-<p>この時、制御には影響範囲があります。</p>
-<p>例えば上図の描画結果と制御の範囲を考えます。図中のデータの種類を制御するリストボックス(A)は(D1)および(D1)を書き換えます。また、チャンネル番号を制御するポップアップメニュー(B)は(D1)のみ書き換え、ポップアップメニュー(C)は(D２)のみ書き換えます。</p>
-<p>LAYOUTは3章で説明するLayout Editorを使い、追加・編集可能です。また、図の制御や表示物を追加し、機能を拡張することが出来ます。</p>
-<p>これらの特徴を可能にするため、Layoutは様々な構成物の組み合わせで示されます。構成物を組み合わせることにより、様々なLayoutが作成でき、編集可能になります。</p>
-<p>Layout構成物には、制御する影響範囲を示す描画領域(Area)が存在します。Areaは親子関係を持ち、親が変更されると子も影響を受けます。例えば図2.2の場合、(B),、(C),が属するAreaは(A),が属するAreaの子になります。</p>
-<p>また、構成物の制御を行う（CO）や描画を行う(AO)が存在します。これらは追加することが可能です。</p>
 <h1 id="layout-editor%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">Layout Editorの使い方</h1>
+<p>Layout Editorを使うと、LAYOUTを編集したり、追加したりできます。例えば、既存のLAYOUTを編集し、制御パーツや描画パーツを追加し、機能を拡張することができます。</p>
 <h2 id="layout%E3%81%AE%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0">LAYOUTの構成要素</h2>
-<p>最初に編集する対象となるLayoutの構造を示します。</p>
-<p>LayoutはFigure, Area、Axis-Areaおよび,CO、AOの5つの構成要素からなります。</p>
-<p>FigureはMATLABのfigureのプロパティを書き換えます。FigureにはAreaやAxis-Areaを含みます。</p>
-<p>Areaは表示物を記載する領域で、描画の実態は持ちません。制御を行うためのLayout構成物COや、AreaやAxis-Areaを含みます。Axis-AreaはMATLAB,のaxesを描画します。またAxes内に描画するためのLayout構成物、AOを含みます。</p>
-<p>COはMATLABのuicontrolやuimenuなどを描画します。これらのGUIにより、描画した図に対してチャンネルやデータの種類等を変更します。COには設定・描画・制御のための処理が含まれます。
-AOはAxis内にLineやImageを描画します。AOはこれらの設定・描画・再描画のための処理が含まれます。</p>
-<h2 id="layout%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%BC%95%E7%B6%99%E3%81%8E">LAYOUTの構造とデータの引継ぎ</h2>
-<p>LAYOUTはFigureをルートとし、Area, Axis-Areaをリーフとする木構造で出来ています。具体的にFigure,Aｒｅａ、Axis-AreaのLAYOUTの構成要素は親子関係をもち、1つの親に対して0個以上の子が存在します。最初の親はFigureで、子どもにはArea/Axis-Areaを持つことができます。AreaはArea自身およびAxis-Areaを子に持つことができ、Axis-Areaは子を持ちません。</p>
-<p>また、Areaは構成物としてCOを、Axis-Areaは構成物としてAOを持ちます。この関係をクラス図で表すと以下のようになります。</p>
+<p>LAYOUTは<strong>Figure</strong>、<strong>Area</strong>、<strong>Axis-Area</strong>および制御オブジェクト(Control object: <strong>CO</strong>)、描画オブジェクト(Axis Object：<strong>AO</strong>)の5つの要素から構成されています。これらの構成要素を組み合わせることで、LAYOUTに様々な描画機能を持たせることができます。</p>
+<ul>
+<li>
+<p>FigureはMATLABのfigureのプロパティを書き換えます。FigureはAreaやAxis-Areaと関連付けられています。</p>
+</li>
+<li>
+<p>Areaは制御パーツや描画パーツを描画する範囲のことです。Areaそのものは描画されません。Areaには別のArea、Axis-Area、制御を行うためのLayout構成物COが関連付けられています。</p>
+</li>
+<li>
+<p>Axis-AreaはMATLAB,のaxesを描画します。</p>
+</li>
+<li>
+<p>COはMATLABのGUIパーツ(uicontrolやuimenuなど)を描画するためのオブジェクトです。これらのGUIパーツを使って、描画した図に対してチャンネルやデータの種類等を変更するための情報や処理を持っています。</p>
+</li>
+<li>
+<p>AOはAxis-Area内にLineやImageを描画します。AOはこれらの設定・描画・再描画のための処理が含まれます。</p>
+</li>
+</ul>
+<p>LAYOUTの構成物には親子関係があります。親の情報が変更されると子も影響を受けます。LAYOUTの構成要素のうち、Figure、Area、Axis-Areaは親子関係をもち、1つの親には0個以上の子が存在します。Figureは必ず親となり、子にはArea/Axis-Areaを持つことができます。Areaは別のAreaおよびAxis-Areaを子に持つことができます。Axis-Areaは子を持ちません。</p>
+<p>また、AreaにはCOが関連付けられています。Axis-AreaにはAOが関連付けられています。</p>
+<h2 id="layout%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E6%83%85%E5%A0%B1%E3%81%AE%E5%BC%95%E7%B6%99%E3%81%8E">LAYOUTの構造と情報の引継ぎ</h2>
+<p>LAYOUTの構成要素のうち、Figure、Area、Axis-Areaの親子関係をもち、1つの親に対して0個以上の子が存在します。Figureは必ず親となり、子にはAreaもしくはAxis-Areaを持つことができます。Areaは別のAreaおよびAxis-Areaを子に持つことができます。Axis-Areaは子を持ちません。</p>
+<p>また、AreaにはCOが関連付けられています。Axis-AreaにはAOが関連付けられています。この関係をクラス図で表すと以下のようになります。</p>
 <p><img src="LayoutEditor.assets/image-20200326114039625.png" alt="image-20200326114039625"></p>
-<p>これらの親子関係は描画実施時のデータの引継ぎ方法に深く関係します。描画時を考えると、描画するチャンネルやデータの種類、線の色など、描画のための様々なデータがあります。これらのデータはcurdata(current-data)構造体にまとめて保存・管理されます。curdataは全ての構成要素が持っており、親から子へ引き継がれます。また子や兄弟から変更されません。</p>
-<p>COは所属するAreaのcurdataに従って初期設定されます。ただしCOにcurdataの初期値が設定されている場合、そのAreaのcurdataを書き換えます。</p>
-<p>AOは所属するAreaのcurdataに従って描画されます。先祖にCOが居る場合、描画後、COのCallbackによりcurdataは書き換えられることがあります。</p>
-<p>データの影響範囲について、図3.2Layoutのオブジェクト図を例に説明します。</p>
+<p>これらの親子関係は描画実行時の情報の引継ぎ方法に深く関係しています。描画時には、描画するチャンネル、データの種類、線の色など、描画のための様々な情報があります。これらの情報はcurdata(current-data)構造体にまとめて保存してあり、管理されています。curdataはLAYOUTに含まれる全ての構成要素が持っており、親から子へ引き継がれます。つまり、子や兄弟からは変更されません。</p>
+<p>COは関連付けられているAreaのcurdataに従って設定されます。ただし、COで個別にcurdataを設定してある場合には、そのAreaのcurdataが書き換えられます。</p>
+<p>AOは関連付けられているAreaのcurdataに従って描画されます。先祖にCOが関連付けられている場合、描画後にCOのCallbackによりcurdataは書き換えられます。</p>
+<p>データの影響範囲について、下のLayoutのオブジェクト図を例に説明します。</p>
 <p><img src="LayoutEditor.assets/image-20200326114126942.png" alt="image-20200326114126942"></p>
-<p>例にあるLayoutを描画するとき、layout:Figureでcurdataが作成されます。layoutの子、a1,a2には同じcurdataが渡ります。</p>
+<p>例にあるLAYOUTを描画するとき、layout:Figureでcurdataが作成されます。layoutの子、a1,a2には同じcurdataが引き継がれます。</p>
 <p>a1ではチャンネル設定を行うcoが存在し、curdataのチャンネル値を変更します。この時、a2のcurdataは変更されませんが、その子、a11,a12,a13には変更されたチャンネル値が引き継がれます。</p>
 <p>a11にはkindを設定するCOが存在し、curdataのkindを変更します。この結果はイメージ図:AOに引き継がれます。
 描画完了後、a1に属するチャンネルCOにより再描画が実施される場合、a1の子孫であるイメージ図、周波数表示、ライン表示、刺激表示が再描画されます。</p>
 <p>イメージ図を再描画する際、イメージ図が持つcurdataのうち、チャンネル値のみが更新されイメージが再描画されます。</p>
 <p>a12に属するkind設定COにより再描画される場合は、イメージ図のみが再描画されます。この時、イメージ図が持つcurdataのうちkindのみが更新されイメージが再描画されます。</p>
 <h2 id="layout-editor%E6%A6%82%E8%A6%81">Layout Editor概要</h2>
-<h3 id="%E6%A6%82%E8%A6%81">概要</h3>
-<p>Layout Editorは2つの画面を用いてLayoutを編集します。最初の画面はLayout Editorメイン画面です。ここで基本的なレイアウトの編集を行います。</p>
+<p>Layout Editorは2つの画面を用いてLAYOUTを編集します。</p>
+<p>１つ目の画面は<strong>Layout Editorメイン画面</strong>です。ここで基本的なレイアウトの編集を行います。左側にLAYOUTツリー、右側に選択中の構成要素のプロパティが表示されます。</p>
 <p><img src="LayoutEditor.assets/image-20200326114243744.png" alt="image-20200326114243744"></p>
-<p>もうひとつの画面はLayoutOverview画面です。ここではメイン画面だけではイメージしにくい概略図の確認を行います。また、配置の調整を行うことも可能です。</p>
+<p>2つ目の画面は<strong>Layout Overview画面で</strong>す。ここではメイン画面だけではイメージしにくい概略図の確認を行います。また、構成要素の配置を調整できます。</p>
 <p><img src="LayoutEditor.assets/image-20200326114256210.png" alt="image-20200326114256210"></p>
 <h3 id="%E8%B5%B7%E5%8B%95">起動</h3>
-<p>Layout Editorの起動方法を説明します。</p>
+<p>Layout Editorを起動するには2つの方法があります。</p>
+<p>LAYOUTを新規作成する場合や編集したいLAYOUTを手動で選択する場合、メニューからLayout Editorを起動します。この時、Open PoTAToメインウィンドウのツールメニューからLayout Editor(A)を選択してください。</p>
+<p>Open PoTAToで管理しているLAYOUTを編集する場合、Editボタン(C)を押下します。このときは、ポップアップメニュー(B)で選択されているLAYOUTを編集できます。</p>
 <p><img src="LayoutEditor.assets/image-20200326114439942.png" alt="image-20200326114439942"></p>
-<p>新にLayoutを作成する場合やLayoutファイルを手動で選択する場合、メニューからLayout Editorを起動します。この時、Open PoTAToメインウィンドウのツールメニューからLayout Editor(A)を選択してください。</p>
-<p>Open PoTAToで管理しているLayoutを編集する場合、LayoutEditボタン(C)を押下します。そうするとLAYOUTポップアップメニュー(B)で選択されているLayoutを編集します。</p>
 <h3 id="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABio">ファイルI/O</h3>
-<p>LayoutEditorが起動するとメイン画面にはFileメニューが存在します。Fileメニューは、LAYOUTファイルの操作として、New・Open等の基本的な処理を提供します。Fileメニューの一覧を下表に示します。</p>
-<table>
-<thead>
-<tr>
-<th>ファイルメニュー</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>New</td>
-<td>新規にLAYOUTを作成する</td>
-</tr>
-<tr>
-<td>Open</td>
-<td>既存LAYOUTのオープン</td>
-</tr>
-<tr>
-<td>Save</td>
-<td>編集LAYOUTの保存</td>
-</tr>
-<tr>
-<td>SaveAs</td>
-<td>編集LAYOUTを別名で保存</td>
-</tr>
-<tr>
-<td>Close</td>
-<td>LAYOUTのクローズ</td>
-</tr>
-</tbody>
-</table>
+<p>Layout Editorが起動するとメイン画面にはFileメニューが存在します。Fileメニューの機能の一覧を下表に示します。</p>
 <h3 id="%E3%83%86%E3%82%B9%E3%83%88%E8%A1%A8%E7%A4%BA">テスト表示</h3>
-<p>作成したLAYOUTの表示結果を手早くみたい場合はメイン画面にあるTestDrawメニューを選択します。そうするとこのLAYOUTを用いてサンプルデータの表示が行われます。</p>
-<p>なお、サンプルデータは小さなデータで多くの情報が欠落しています。そのため、一部のAOでは期待した値が表示されないことがあります。サンプルデータを変更したい場合は</p>
+<p>編集中のLAYOUTの描画を手早く確認したい場合には、Layout Editorメイン画面にあるTest Drawメニューを選択します。編集中のLAYOUTを用いてサンプルデータが描画されます。</p>
+<p>なお、サンプルデータは小さなデータで多くの情報が含まれていません。そのため、一部のAOでは期待した値が表示されないことがあります。サンプルデータを変更したい場合は</p>
 <p>LayoutEdit\TestData\data0.mat</p>
 <p>を変更してください。</p>
 <h2 id="layout%E3%83%84%E3%83%AA%E3%83%BC">LAYOUTツリー</h2>
-<h3 id="layout%E3%83%84%E3%83%AA%E3%83%BC%E3%81%AE%E8%A1%A8%E7%A4%BA">LAYOUTツリーの表示</h3>
+<h3 id="%E3%83%84%E3%83%AA%E3%83%BC%E3%81%AE%E8%A1%A8%E7%A4%BA">ツリーの表示</h3>
 <p>LayoutはFigure, Area, Axis-Areaおよび,CO、AOの5つの構成要素からなります。また、LAYOUTはFigureをルートとし、Area,Axis-Areaをリーフとする木構造で出来ています。</p>
 <p><img src="LayoutEditor.assets/image-20200326115046633.png" alt="image-20200326115046633"></p>
-<p>これをテキストで表現したものが、Layoutツリーリストボックス(A)に示されています。</p>
-<p>Figureは先頭に１つのみ存在し、Layout名を表示しています。右図では”Lineplot”がLayout名です。Figureの子であるAreaやAxis-Areaはひとつ下の階層で示されます。</p>
-<p>Areaは[+]、[-]または[]で始まる文字列で示されます。図では”[-]CallbackTime&amp;Image”や”[-]ChannelGroupC8”等がAreaです。</p>
-<p>Areaを構成するCOは”*”で始まる文字列で示されます。</p>
-<p>図では”*StimAreaMenu”等がCOです。</p>
-<p>Axis-Areaは{+}、{-}または{}で始まる文字列で示されます。図では”{-}setting”等がAxis-Area
-です。
-Axis-Areaを構成するAOは”&gt;”で始まる文字列で示されます。図では”&gt;Script”等がAOです。</p>
+<p>これを文字列で表現したものが、Layoutツリーリストボックス(A)に示されています。Layoutツリーリストボックスには左から順に構成要素の親子関係が階層で表されています。</p>
+<p>Figureは最上段に1つだけあり、LAYOUT名で表示されています。この図では”Line plot”がLAYOUT名です。</p>
+<p>Figureの子であるAreaやAxis-AreaはFigureよりもひとつ下の階層で示されます。Areaは[+]、[-]または[]で始まる文字列で表示されています。図では”[-]Callback Time &amp; Image”や”[-]Channel Group C8”等がAreaです。</p>
+<p>Axis-Areaは{+}、{-}または{}で始まる文字列で示されます。図では”{-}setting”等がAxis-Areaです。</p>
 <p>AreaやAxis-Areaはダブルクリックすることによって展開、もしくは折りたたむことができます。Areaの場合、展開表示されている場合は“[-]“、折りたたまれている場合は”[+]”と表示され、子がない場合は”[]”と表示されます。</p>
-<h3 id="%E3%83%84%E3%83%AA%E3%83%BC%E6%93%8D%E4%BD%9C">ツリー操作</h3>
-<p>LAYOUTツリーは操作ボタン(A)もしくは、リストボックスを右クリックした際に開くコンテキストメニュー(B)を実行することで以下の操作が可能です。</p>
+<p>Areaに関連付けられているCOは”※”で始まる文字列で表示されています。図では”※StimAreaMenu”等がCOです。</p>
+<p>Axis-Areaに関連付けられているAOは”&gt;”で始まる文字列で示されます。図では”&gt;Script”等がAOです。</p>
+<h3 id="%E3%83%84%E3%83%AA%E3%83%BC%E3%81%AE%E6%93%8D%E4%BD%9C">ツリーの操作</h3>
+<p>Layoutツリーを編集するには、操作ボタン(A)と右クリックした際に開くコンテキストメニュー(B)で操作します。パソコンでファイルを扱うときのようにカット＆ペーストやコピーなどができます。<u>ただし、Undo(一つ前の操作を取り消して元にもどす)はできません。</u></p>
 <p><img src="LayoutEditor.assets/image-20200326115455833.png" alt="image-20200326115455833"></p>
-<p>カットボタン、もしくは切り取りメニューにより選択中の構成要素をカットできます。選択した構成要素に付随する構成要素（子やCO,AOなど）があれば併せてカットされます。</p>
-<p>コピーボタン、もしくはコピーメニューにより選択中の構成要素をコピーできます。選択した構成要素に付随する構成要素（子やCO,AOなど）があれば併せてコピーされます。</p>
-<p>ペーストボタンもしくは貼り付けメニューによりコピーもしくはカットにて保存されたデータを貼り付けます。
-削除ボタン、もしくはDeleteメニューにより選択中の構成要素を削除できます。選択した構成要素に付随する構成要素（子やCO,AOなど）があれば併せて削除されます。</p>
-<p>UPボタンもしくはUPメニューにより選択中の構成要素を上に移動します。移動は同一エリア内に限りますので、他のエリアへ移動する場合はカット＆ペーストを利用ください。DownボタンもしくはDownメニューにより選択中の構成要素を下に移動します。移動は同一エリア内に限りますので、他のエリアへ移動する場合はカット＆ペーストを利用くだ
-さい。</p>
+<p>まず、編集したい構成要素をマウスクリックで選択します。選択中の構成要素は網掛けで表示されます。</p>
+<p>「カットボタン」や「切り取りメニュー」を使うと、選択中の構成要素をカットできます。選択した構成要素に付随する構成要素（子やCO,AOなど）があれば併せてカットされます。</p>
+<p>「コピーボタン」や「コピーメニュー」を使うと、選択中の構成要素をコピーできます。選択した構成要素に付随する構成要素（子やCO,AOなど）があれば併せてコピーされます。</p>
+<p>「ペーストボタン」や「貼り付けメニュー」を使うと、コピーもしくはカットにて保存されたデータを貼り付けます。</p>
+<p>「削除ボタン」や「Deleteメニュー」を使うと、選択中の構成要素を削除できます。選択した構成要素に付随する構成要素（子やCO,AOなど）があれば併せて削除されます。</p>
+<p>「Upボタン」もしくは「Upメニュー」により選択中の構成要素を上に移動します。</p>
+<p>「Downボタン」もしくは「Downメニュー」により選択中の構成要素を下に移動します。</p>
+<p>移動は同じ階層内に限ります。他の階層へ移動するにはカット＆ペーストを利用ください。</p>
 <h2 id="layout-overview">LAYOUT Overview</h2>
-<p>LAYOUT Overviewは描画後のFigureの確認のため、概略図を示します。また構成物の位置の変更を行います。
-選択中の構成要素は赤い線で示されます。</p>
-<p>選択中の構成要素の親となるAreaが青い点線で示され、内部は薄い青色で塗られます。ただし、親がFigureの場合は白色になります。</p>
-<p>親Area内のCOは緑色の点線で示され、内部は薄い緑色で示されます。</p>
-<p>親Area内のArea、Axis-Areaは青い点線で示されます。またAOはAxis-Area内部をベージュ色にすることで示されます。</p>
-<p>サンプルを図で示します</p>
+<p>Layoutツリーで構成要素を選択すると、その構成要素に関わるものをLAYOUT Overview画面で確認できます。また、LAYOUT Overview画面では構成要素の位置を変更することもできます。</p>
+<p>Layoutツリーで構成要素を選択すると、選択されたものはLAYOUT Overview画面で赤い線で囲まれます。選択中の構成要素を移動するには枠をドラッグします。また、サイズを変更するには右下隅をドラッグします。</p>
+<p>また、選択中の構成要素に関わる親や兄弟も図示されます。選択中の構成要素の親となるAreaは薄い青で塗られ、青い点線で囲まれた最も広い範囲のものです。親Area内では、AreaとAxis-Areaは青い点線で、COは薄い緑色で塗られた緑色の点線で囲まれます。また、Axis-AreaにAOが関連付けられているときにはAxis-Areaの内部がベージュで塗られます。</p>
 <p><img src="LayoutEditor.assets/image-20200326115606658.png" alt="image-20200326115606658"></p>
-<p>選択中の構成物は枠をドラッグすることにより移動できます。また、右隅をドラッグすることでサイズを変更できます。</p>
 <h2 id="figure%E3%81%AE%E8%A8%AD%E5%AE%9A">Figureの設定</h2>
-<p>Layoutの先頭には必ずFigureが入ります。Figureは子としてAreaおよびAxis-Areaを持てます。
-FigureではLAYOUT名、Figureのサイズ、色を設定できます。
-Name(A)はレイアウト選択ポップアップメニューのレイアウト名として使われます。また、Figure
-のNameプロパティに設定されます。
-Position(B)はFigureの位置を示します。位置の単位系は’Normalized’で、左、下、幅、高さの４つのデータで設定します。
-Color(C)はFigureの背景色になります。値の設定にはuisetcolor関数が参考になります。
-Figureの子の追加はポップアップメニュー(D)からAreaもしくはAxis-Areaを選択し,Addボタン(E)を押してください。</p>
+<p>Layoutの先頭は必ずFigureです。Figureの子はAreaおよびAxis-Areaです。Figureの子を追加するときは、ポップアップメニュー(D)からAreaもしくはAxis-Areaを選択し、Addボタン(E)を押してください。</p>
+<p>LayoutツリーでFigureを選択すると、FigureのLAYOUT名、Figureのサイズ、色を設定できます。</p>
+<ul>
+<li>Name(A)はレイアウト選択ポップアップメニューのレイアウト名として使われます。また、FigureのNameプロパティに設定されます。</li>
+<li>Position(B)はFigureの位置を示します。Positionの座標系はディスプレイの左下を[0,0]、右上を[1, 1]としています。左から順に「左、下、幅、高さ」の4つの値で設定します。このような座標系をMATLABでは&quot;Normalized&quot;と呼びます。</li>
+<li>Color(C)はFigureの背景色です。背景色は加色法で規定され、左から順に「赤、緑、青」の3つの値を0~1の範囲で示しています。値の設定にはuisetcolor関数が参考になります。</li>
+</ul>
 <p><img src="LayoutEditor.assets/image-20200326115646471.png" alt="image-20200326115646471"></p>
 <h2 id="area%E3%81%AE%E8%A8%AD%E5%AE%9A">Areaの設定</h2>
-<p>AｒｅａはFigureもしくはAreaの子として作成され、子としてAreaおよびAxis-Areaを持てます。また構成物としてCOを持てます。
-これらを追加するにはポップアップメニュー(A)からarea,axis,specialcontrolを選択し、Addボタン(B)を押してください。なお、specialcontrolは一部のCOを除くCOです。
-Areaの設定にはPrimary,Variables,Othersの３つの設定があります。
-PrimaryはAreaの配置や位置を設定します。
-またVariableでは良く使われるCOとして、データの選択、チャンネルの選択、データの種類の選択に関するCOの設定を行います。
-Othersではその他のcurdataの変更を行います。</p>
+<p>AreaはFigureもしくはAreaの子として作成されます。</p>
+<p>LayoutツリーでAreaを選択すると、Areaのプロパティを編集できます。</p>
+<p>Areaの子はAreaおよびAxis-Areaです。また、オブジェクトとしてCOを関連付けられます。これらを追加するにはポップアップメニュー(A)からarea, axis, specialcontrolのいずれかを選択し、Addボタン(B)を押してください。なお、special controlは一部のCOを除くCOです。</p>
 <p><img src="LayoutEditor.assets/image-20200326115700155.png" alt="image-20200326115700155"></p>
+<p>AreaのプロパティはPrimary, Variables, Othersの3つに大別されています。</p>
+<p>PrimaryはAreaの配置や位置を設定します。Variableでは良く使われるCOとして、データの選択、チャンネルの選択、データの種類の選択に関するCOを設定できます。Othersではその他のcurdataを変更できます。</p>
 <h3 id="area%E3%81%AEprimary%E8%A8%AD%E5%AE%9A">AreaのPrimary設定</h3>
 <p>AreaのPrimary設定ではAreaの基本的な設定を行います。</p>
-<p>最初に配置方法リストボックス(A)で通常の”SimpleArea”か”ChannelOrderArea”を選びます。SimpleAreaは通常のAreaで、”ChannelOrderArea”はAreaの子の部分をチャンネル数分コピーし、作成・配置します。</p>
-<p>このとき配置方法をリストボックス(B)から選びます。配置方法は通常“Normal”を選びますが、”Array(Square)”により配列のように並べることも可能です。</p>
-<p>またAreaの名前をName(C)に指定します。位置は親からみた相対位置(D)もしくはFigure上での絶
-対位置(E)を”normalized”単位で指定します。</p>
-<p>またArea内の以降の線に関するプロパティ設定を行いたい場合はLinePropertyチェックボックス(F)を有効にします。なお、LinePropertyはcurdataとして渡されるため、上書きされる場合があります。</p>
+<p>最初に配置方法リストボックス(A)で”Simple Area”もしくは”Channel Order Area”かを選びます。&quot;Simple Area&quot;と”Channel Order Area”の違いは、Areaの子の生成方法です。”Channel Order Area”ではAreaの子をチャンネルの数だけコピーして作成し、Area内に並べて配置します。</p>
+<p>”Channel Order Area”を選択するとリストボックス(B)が表示されます。このリストボックス(B)から配置方法を選びます。配置方法は“Normal”を選ぶとOpen PoTAToデータの規定にしたがって表示されます。”Array (Square)”を選ぶと規定を無視して、配列のように順に並べることもできます。</p>
+<p>Areaの名前はName(C)で指定します。この名前がツリーに表示されます。</p>
+<p>(D)と(E)はAreaの表示位置を示しています。(D)は親からみた相対位置です。(E)はFigure上での絶対位置です。一方を編集すると、他方は自動的に更新されます。LAYOUT Overview画面でドラックでサイズや位置を変更するとこれらの値も自動的に更新されます。座標系(D)は親を(E)はFigureを基準に設定します。基準の左下を[0,0]、右上を[1, 1]として、左から順に「左、下、幅、高さ」の4つの値で設定します。</p>
+<p>またArea内のグラフなどの線に関するプロパティ設定をするには、Line Propertyチェックボックス(F)をONにします。ONにすると、線の色や太さを変更することができます。この情報はcurdataとして渡されるため、構成要素ごとに個別のプロパティが設定されている場合はで上書きされます。</p>
 <p><img src="LayoutEditor.assets/image-20200326115715410.png" alt="image-20200326115715410"></p>
 <h3 id="area%E3%81%AEvariables%E8%A8%AD%E5%AE%9A">AreaのVariables設定</h3>
-<p>Variableでは良く使われるCOとして、データの選択、チャンネルの選択、データの種類の選択に関するCOの設定を行います。</p>
+<p>Variableでは良く使われるCOとして、データの選択、チャンネルの選択、データの種類の選択に関するCOの設定ができます。</p>
 <p>最初にAreaのVariableトグルボタンを押下状態にします。</p>
 <p>Variable設定では各行にCOの種類が、列に設定値が表示されます。</p>
-<p>COの種類は左の文字列(A)に記載されています。文字列の右側にあるチェックボックス(B)でCOの有効/無効を設定します。</p>
-<p>有効にしたあと、GUIの表示スタイル(C)を選択します。デフォルトは”None”です。”None”の場合はCOを作成せず、描画時にcurdataを変更します。</p>
-<p>“None”以外のスタイルが設定されると、COが有効になり、LAYOUTツリーに追加されます。また、位置を持つスタイルが選択されると相対位置の入力ボックス(D)が表示されますので、所属するArea内での相対位置を記載します。最後に初期値をSetボタン(E)で設定します。</p>
+<p>COの種類は左の文字列(A)に記載されています。文字列の右側にあるチェックボックス(B)でCOの有効/無効を設定します。有効にすると、設定値を編集できます。</p>
+<p>(C)ではGUIの表示スタイルを選択します。デフォルトは”None”です。”None”の場合はCOを作成せず、描画時にcurdataを変更します。“None”以外のスタイルが設定されると、COが有効になり、LAYOUTツリーに追加されます。</p>
+<p>また、位置を持つスタイルが選択されると相対位置の入力ボックス(D)が表示されます。ここには、関連付けられたArea内での相対位置を記載します。最後にSetボタン(E)で設定します。</p>
 <p><img src="LayoutEditor.assets/image-20200326115735511.png" alt="image-20200326115735511"></p>
 <h3 id="area%E3%81%AEothers%E8%A8%AD%E5%AE%9A">AreaのOthers設定</h3>
-<p>AreaのOthersトグルボタンを押下状態にするとスクリプトの設定画面が開きます。ここでは、スクリプトを実行することにより、詳細な設定を行います。スクリプトで利用/変更できる変数はcurdata構造体です。curdata構造体のフィールドは任意に追加できますが、主要なフィールドは以下の通りです。</p>
+<p>AreaのOthersトグルボタンを押下状態にするとスクリプトの設定画面が開きます。ここでは、スクリプトを実行することにより、詳細な設定を行います。スクリプトで利用/変更できる変数はcurdata構造体です。curdata構造体のフィールドは任意に追加できます。主要なフィールドは以下の通りです。</p>
 <table>
 <thead>
 <tr>
@@ -323,1095 +363,29 @@ Othersではその他のcurdataの変更を行います。</p>
 </tr>
 </tbody>
 </table>
-<p>次のようなレイアウトを例にスクリプト作成例を示します。</p>
+<p>次のようなレイアウトを例にスクリプト作成例を示します。Area &quot;Callback TIme Image&quot; のスクリプトに”curdata.foovar=10”と記述しています。</p>
 <p><img src="LayoutEditor.assets/image-20200326120821249.png" alt="image-20200326120821249"></p>
-<p>Area,A1のスクリプトに”curdata.foovar=10”と記述します。</p>
-<p>このとき、A1の子孫であるAA11とそのScript、AA12とそのScriptにcurdata.foovarの値が引き継がれます。</p>
-<p>またA1の子ではないA2ではcurdata.foovarは存在しません。</p>
 <h2 id="co-control-object">CO: Control-Object</h2>
-<p>COはAreaの構成物として作成され、子を持ちません。
-COをLayoutツリーで選択すると編集画面が表示されます。
-編集画面では、COの位置と固有のパラメータを設定します。
-位置は親からみた相対位置(A)もしくはFigure上での絶対位置(B)を”normalized”単位で指定します。
-設定したCO固有パラメータはリストボックス(C)に表示さますが、変更したい場合はModifyボタン(D)を押します。</p>
+<p>COはAreaに関連付けられるオブジェクトとして作成され、子を持ちません。</p>
+<p>COをLayoutツリーで選択すると編集画面が表示されます。</p>
+<p>編集画面では、COの位置と固有のプロパティを設定します。</p>
+<p>(A)と(B)はそれぞれ親からみた相対位置とFigure上での絶対位置です。詳細はAreaのPrimary設定と同様です。</p>
+<p>COに固有の値はリストボックス(C)に表示されます。これらを変更するにはModifyボタン(D)を押します。</p>
 <p><img src="LayoutEditor.assets/image-20200326120906448.png" alt="image-20200326120906448"></p>
 <h2 id="axis-area%E3%81%AE%E8%A8%AD%E5%AE%9A">Axis-Areaの設定</h2>
-<p>Axis-AreaはFigureもしくはAreaの子として作成されます。子は持ちませんが、構成物としてAOを持ちます。</p>
-<p>Axis－Areaの設定は名称と位置のみです。
-Axis-Areaの名称はエディットテキスト(A)に記入します。位置は親からみた相対位置(B)もしくはFigure上での絶
-対位置(C)を”normalized”単位で指定します。</p>
+<p>Axis-AreaはFigureもしくはAreaの子として作成されます。子は持ちませんが、関連付けられるオブジェクトとしてAOを持ちます。</p>
+<p>(A)はAxis-Areaの名称です。</p>
+<p>(B)と(C)はそれぞれ親からみた相対位置とFigure上での絶対位置です。詳細はAreaのPrimary設定と同様です。</p>
 <p><img src="LayoutEditor.assets/image-20200326121025516.png" alt="image-20200326121025516"></p>
 <p>Axis内にAOを追加するには、画面左下のAOポップアップメニュー(A)からAOを選択し、Addボタン(B)を押してください。</p>
 <p><img src="LayoutEditor.assets/image-20200326121042768.png" alt="image-20200326121042768"></p>
 <h2 id="aoaxis-object%E8%A8%AD%E5%AE%9A">AO:Axis-Object設定</h2>
-<p>AOはAreaの構成物として作成され、子を持ちません.
-AOをLayoutツリーで選択すると編集画面が表示されます。
-編集画面では、AOの固有のパラメータを設定します。設定済みのAO固有パラメータがリストボックス(A)に表
-示さます。この値を、変更したい場合、Modifyボタン(B)を押します。</p>
+<p>AOはAreaに関連付けられるオブジェクトとして作成され、子を持ちません。</p>
+<p>AOをLayoutツリーで選択すると編集画面が表示されます。</p>
+<p>編集画面では、AOの固有のパラメータを設定します。設定済みのAO固有パラメータがリストボックス(A)に表示されます。この値を、変更したい場合、Modifyボタン(B)を押します。</p>
 <p><img src="LayoutEditor.assets/image-20200326121107631.png" alt="image-20200326121107631"></p>
-<h1 id="%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD%E6%8B%A1%E5%BC%B5">表示機能拡張</h1>
-<h2 id="%E8%AA%AC%E6%98%8E%E5%86%85%E5%AE%B9">説明内容</h2>
-<p>LAYOUTの構成要素であるAO,COを新たに作成することにより、Open PoTAToの表示機能を拡張する方法を説明します。ここではプログラムコードの作成を前提としていますので、プログラムサイドからの説明になります。</p>
-<p>作成のための予備知識として、Open PoTAToにおける表示処理について説明します。ここで、3.2LAYOUTの構造とデータの引継ぎに関しては再度説明しません。</p>
-<p>ここでは典型的なAO,COについて説明します。一部のAO,COの動作と異なる場合があります。</p>
-<h2 id="%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD%E3%81%A8layout">表示機能とLAYOUT</h2>
-<p>表示処理において、LAYOUTの構成物のCO,AOの相互作用に注目して説明します。ここで相互作用の説明にはUMLにおけるシーケンス図を用います。
-最初に簡単に今回の表記で用いているシーケンス図について説明します。
-シーケンス図の例を右図に記載します。図の縦軸は時間で、上から下に流れます。
-また考慮するオブジェクト(A)を四角と点線で示しています。点線は存在する期間を示しており、削除される時点を×で示します。ここで言うオブジェクトは各種ウィンドウやCOやCOです。CO、AOはMATLAB上では単なる特定の構造を持つデータで、そのひとつひとつをオブジェクトと言います。オブジェクトは、特定の関数（およびそのサブ関数）を用いて操作します。
-図ではこれら操作をメッセージ(B)として記載します。特に注目している引数がある場合のみ括弧内に引数を記載しています。メッセージを受け、オブジェクト内部に正しく初期化されたデータを持つようになった時、状態不変式(C)にそのデータを示しています。</p>
-<p><img src="LayoutEditor.assets/image-20200326121228714.png" alt="image-20200326121228714"></p>
-<p>描画時のCO,AOの主要なシーケンスを示します。</p>
-<p><img src="LayoutEditor.assets/image-20200326121251679.png" alt="image-20200326121251679"></p>
-<p>描画する際、Open PoTAToからみると3つの状態があります。１つはLayout EditorでLayoutを作成している状態、もうひとつはP3_view関数で描画を実行している状態、そして最後は描画後、コントロールにより図の再描画等を行っている状態です。</p>
-<p>最初に、Open PoTAToにより1.LayoutEditorが起動され、Layoutの作成状態になります。</p>
-<p>LayoutEditorからCOの2.getArgumentサブ関数が呼び出されCOが生成されます。このときCOはObjectDataとして作成されLayoutに保存されます。</p>
-<p>同様にLayoutEditorからAOの3.getArgumentサブ関数が呼び出されAOが生成されます。ここで実際の編集作業ではCO,AOの生成順序、生成数に制限はありません。また、削除や変更などのメッセージは省略しています。</p>
-<p>Layoutが作成されると、Open PoTAToにより4描画処理が実行されます。この時、P3_Viewにより処理が行われます。描画処理中、LAYOUT構成要素であるArea,Axis-Areaはそれぞれ自分のcurdataを保持し、curdataを利用・変更し、親から子へcurdataを引き継いでいきます。</p>
-<p>CO描画時、描画処理(P3_View)はCOに対してCOの属するAreaのcurdataを引数とし5.makeを実施します。この時COはボタン等のGUIを作成し、curdataを内部に保持します。また、上位Areaのcurdataを更新します。
-AO描画時、描画処理(P3_View)はAＯに対してAOの属するAxis-Areaのcurdataを引数とし6.drawを実施します。この時、AOはグラフを描画などによりGUIを作成し、curdataを保持します。また、先祖にCallbackを受けたいCOが居る場合、そのCOに7.Callbackしてもらうようデータを登録します。登録されたデータはCO内にUserDataとして保存されます。
-最後にCOが作成したGUIがユーザ等により8操作された際、COは登録されているAOの持つcurdataを書き換え9.draw関数を実行します。
-なお、ここでの説明はCO,AOの相互作用を主眼にしたため、Open PoTATo内部で行う描画管理処理に関しては大幅に省略しています。省略しているものはArea,Axis-Areaに関する処理や、CO,AOの基本情報の参照メソッドcreateBasicInfoや、描画処理を行うための処理をdrawstrメソッドです。また、ObjectDataやcurdata引継ぎ、保存方法に関しても省略しています。</p>
-<h2 id="%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">データ構造</h2>
-<p>CO,AOを拡張する上で必要なデータ構造を説明します。LAYOUTの構造とcurdataに関しては<a href="LAYOUT%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%BC%95%E7%B6%99%E3%81%8E">LAYOUTの構造とデータの引継ぎ</a>も参照ください。
-なおデータ構造は、LAYOUT編集中、描画中、GUIによるCallback中の３つの状態の影響を受けます。</p>
-<h3 id="open-potato%E3%83%87%E3%83%BC%E3%82%BF">Open PoTAToデータ</h3>
-<p>描画中のOpen PoTAToの解析結果として渡された、連続データや区間データおよび要約統計量は、
-FigureのApplicationDataとして保存されます。なお、存在しないデータは空([])になります。</p>
-<table>
-<thead>
-<tr>
-<th>データ名</th>
-<th>内容</th>
-<th>関連curdata</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CHDATA</td>
-<td>連続データ(ヘッダ)</td>
-<td>curdata.region=’Cntinuous’</td>
-</tr>
-<tr>
-<td>CDATA</td>
-<td>連続データ</td>
-<td>curdata.cid0</td>
-</tr>
-<tr>
-<td>BHDATA</td>
-<td>区間データ(ヘッダ)</td>
-<td>curdata.region=’Block’</td>
-</tr>
-<tr>
-<td>BDATA</td>
-<td>区間データ</td>
-<td>curdata.stimkind<br>curdata.flag.MarkAveraging</td>
-</tr>
-<tr>
-<td>SSHDATA</td>
-<td>要約統計量(ヘッダ)</td>
-<td>curdata.region=’Summary’</td>
-</tr>
-<tr>
-<td>SSDATA</td>
-<td>統計量(ヘッダ)</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<p>現在、注目している描画対象のデータはcurdataにより記載されます。データの種類はcurdataの.regionで指定されます。
-また、連続データが複数ある場合、cid0に連続データの通し番号が、区間データの場合は
-stimkindに注目中の刺激の種類が指定されます。
-データの取得にはp3_LayoutViewToolの’getCurrentData’が利用できます。</p>
-<h3 id="objectdata">ObjectData</h3>
-<p>ObjectDataはAO, COが持つサブ関数getArgumentにより作成されるデータで、利用関数名や引数などが格納されます。
-AOのObjectDataはLAYOUT編集中にgetArgumentにより作成されLAYOUT内のAxisAreaの構成要素(Object)に保存されます。
-描画中、AxisArea内ではobj{idx}として参照可能です。通常、AOのサブ関数drawstrを通して参照され、AOのサブ関数drawの引数objdataとして渡ってきます。また、draw中に描画中のAOに対応するApplicationDataとして保存されます。
-GUIによるCallback中、ObjectDataはCO内でApplicationDataから呼び出され、AOのサブ関数drawに渡されます。
-なお、ApplicationDataとのI/Oはp3_ViewCommonCallback関数が利用できます。AO:描画処理終了時に、”checkin”で保存し、COは”getData”で呼び出します。また、AO再描画時は”update”を用いてデータを更新します。詳細は補助関数を参考ください。
-ObjectDataの例を示します。なおAOのサブ関数getArgument関数に依存します。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>str</td>
-<td>表示名</td>
-<td>‘3D_BrainSurf’</td>
-</tr>
-<tr>
-<td>fnc</td>
-<td>AO 関数名</td>
-<td>‘LAYOUT_AO_3DBrainSurf'</td>
-</tr>
-<tr>
-<td>ver</td>
-<td>Version:内部管理用</td>
-<td>1</td>
-</tr>
-<tr>
-<td>(Arg1)</td>
-<td>引数など</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-<p>COのObjectDataはLAYOUT編集中にgetArgumentにより作成され、LAYOUT内のAreaの構成要素(CObject)として保存されます。</p>
-<p>描画中、Area内でcbobj{idx}として参照可能です。通常、COのサブ関数drawstrを通して参照され、AOのサブ関数makeの引数objとして渡ってきます。objデータは通常make後に破棄されますが、COによっては作成uicontrol内の’UserData’に保存されることがあります。</p>
-<p>GUIによるCallback中、ObjectDataは通常利用しません。</p>
-<p>ObjectDataの例を示します。なおCOのサブ関数getArgument関数に依存します。</p>
-<h3 id="ao-draw%E5%87%A6%E7%90%86%E3%81%A8%E9%96%A2%E9%80%A3%E3%83%87%E3%83%BC%E3%82%BF">AO: Draw処理と関連データ</h3>
-<p>AOのサブ関数drawを実施する上で必要なその他のデータについて説明します。関連するハンドルとして、AOを描画するAxesハンドルが入力として渡ってきます。また、Drawにより作成されたハンドル群を出力します。ハンドル群は再描画前に削除するために利用されます。また、AOはObjectIDを持ちます。AOのDraw処理に必要な情報の多くはApplicationDataとして保存しますが、このデータを取得する際に利用します。なお、ObjectIDは通常p3_ViewCommonCallback関数を用いて発行します。</p>
-<h3 id="co-callback%E5%87%A6%E7%90%86%E3%81%A8%E9%96%A2%E9%80%A3%E3%83%87%E3%83%BC%E3%82%BF">CO: Callback処理と関連データ</h3>
-<p>一般的なCOがGUIよりコールバックされた時に必要なデータについて説明します。
-GUIからコールされた時の引数は対象GUIのハンドルです。実行に必要なデータはそのハンドル内のUserDataプロパティに格納されています。
-UserDataはセル配列で定義されており、Callback登録されているAOの一覧が入っています。ただし、描画時にObjectDataを保存している場合、UserDataが1番目のセルに格納されている場合があります。
-COのUserData内にCallback登録されているデータの変数名は多くの場合udと表現されています。udは以下のデータを持ちます。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>axes</td>
-<td>対象 Axes のハンドル</td>
-<td>347.0016</td>
-</tr>
-<tr>
-<td>ObjectID</td>
-<td>AO の ObjectID</td>
-<td>1</td>
-</tr>
-<tr>
-<td>name</td>
-<td>AO の名称</td>
-<td>‘Layout_AO_TimeLine_ObjectData’</td>
-</tr>
-<tr>
-<td>str</td>
-<td>Callback するための文字列</td>
-<td>‘Layout_AO_TimeLine_ObjectData(‘’draw’’, ...</td>
-</tr>
-</tbody>
-</table>
-<p>このudを用いるとApplicationDataに保存しているAOのDraw処理に関する情報（AO関連データ）が取得できます。取得は以下の様に補助関数p3_ViewCommonCallbackを利用します。</p>
-<p>data=p3_ViewCommonCallback(‘getData’,ud.axes,ud.name,ud.ObjectID);
-関数を実行するとud.axesをカレントAxesに変更し、Application-Dataからname,ObjectIDに対応したdataを取り出します。ここでdataの構造は以下のようになっています。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-<th>主な用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>handles</td>
-<td>AO が作成したハンドル</td>
-<td>描画前に削除する</td>
-</tr>
-<tr>
-<td>axes</td>
-<td>AO の属する Axes</td>
-<td>描画(ud.str)</td>
-</tr>
-<tr>
-<td>curdata</td>
-<td>AO 内部の curdata</td>
-<td>更新および描画</td>
-</tr>
-<tr>
-<td>obj</td>
-<td>AO の ObjectData</td>
-<td>描画</td>
-</tr>
-</tbody>
-</table>
-<p>handles AOが作成したハンドル 描画前に削除するaxes AOの属するAxes 描画（ud.str）curdata AO内部のcurdata 更新および描画obj AOのObjectData 描画</p>
-<h2 id="%E8%A3%9C%E5%8A%A9%E9%96%A2%E6%95%B0">補助関数</h2>
-<p>AO, COを作成中に利用する補助関数を説明します。</p>
-<table>
-<thead>
-<tr>
-<th>関数名</th>
-<th>サブ関数名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p3_LayoutViewerTool</td>
-<td>getCurrentData</td>
-<td>描画対象の POTATo データを取得する</td>
-</tr>
-<tr>
-<td>p3_ViewCommonCallck</td>
-<td>checkin<br>update<br>getdata</td>
-<td>AO 関連データを保存し、Common CO に登録する<br>AO 関連データを更新する<br>AO 関連データを取得する</td>
-</tr>
-</tbody>
-</table>
-<h3 id="open-potato%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97">Open PoTAToデータの取得</h3>
-<p>curdataに対応するOpen PoTAToデータの取得のためには以下の関数を利用します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>[hdata, data] = p3_LayoutViewerTool(‘getCurrentData’, fh, curdata);</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>描画中の curdata に対応する POTATo データを取得する。</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>fh</strong> Figure ハンドル(描画中のもの)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>curdata</strong> curdata</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>hdata</strong> POTATo データ(ヘッダ)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>data</strong> POTATo データ</td>
-</tr>
-</tbody>
-</table>
-<p>関数はcurdata.regionをみて、対象となるOpen PoTAToデータを取得します。regionが”Block”の場合は通常、curdata.flag.MarkAveraging=falseの時を除きdataはグランドアベレージ後のdataになり3次元になります。また、対象データが無いときは空行列が帰ってきます。</p>
-<p>ApplicationDataから直接Open PoTAToデータを取得する場合やその他の関連するcurdataに関してはOpen PoTAToデータ](Open PoTAToデータ)をご参照ください。</p>
-<h3 id="ao%E9%96%A2%E9%80%A3%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AEio">AO関連データのI/O</h3>
-<p>AO関連データを保存し、Common-COにCallback登録するには以下の関数を使います。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>ID= p3_ ViewCommonCallck (‘checkin’,h,name, ah, curdata, obj);</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>AO 関連データを保存し、Common-CO に Callback 登録する</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>h</strong> AO が作成したハンドルの配列(再描画時に書き換えるもののみ)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>name</strong> Application Data に登録する名前(AO 固有の名前であること)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>ah</strong> AO の親となる axes</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>curdata</strong> curdata</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>obj</strong> AO の ObjectData</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>ID</strong> AO の ObjectID</td>
-</tr>
-</tbody>
-</table>
-<p>checkinされたデータはAO関連データ(表4.5 CO:AO関連データ（data）)に変更されます。このAO関連データはAO固有の名前”name”のApplicationデータ内にあるセル配列の末尾に追加されます。</p>
-<p>このとき、セル配列を参照するための番号がObjectIDとして返されます。</p>
-<p>checkinされたAO関連データを更新します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>p3_ViewCommonCallck(‘update’,h,name, ah, curdata, obj,ID);</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>指定した name, ID に対応する AO 関連データを更新する</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>h</strong> AO が作成したハンドルの配列(再描画時に書き換えるもののみ)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>name</strong> Application Data に登録する名前(AO 固有の名前であること)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>ah</strong> AO の親となる axes</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>curdata</strong> curdata</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>obj</strong> AO の ObjectData</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>ID</strong> AO の ObjectID</td>
-</tr>
-</tbody>
-</table>
-<p>保存したAO関連データを呼び出すには以下の関数を使います。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>p3_ViewCommonCallck(‘update’,h,name, ah, curdata, obj,ID);</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>AO 関連データを保存し、Common-CO に Callback 登録する</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>ah</strong> AO の親となる axes</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>name</strong> Application Data に登録する名前(AO 固有の名前であること)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>ID</strong> AO の ObjectID</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>data</strong> AO 関連データ</td>
-</tr>
-</tbody>
-</table>
-<p>通常COから呼び出されますが、実行に必要なデータはUserData(表4.4 CO:Callback登録データ（UserData内）)に保存されています。</p>
-<h2 id="aoaxis-object%E3%81%AE%E4%BD%9C%E6%88%90">AO:Axis-Objectの作成</h2>
-<h3 id="ao%E9%96%A2%E6%95%B0%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%95%E3%82%A7%E3%82%A3%E3%82%B9">AO関数インタフェィス</h3>
-<p>AOの処理はOpen PoTATo内のLAYOUT/AxisObjecｔフォルダ内に作成されたLAYOUT_AO_<em>.mに記述します。この関数は以下のようなインタフェィスを持ちます。
-LAYOUT_AO_</em>(‘subfncname’,[arg1,arg2,・・・])
-ここでsubfncnameにサブ関数名が入り、arg1,arg2・・・はサブ関数の引数です。用意すべきサブ関数は以下になります。</p>
-<table>
-<thead>
-<tr>
-<th>サブ関数名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>createBasicInfo</td>
-<td>基本情報設定</td>
-</tr>
-<tr>
-<td>getArgument</td>
-<td>ObjectDataを設定する</td>
-</tr>
-<tr>
-<td>drawstr</td>
-<td>描画時の実行方法を提供する</td>
-</tr>
-<tr>
-<td>(draw)</td>
-<td>描画処理</td>
-</tr>
-</tbody>
-</table>
-<p>それぞれのサブ関数の引数や用途は決まっており、ここでは各サブ関数について説明します。なお、これらの関数の骨格となるコードは、他のAOをコピーするか、”P3_wizard_plugin“のViewerAxis-Objectにて作成できます。</p>
-<h3 id="createbasicinfo">createBasicInfo</h3>
-<p>編集時や描画中の基本情報を設定します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>info=createBasicInfo</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>指定したname,IDに対応するAO関連データを更新する</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>info</strong> 基本情報（構造体）</td>
-</tr>
-</tbody>
-</table>
-<p>ccbはp3_ViewCommonCallck/checkinでCommon-COに対してCallback登録を実施するかどうかの判定をするさいに使います。ccbが‘all’の場合は全てCallback登録します。</p>
-<p>‘all’設定は容易ですが、描画に時間のかかるAOは不必要なタイミングで再描画されないよう、COを限定すべきです。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MODENAME</td>
-<td>AOの名前</td>
-<td>'2DImage(2.0)';</td>
-</tr>
-<tr>
-<td>fnc</td>
-<td>AOの関数名</td>
-<td>mfilename</td>
-</tr>
-<tr>
-<td>ver</td>
-<td>バージョン</td>
-<td>2.0</td>
-</tr>
-<tr>
-<td>ccb</td>
-<td>Callback登録するCommon-COのリスト</td>
-<td>{'Data','DataKind','stimkind'};</td>
-</tr>
-</tbody>
-</table>
-<h3 id="getargument">getArgument</h3>
-<p>描画処理を実施するための引数設定を行います。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>obj=getArgument(obj)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>AO: 描画のための引数を設定する</td>
-</tr>
-<tr>
-<td>入出力</td>
-<td><strong>obj</strong> AOのObjectData (<a href="ObjectData">ObjectData</a>の表AO:ObjectDataを参照)</td>
-</tr>
-</tbody>
-</table>
-<p>Layout Editorから呼び出されます。
-新規作成時、objは空白になり、更新時、objは以前のobjが設定されます。キャンセルする場合はreturn前にobj=[]；と設定します。</p>
-<h3 id="drawstrdraw">drawstr,draw</h3>
-<p>描画処理を実施するための文字列を渡します。文字列はAxis-Area内のAO描画処理で実行されますので、変数のスコープには注意が必要です。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>str=drawstr(varargin)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>AO：描画処理のための文字列作成</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>varargin</strong>  varargin{1}にはObjectDataが入ります</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>str</strong> Axis-Area内のAO描画処理で実行する文字列</td>
-</tr>
-</tbody>
-</table>
-<p>通常、以下のように記載します。</p>
-<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">str</span> = <span class="hljs-title">drawstr</span><span class="hljs-params">(varargin)</span> %#<span class="hljs-title">ok</span></span>
-str=[mfilename, <span class="hljs-string">' (''draw'', h.axes, curdata, obj{idx})'</span>];
-</div></code></pre>
-<p>上記の記載を前提にdraw処理を説明します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>hout=draw(gca0,curdata,objdata,ObjectID)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>AO：描画処理</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>gca0</strong> AOの親となるaxes</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>curdata</strong> curdata</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>objdata</strong> AOのObjectData</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>ObjectID</strong> AOのObjectID(ただし、再描画の時のみ)</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>hout</strong> AOが作成したハンドルとタグを記載した構造体</td>
-</tr>
-</tbody>
-</table>
-<p>ここでhoutはhout.hにハンドルの配列、hout.tagにタグのセル配列を作成します。</p>
-<p>ここでdraw処理の一般的な内容について説明します。
-Open PoTAToデータを利用する場合は以下の一文を追加しOpen PoTAToデータを取得します。</p>
-<pre class="hljs"><code><div>[hdata,data]=osp_LayoutViewerTool(... <span class="hljs-string">'getCurrentData'</span>,curdata.gcf,curdata);
-</div></code></pre>
-<p>次に、グラフを描画します。例えば以下の様なコードになります。</p>
-<pre class="hljs"><code><div>h.h = surf(peaks(<span class="hljs-number">10</span>)); <span class="hljs-comment">% ハンドルを設定します(必須)</span>
-h.tag = {‘test’}; <span class="hljs-comment">% タグを設定します</span>
-</div></code></pre>
-<p>実際にはこのグラフ描画がAOのコア部分です。</p>
-<p>また、ApplicationDataI/OおよびCommonCOにCallbackを呼び出すよう登録します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">%=====================================</span>
-<span class="hljs-comment">%= Common-CO への Callback 登録 =</span>
-<span class="hljs-comment">%=====================================</span>
-myName=<span class="hljs-string">'LAYOUT_AO_hoge'</span>; <span class="hljs-comment">% Application Data に登録する名前</span>
-<span class="hljs-keyword">if</span> exist(<span class="hljs-string">'ObjectID'</span>,<span class="hljs-string">'var'</span>),
-	<span class="hljs-comment">% 再描画時</span>
-	p3_ViewCommCallback(<span class="hljs-string">'Update'</span>, ...
-      h.h, myName, ...
-			gca0, curdata, obj, ObjectID);
-	<span class="hljs-keyword">return</span>; <span class="hljs-comment">% Update して終了</span>
-<span class="hljs-keyword">else</span>
-<span class="hljs-comment">% Application Data の登録、Callbak 登録</span>
-	ObjectID = p3_ViewCommCallback(<span class="hljs-string">'CheckIn'</span>, ...
-      h.h, myName, ...
-			gca0, curdata, obj); <span class="hljs-comment">% ObjectID 取得</span>
-<span class="hljs-keyword">end</span>
-</div></code></pre>
-<p>最後に、CommonCO以外のCOにCallback登録します。以下はCallbackの必要がある場合のみ行います。なお、Callbackの登録の方法はCOにより異なりますが、典型的なCOは同じです。
-最初に登録用データとしてUserData(表4.4CO:Callback登録データ（UserData内）)を作成しまう。
-次に、curdata内にある対象のCOにUserDataを追記します。</p>
-<pre class="hljs"><code><div>
-<span class="hljs-comment">% ================================================================</span>
-<span class="hljs-comment">% = Callbackの登録 =</span>
-<span class="hljs-comment">% ================================================================</span>
-<span class="hljs-comment">% Callback 登録用データの作成</span>
-udadd.axes = gca0;
-udadd.ObjectID = ObjectID; <span class="hljs-comment">% Common CO の登録で発行された ID</span>
-udadd.name = myName;       <span class="hljs-comment">% Common CO の登録時と同じ</span>
-udadd.str = [objdata.fnc,...
-    <span class="hljs-string">'(''draw'',data.axes, data.curdata, data.obj, ud.ObjectID);'</span>];
-<span class="hljs-comment">%------------------------</span>
-<span class="hljs-comment">% Callback 登録 ( XX)</span>
-<span class="hljs-comment">%------------------------</span>
-<span class="hljs-comment">% CO_XX が存在するかどうかのチェック</span>
-<span class="hljs-keyword">if</span> isfield(curdata,<span class="hljs-string">'Callback_XX'</span>) &amp;&amp; ...
-        isfield(curdata.Callback_XX,<span class="hljs-string">'handles'</span>) &amp;&amp; ...
-        ishandle(curdata.Callback_XX.handles)
-    <span class="hljs-comment">% See also LAYOUT_CO_XX</span>
-    <span class="hljs-comment">% ハンドル取得</span>
-    h = curdata.Callback_XX.handles;
-    <span class="hljs-comment">% UD の追加</span>
-    ud=get(h,<span class="hljs-string">'UserData'</span>); <span class="hljs-comment">% 現状の ud 取得</span>
-    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isempty</span>(ud)
-        ud = {udadd};
-    <span class="hljs-keyword">else</span>
-        ud{<span class="hljs-keyword">end</span>+<span class="hljs-number">1</span>}=udadd;
-    <span class="hljs-keyword">end</span>
-    set(h,<span class="hljs-string">'UserData'</span>,ud); <span class="hljs-comment">% UD 更新</span>
-<span class="hljs-keyword">end</span>
-
-</div></code></pre>
-<h2 id="cocontrol-object%E3%81%AE%E4%BD%9C%E6%88%90">CO:Control-Objectの作成</h2>
-<p>COの処理はOpen PoTATo内のLAYOUT/ControlObjectフォルダ内に作成されたLAYOUT_CO_<em>.m
-もしくはLAYOUT_CCO_</em>.mに記述します。
-ここで、COは通常のCO,CCOはCommon–COです。</p>
-<p>この関数は以下のようなインタフェィスを持ちます。
-LAYOUT_[C]CO_*(‘subfncname’,[arg1,arg2,・・・])</p>
-<p>ここでsubfncnameにサブ関数名が入り、arg1,arg2・・・はサブ関数の引数です。用意すべきサブ関数は以下になります。</p>
-<table>
-<thead>
-<tr>
-<th>サブ関数名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>createBasicInfo</td>
-<td>基本情報設定</td>
-</tr>
-<tr>
-<td>getArgument</td>
-<td>ObjectDataを設定する</td>
-</tr>
-<tr>
-<td>drawstr</td>
-<td>COの作成方法を提供する</td>
-</tr>
-<tr>
-<td>(make)</td>
-<td>CO作成</td>
-</tr>
-<tr>
-<td>(mycallback)</td>
-<td>Callback実行</td>
-</tr>
-</tbody>
-</table>
-<p>サブ関数getDefaultCObjectはLayoutEditorのArea内Variable設定をする一部のCOには必須ですが、今回は説明しません。</p>
-<p>以下、それぞれのサブ関数の引数や用途は決まっており、ここでは各サブ関数について説明します。
-なお、これらの関数の骨格となるコードは、他のCOをコピーするか、以下のコードを利用ください。</p>
-<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">varargout</span>=<span class="hljs-title">LAYOUT_CO_XX</span> <span class="hljs-params">(fcn,varargin)</span></span>
-<span class="hljs-comment">% ヘルプを記載します</span>
-<span class="hljs-keyword">if</span> nargin==<span class="hljs-number">0</span>, fcn=<span class="hljs-string">'help'</span>;<span class="hljs-keyword">end</span>
-<span class="hljs-comment">%====================</span>
-<span class="hljs-comment">% Switch by Function</span>
-<span class="hljs-comment">%====================</span>
-<span class="hljs-keyword">switch</span> fcn
-    <span class="hljs-keyword">case</span> {<span class="hljs-string">'help'</span>,<span class="hljs-string">'Help'</span>,<span class="hljs-string">'HELP'</span>}
-        POTATo_Help(mfilename);
-    <span class="hljs-keyword">case</span> {<span class="hljs-string">'createBasicInfo'</span>,<span class="hljs-string">'drawstr'</span>,<span class="hljs-string">'getArgument'</span>}
-        <span class="hljs-comment">% Basic Information</span>
-        varargout{<span class="hljs-number">1</span>} = feval(fcn, varargin{:});
-    <span class="hljs-keyword">case</span> <span class="hljs-string">'make'</span>
-        varargout{<span class="hljs-number">1</span>} = make(varargin{:});
-    <span class="hljs-keyword">otherwise</span>
-        <span class="hljs-comment">% Default</span>
-        <span class="hljs-keyword">if</span> nargout
-            [varargout{<span class="hljs-number">1</span>:nargout}] = feval(fcn, varargin{:});
-        <span class="hljs-keyword">else</span>
-            feval(fcn, varargin{:});
-        <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span> <span class="hljs-comment">%===============================</span>
-<span class="hljs-keyword">return</span>;
-</div></code></pre>
-<h3 id="createbasicinfo">createBasicInfo</h3>
-<p>編集時や描画中の基本情報を設定します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>info=createBasicInfo</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>指定したname,IDに対応するCO関連データを更新する</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>info</strong> 基本情報（構造体）</td>
-</tr>
-</tbody>
-</table>
-<p>ここで、基本情報構造体は以下のフォーマットです。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>COの名前</td>
-<td>'XX';</td>
-</tr>
-<tr>
-<td>fnc</td>
-<td>COの関数名</td>
-<td>mfilename</td>
-</tr>
-<tr>
-<td>rver</td>
-<td>バージョン</td>
-<td>‘ Revision: 1.1’</td>
-</tr>
-<tr>
-<td>date</td>
-<td>最終更新日</td>
-<td>‘Date: 2012/09/01’</td>
-</tr>
-</tbody>
-</table>
-<p>rver,dateは使用していませんが記載を推奨します。
-uicontrolフィールドはLayoutEditorのArea内Variable設定をする一部のCOには必須ですが今回は説明しません。</p>
-<h3 id="getargument">getArgument</h3>
-<p>描画処理を実施するための引数設定を行います。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>obj=getArgument(obj)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>CO：描画のための引数を設定する</td>
-</tr>
-<tr>
-<td>入出力</td>
-<td><strong>obj</strong> COのObjectData(<a href="ObjectData">ObjectData</a>の表 COのObjectDataを参照)</td>
-</tr>
-</tbody>
-</table>
-<p>LayoutEditorから呼び出されます。</p>
-<p>新規作成時、objは空白になり、更新時、objは以前のobjが設定されます。</p>
-<p>キャンセルする場合はreturn前にobj=[]；と設定します。</p>
-<h3 id="drawstrmake">drawstr,make</h3>
-<p>CO描画処理を実施するための文字列を渡します。文字列はAxis-Area内のCO描画処理で実行されますので、変数のスコープには注意が必要です。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>str=drawstr(varargin)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>CO：描画処理のための文字列作成</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>varargin</strong>  varargin{1}にはObjectDataが入ります</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>str</strong> Axis-Area内のCO描画処理で実行する文字列</td>
-</tr>
-</tbody>
-</table>
-<p>通常、以下のように記載します。</p>
-<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">str</span> = <span class="hljs-title">drawstr</span><span class="hljs-params">(varargin)</span></span>
-<span class="hljs-comment">% Execute on ViewGroupCallback 'exe' Function</span>
-str=[<span class="hljs-string">'curdata=’ mfilename ‘(''make'',handles, abspos,'</span> ...
-      <span class="hljs-string">'curdata, cbobj{idx});'</span>];
-<span class="hljs-keyword">return</span>;
-</div></code></pre>
-<p>上記の記載を前提にmake処理を説明します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>curdata=make(hs,apos,curdata,obj)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>CO：描画処理</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>hs</strong> 上位ハンドル</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>abspos</strong> 上位Areaの絶対位置（Normalized Units）</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>curdata</strong> curdata</td>
-</tr>
-<tr>
-<td></td>
-<td><strong>objdata</strong> COのObjectData</td>
-</tr>
-<tr>
-<td>出力</td>
-<td><strong>curdata</strong> curdata</td>
-</tr>
-</tbody>
-</table>
-<p>ここでmake処理の一般的な内容について説明します。</p>
-<p>CommonCOの場合はCommonCO用の構造体の基本設定を行います。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">%=====================</span>
-<span class="hljs-comment">% Common-Callback-Data</span>
-<span class="hljs-comment">%=====================</span>
-CCD.Name         = <span class="hljs-string">'XX'</span>;        <span class="hljs-comment">% CO の名前</span>
-CCD.CurDataValue = {<span class="hljs-string">'XX'</span>,<span class="hljs-string">'xx'</span>}; <span class="hljs-comment">% AO 基本情報 ccb の指定名</span>
-CCD.handle       = [];          <span class="hljs-comment">% Callback 登録するハンドル</span>
-</div></code></pre>
-<p>この例では、AOの基本情報(表4.8 AO:基本情報)内のccbに、’XX’もしくは‘ｘｘ’をもつAOに限りCallback登録するよう設定しています。（ただしcbbがallの場合はCallback登録します。</p>
-<p>次にGUIを作成します。</p>
-<pre class="hljs"><code><div>h0       = uicontrol;
-</div></code></pre>
-<p>実際にh0とハンドルを作る必要はないですが、これ以降便宜上h0として話しをします。</p>
-<p>GUIの位置は相対位置で着ていますので以下のように変更が必要です。</p>
-<pre class="hljs"><code><div>pos=getPosabs(obj.pos,apos);
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lpos</span>=<span class="hljs-title">getPosabs</span><span class="hljs-params">(lpos,pos)</span></span>
-<span class="hljs-comment">% Get Absolute position from local-Position </span>
-lpos([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>]) = lpos([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>])*pos(<span class="hljs-number">3</span>);
-lpos([<span class="hljs-number">2</span>,<span class="hljs-number">4</span>]) = lpos([<span class="hljs-number">2</span>,<span class="hljs-number">4</span>])*pos(<span class="hljs-number">4</span>);
-lpos(<span class="hljs-number">1</span>:<span class="hljs-number">2</span>)   = lpos(<span class="hljs-number">1</span>:<span class="hljs-number">2</span>)+pos(<span class="hljs-number">1</span>:<span class="hljs-number">2</span>);
-</div></code></pre>
-<p>なお、単位はNormalizedですので位置設定を行う前にuicontrolなどのプロパティ’Units’を’Normalized’に設定する必要があります。</p>
-<p>Callback設定は次のようにします。</p>
-<pre class="hljs"><code><div>set(h0, <span class="hljs-string">'Callback'</span>,....
-    [mfilename <span class="hljs-string">' (''mycallback'',gcbo)'</span>]);
-</div></code></pre>
-<p>ここではCallback関数をサブ関数のmycallbackと設定しています。サブ関数名は自由ですが、以降mycallbackと設定したものとします。</p>
-<p>最後に、makeで作成したdataをcurdataに反映させます。デフォルト値などで値を変えた場合、</p>
-<pre class="hljs"><code><div>curdata.foovar = obj.defaultfoovar; <span class="hljs-comment">% この CO が foovar を変更</span>
-</div></code></pre>
-<p>また、COの場合はハンドルを引き継ぎます。</p>
-<pre class="hljs"><code><div>curdata.Callback_XX.handles =h0;
-</div></code></pre>
-<p>CommonCOの場合は次のようにハンドルを引き継ぎます。</p>
-<pre class="hljs"><code><div>CCD.handle =h0;
-<span class="hljs-keyword">if</span> isfield(curdata,<span class="hljs-string">'CommonCallbackData'</span>)
-curdata.CommonCallbackData{<span class="hljs-keyword">end</span>+<span class="hljs-number">1</span>}=CCD; <span class="hljs-keyword">else</span>
-curdata.CommonCallbackData={CCD}; <span class="hljs-keyword">end</span>
-</div></code></pre>
-<h3 id="mycallback">mycallback</h3>
-<p>上記のmake処理を前提にmycallback関数を説明します。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>シンタックス</td>
-<td>mycallback(h)</td>
-</tr>
-<tr>
-<td>機能</td>
-<td>COのコールバック処理</td>
-</tr>
-<tr>
-<td>入力</td>
-<td><strong>h</strong> COハンドル</td>
-</tr>
-</tbody>
-</table>
-<p>ここでmycallback処理の一般的な内容について説明します。最初に再描画する際に変更す値を用意します。</p>
-<pre class="hljs"><code><div>foovar = get(h,’Value’);
-</div></code></pre>
-<p>この例では、COはcurdata.foovarを変更するものとし、foovarはhの’Value’で指定されているものとします。</p>
-<p>次にCallback登録されているAOについてループ処理を行い終了します。</p>
-<pre class="hljs"><code><div>ud=get(h,<span class="hljs-string">'UserData'</span>);
-
-<span class="hljs-keyword">for</span> idx=<span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(ud), <span class="hljs-comment">% for のループ変数名は必ず idx とします。 </span>
-    <span class="hljs-comment">% &lt;&lt;&lt; 以降はこの内部処理の説明になります&gt;&gt;</span>
-<span class="hljs-keyword">end</span>
-<span class="hljs-keyword">return</span>;
-</div></code></pre>
-<p>ここで、udの内部は表4.4 CO:Callback登録データ（UserData内）に記載しています。</p>
-<p>ループ内では最初にAO関連データ(表4.5 CO:AO関連データ（data）)を取得します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">% Get Data</span>
-data = osp_ViewCommCallback(<span class="hljs-string">'getData'</span>, ...
-    ud{idx}.axes, ...
-    ud{idx}.name, ud{idx}.ObjectID);
-</div></code></pre>
-<p>次に対象AOのcurdataを更新します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">% curdata の更新</span>
-data.curdata.foovar =foovar;
-</div></code></pre>
-<p>なお、この場合foovarを更新しています。再描画の前に以前のAOが書いた図を削除します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">% Delete handle</span>
-<span class="hljs-keyword">for</span> idxh = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(data.handle),
-    <span class="hljs-keyword">try</span>
-        <span class="hljs-keyword">if</span> ishandle(data.handle(idxh))
-            delete(data.handle(idxh));
-        <span class="hljs-keyword">end</span>
-    <span class="hljs-keyword">catch</span>
-        warning(lasterr);
-    <span class="hljs-keyword">end</span> <span class="hljs-comment">% Try - Catch</span>
-<span class="hljs-keyword">end</span>
-
-</div></code></pre>
-<p>最後に再描画を実行します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">% Evaluate (Draw)</span>
-<span class="hljs-keyword">try</span>
-    eval(ud{idx}.str);
-<span class="hljs-keyword">catch</span>
-    warning(lasterr);
-<span class="hljs-keyword">end</span> <span class="hljs-comment">% Try - Catch</span>
-</div></code></pre>
-<h1 id="%E4%BB%98%E9%8C%B2%EF%BC%9Ascriptao%E3%81%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">付録：ScriptAOの使用方法</h1>
-<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
-<p>ここで、AOのひとつScriptAOの使用例を説明します。
-ScriptAOはスクリプトにより比較的自由に描画を行うためのAOです。</p>
-<p>AOは入力に２つのスクリプトを持ちます。
-ひとつはAxisおよび同一Axis内にある後続のAOに影響を与えるcurdataを編集するためのスクリプトです。これをAxis用スクリプトと呼びます。このスクリプトは描画時に１度のみ実行されます。
-もうひとつはdraw実施のスクリプトです。これを描画用スクリプトと呼びます。このスクリプトは描画時および再描画時に実行されます。</p>
-<h2 id="%E8%A8%AD%E5%AE%9A">設定</h2>
-<p>ScriptAOをLayoutに追加するには他のAOと同じくLayoutEditor上で行います。
-Layoutを作成し、Scriptを設定したいAxisAreaに移動し、AOポップアップメニューから”Script”を選択します。
-そうするとScript設定画面が開かれます。</p>
-<p><img src="LayoutEditor.assets/image-20200326134727180.png" alt="image-20200326134727180"></p>
-<p>Script設定時、右図のようなダイアログが表示されます。ここで上のエディットボックス(A)にAxis用スクリプトを、下のエディットボックス(B)に描画用スクリプトを記述します。
-内容がよければOK(C)ボタンを押して確定します。</p>
-<p>以下、Axis用スクリプト、描画用スクリプトの詳細を説明します。</p>
-<h2 id="axis%E7%94%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">Axis用スクリプト</h2>
-<p>Axis用スクリプトは、Axisおよび同一Axis内にある後続のAOに影響を与えるcurdataを編集するためのスクリプトです。このスクリプトは描画時に１度のみ実行されます。
-また、AOは全てのCommon-COからCallbackされるため、１度きりで良い処理かつ時間の掛かる処理もAxis用スクリプトに入れます。
-Axis用スクリプトはAxis-Areaの描画処理内で実行されます。
-そのため変更は親Axisと後続するAOに影響を及ぼします。Axis内で利用できる主なデータは以下になります。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>h.axes</td>
-<td>Axesハンドル</td>
-</tr>
-<tr>
-<td>curdata</td>
-<td>Axis-Area内のcurdata</td>
-</tr>
-<tr>
-<td>obj{idx}</td>
-<td>ScriptAOのObjectData</td>
-</tr>
-</tbody>
-</table>
-<p>たとえば、対象Axisではデータの種類(kind)として全ヘモグロビンデータのみ表示する場合、Axisに以下の様な設定を付加します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">% curdata を設定</span>
-<span class="hljs-comment">% (以降の Axis 全体に影響)</span>
-curdata.kind=<span class="hljs-number">3</span>;
-
-<span class="hljs-comment">% 一度だけ行われるべき処理</span>
-title(<span class="hljs-string">'Kind =3'</span>);
-xlabel(<span class="hljs-string">'time [sec]'</span>);
-ylabel(<span class="hljs-string">'Total HB data'</span>);
-
-</div></code></pre>
-<p>ある情報(foovar)を取得する関数(foo)に時間がかかるとし、この値がCallbackに影響を受けない場合、以下のように事前に計算します。</p>
-<pre class="hljs"><code><div>[hdata,data]=p3_LayoutViewerTool(<span class="hljs-string">'getCurrentData'</span>,curdata.gcf,curdata);
-curdata.foovar=foo(hdata,data);
-</div></code></pre>
-<h2 id="%E6%8F%8F%E7%94%BB%E7%94%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">描画用スクリプト</h2>
-<p>描画用スクリプトはdraw実施のスクリプトです。このスクリプトは描画時および再描画時に実行されます。
-ScriptAOのdrawサブ関数処理内で実行されます。
-そのため変更はcurdataの変更は再描画時にのみ引き継がれます。AO：drawサブ関数内で利用できる主なデータは以下になります。</p>
-<table>
-<thead>
-<tr>
-<th>フィールド名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gca0</td>
-<td>親Axesハンドル</td>
-</tr>
-<tr>
-<td>curdata</td>
-<td>AO内のcurdata</td>
-</tr>
-<tr>
-<td>objdata</td>
-<td>ScriptAOのObjectData</td>
-</tr>
-<tr>
-<td>ObjectID</td>
-<td>再描画時のみ存在する。ObjectID。</td>
-</tr>
-<tr>
-<td>hout</td>
-<td>出力ハンドル</td>
-</tr>
-</tbody>
-</table>
-<p>たとえば、Line-Propertyを無視し,HBデータを線で表示します。</p>
-<pre class="hljs"><code><div><span class="hljs-comment">% POTATo データ取得</span>
-[hdata,data]=p3_LayoutViewerTool(<span class="hljs-string">'getCurrentData'</span>,curdata.gcf,curdata);
-
-
-<span class="hljs-comment">% 時間軸計算</span>
-unit = <span class="hljs-number">1000</span>/hdata.samplingperiod;
-t0=<span class="hljs-number">1</span>:<span class="hljs-built_in">size</span>(data,<span class="hljs-number">1</span>);
-t=(t0 <span class="hljs-number">-1</span>)/unit;
-
-kind=curdata.kind;
-
-<span class="hljs-comment">% 表示, 出力ハンドルの設定</span>
-hout.h(<span class="hljs-keyword">end</span>+<span class="hljs-number">1</span>)=line(t,data(:,<span class="hljs-number">1</span>,kind));
-hout.tag{<span class="hljs-keyword">end</span>+<span class="hljs-number">1</span>}=[<span class="hljs-string">'XX'</span> hdata.TAGs.DataTag{kind}];
-</div></code></pre>
-<p>ここで、hout.hが設定されていない場合、Redraw時に削除されませんので注意ください。</p>
+<h1 id="%E7%99%BA%E5%B1%95">発展</h1>
+<p>LAYOUT機能を拡張するには<a href="LayoutEditor-advanced.md">描画機能マニュアル-拡張編</a>をご覧ください。</p>
 
 </body>
 </html>
