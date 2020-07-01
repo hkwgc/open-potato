@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>open-potato-developer.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="file:///Users/kwgc/Desktop/GitHub/op/html/ja/.%5Cgithub-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="open-potato-developer-manual">Open PoTATo Developer Manual</h1>
+<!-- TOC -->
+<ul>
+<li><a href="#open-potato-developer-manual">Open PoTATo Developer Manual</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%A6%81">概要</a></li>
+<li><a href="#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+<ul>
+<li><a href="#git%E3%81%A8github">gitとgithub</a></li>
+<li><a href="#matlab">MATLAB</a></li>
+<li><a href="#%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88">ドキュメント</a>
+<ul>
+<li><a href="#%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E4%BD%9C%E6%88%90%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E7%B4%B9%E4%BB%8B">ドキュメント作成用ソフトウェアの紹介</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%96%8B%E7%99%BA%E6%96%B9%E9%87%9D">開発方針</a>
+<ul>
+<li><a href="#%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81">ブランチ</a></li>
+</ul>
+</li>
+<li><a href="#%E3%81%94%E6%84%8F%E8%A6%8B%E3%83%BB%E3%81%94%E8%B3%AA%E5%95%8F">ご意見・ご質問</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
+<p>Open PoTAToの開発指針です。</p>
+<p>git, github, MATLAB, Markdown, htmlに関して基本的な知識があることを前提に記載しています。</p>
+<h2 id="%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</h2>
+<h3 id="git%E3%81%A8github">gitとgithub</h3>
+<p>ソースコード/ドキュメントのバージョン管理はgitとgithubの機能を使います。</p>
+<p>githubには3つのリポジトリを用意してあります。</p>
+<ul>
+<li>
+<p><a href="https://github.com/hkwgc/open-potato">Open PoTATo本体</a></p>
+</li>
+<li>
+<p><a href="https://github.com/hkwgc/open-potato-add-on-lists">アドオンリスト</a></p>
+</li>
+<li>
+<p><a href="https://github.com/hkwgc/open-potato-forum">フォーラム</a></p>
+</li>
+</ul>
+<p>Open PoTAToの開発や運営に関わるissueはOpen PoTATo本体のリポジトリのissueに記載してください。アドオンリストやフォーラムの運営方針に関しても本体のリポジトリのissueで議論するようにしてください。</p>
+<p>アドオンリストには読み込みプラグイン、開発プラグイン、レシピのリストのみを掲載します。</p>
+<p>フォーラムにはユーザーからの質問とFAQのみを掲載します。ユーザーからの質問はフォーラムのissueに記載していただくこととします。</p>
+<h3 id="matlab">MATLAB</h3>
+<p>ソースコードはMATLABで開発します。</p>
+<p>MATLABは半年に1回アップデートされます。開発にはR2016a以降のバージョン(バージョン 9.x)の何れかを使ってください。</p>
+<h3 id="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88">ドキュメント</h3>
+<p>Open PoTATo本体に関するドキュメントの原文はMarkdown形式で作成します。Markdown形式のドキュメントはインターネットにアクセスできる場合には、Githubで閲覧することができます。ただし、Markdown形式のドキュメントはMATLABのヘルプブラウザでは表示できません。インターネットに接続できないPCにインストールしたユーザーにもドキュメントを提供したい場合は、htmlファイル(もしくはPDFファイル)も併せて作成してください。ほとんどのMarkdownエディタにはhtmlやpdfにエクスポートする機能があるはずです。</p>
+<h4 id="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E4%BD%9C%E6%88%90%E7%94%A8%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E7%B4%B9%E4%BB%8B">ドキュメント作成用ソフトウェアの紹介</h4>
+<p>3.9.0 public betaのドキュメント作成の際にはMarkdownエディタ/ビューワとして、<a href="https://typora.io/">Typora</a>を使用しました。</p>
+<p>ただし、GithubではTOCによる目次の自動生成をしてくれません。目次の作成とhtmlの出力は<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">Visual Studio Code</a>に下記のプラグインを入れて実行しています。</p>
+<p><strong>Name: Auto Markdown TOC</strong>
+Id: huntertran.auto-markdown-toc
+Description: Markdown TOC (Table Of Contents) Plugin for Visual Studio Code.
+Publisher: Hunter Tran
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=huntertran.auto-markdown-toc
+Markdown の目次を作成するためのプラグインです。</p>
+<p><strong>Name: Markdown PDF</strong>
+Id: yzane.markdown-pdf
+Description: Convert Markdown to PDF
+Publisher: yzane
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf
+Markdownファイルの保存時に自動的にhtmlやpdfのファイルを作成するためのプラグインです。htmlのスタイルシートは⁨op/ ⁨html/ ⁨ja⁩/github-markdown.cssをお使いください。</p>
+<h2 id="%E9%96%8B%E7%99%BA%E6%96%B9%E9%87%9D">開発方針</h2>
+<h3 id="%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81">ブランチ</h3>
+<p>本体のリポジトリにはmasterとdevelopの2つのブランチを常に用意します。個別の開発/修正案件のためにはtopicブランチを随時作成してください。</p>
+<p>masterブランチはユーザーにダウンロードしていただくソフトウェアそのものです。masterブランチはdevelopブランチを「Create a merge commit」して更新します。</p>
+<p>developブランチは開発者向けのブランチです。開発/修正の案件ごとにdevelopブランチからtopic ブランチをForkしてください。開発/修正が完了したらtopicブランチを「Squash and merge」して、developブランチを更新してください。</p>
+<p>topicブランチの名称は任意です。開発途中のコミットメッセージはメモ書き適当でかまいません。developブランチに「Squash and merge」するときのコミットメッセージは変更点をわかりやすくまとめてください。</p>
+<p><img src="open-potato-developper.assets/image-20200331102217387.png" alt="image-20200331102217387"></p>
+<h2 id="%E3%81%94%E6%84%8F%E8%A6%8B%E3%83%BB%E3%81%94%E8%B3%AA%E5%95%8F">ご意見・ご質問</h2>
+<p>この運営方針に関してのご意見は本体のリポジトリのissueに記載してください。記載ミスの修正などの些細な修正は、topical ブランチを作成してpull requestしていただけると助かります。</p>
+
+</body>
+</html>

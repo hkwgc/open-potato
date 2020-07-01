@@ -3,121 +3,74 @@
 
 
 
-[Japanease](/README.md)
+[Japanease site](/README.md)
 
-Sorry. English page is now under construction. 
+**Open PoTATo is a platform software that integrates a variety of tools for fNIRS data analysis.**  Open PoTAto is equipped with various functions such as data loading from fNIRS instruments of various manufacturers, signal processing, statistical analysis and visualization. It is suitable for both beginners and experts of fNIRS data analysis. 
 
+##### Related Websites
 
+- [**Add-on Links**](https://github.com/hkwgc/open-potato-add-on-lists)
+Here's a list of where to get the plugins and recipes.
 
+- [**User Forum**](https://github.com/hkwgc/open-potato-forum)
+Please use this site for any questions you may have that are not covered in manuals. 
 
+## Features
 
-## Feature
+* Easily try out a variety of analysis tools
+* Analysis tools can be added (plug-in function)
+* Save and share the procedure associated with analysis tools (recipe function)
 
-* Easy to test variou analysis tools
+## Requirements
 
-* Plug-in
-
-* Recipe
-
-
-
-## Dependency
-
-PoTATo works with MATLAB and follwing toolboxes. MATLAB and Toolboxes are commercial software of Mathworks. Inc.
+Open PoTATo works with MATLAB and follwing toolboxes. MATLAB and Toolboxes are commercial software of Mathworks. Inc.
 
 ```
 Signal Processing Toolbox (recommended)
 Statistics and Machine Learning Toolbox (recommended)
 Wavelet toolbox (only used in several fuctions)
 ```
-PoTATo does not include MATLAB and toolboxes.
+Open PoTATo does not include MATLAB and toolboxes.
+
+## Install
+
+See [the installation manual.](op/html/ja/install-potato.md) (Currently Japanease only)
+
+## Manuals
+
+You can find a list of the latest manuals [here](op/html/ja/index.md).
+(Currently Japanese only. Please refer to the POTATo tutorial in [Reference](#Reference).)
+
+## Developer Information
+
+See [information for developers (op/html/ja/index.md)] in the manual. (Currently Japanese only)
 
 
+## Licensing and Copyright
 
-## Attention
-
-bra bra bra
-
-
-
-## Setup
-
-1. MATLABをインストールしてください。
-
-2. ダウンロードサイトから以下のファイルを取得します。
-```
-P3_files.zip
-```
-ダウンロード時点で[ライセンス](/LICENCE.txt)に同意したものとします。
-ダウンロードしたzipファイルを適当なところに解凍してください。
-
-3. ダウンロードしたP3_files.zipを適当なフォルダに解凍してください。[^1] 
-解凍後のフォルダ構成は以下のようになります。
-```
-P3_files
--\P38
--\manual(English)
--\簡易マニュアル
-- インストールマニュアル
-```
-
-4. カレントディレクトリ(現在のフォルダー)を変更してください。
-MATLABを起動し，カレントディレクトリを展開したフォルダの
-```
-P3_files\P38\
-```
-に設定します。設定は MATLAB メイン画面中の MATLAB ツールバー:「現在のフォルダー」からできます。
-
-5. PoTAToを起動します。MATLABコマンドラインに
-``` Matlab Command Line
->> P3
-```
-のように入力し、Enterキーを押すとPoTAToのGUIが起動します。[^2]
+Open PoTATo is open source software under the MIT license.
+Copyright (c) National Institute of Advanced Industrial Science and Technology (AIST).
 
 
-## Usage
-
-PoTAToはGUIで動作します。
-詳細は「簡易マニュアル」フォルダの下記pdfファイルをご覧ください。
-```
-* 1 ステップガイド入門編.pdf
-* 2 ステップガイド応用編その１.pdf
-* 3 解析ツール作成のためのステップガイド.pdf
-* 4 LayoutEditorステップガイド.pdf
-```
+## Update history
+- July 01, 2020 Open PoTATo 3.9.0 has been released!
+- March 31, 2020 Open PoTATo 3.9.0 Public beta has been released!
+- July 01, 2019 Development at AIST has started. 
 
 
-
-## Contiribution
-
-1. Fork (https://github.com/hkwgc/open-potato)
-
-2. Create a feature branch
-
-3. Commit your changes
-
-4. Rebase your local changes against the master branch
-
-5. Create a new Pull Request
-
-   
-
-## License
-
-MITライセンス
+## Acknowledgements
+Open PoTATo is based on Platform for Optical topography Analysis Tools, commonly known as POTATo, developed by Hitachi, Ltd. We would like to thank the developers of POTATo and all the people who worked on it. 
 
 
+## Reference
+
+Sutoko et al., "Tutorial on platform for optical topography analysis tools," Neurophotonics, 3(1)), 010801 (2016). https://doi.org/10.1117/1.NPh.3.1.010801
 
 
 ## Maintainer
 
-[Hiroshi KAWAGUCHI](https://github.com/hkwgc)
-
-
-
-##### Footnotes
-
-[^1]: ただし，MATLABの特殊ディレクトリ(toolboxなど)にインストールすることは出来ません。
-[^2]:  起動が上手くいかない場合，ファイルの解凍場所に問題がある場合もあります。
-
-
+[Hiroshi KAWAGUCHI, Ph.D.](https://github.com/hkwgc)
+[Neurorehabilitation Group](https://unit.aist.go.jp/hiiri/nrehrg/english/index.html)
+[Human Information and Interaction Research Institute](https://unit.aist.go.jp/hiiri/index-en.html)
+[National Institute of Advanced Industrial Science and Technology(AIST)](https://www.aist.go.jp/index_en.html)
+Tsukuba, Japan

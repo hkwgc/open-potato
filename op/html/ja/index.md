@@ -1,6 +1,5 @@
 # Open PoTAToドキュメント
 
-
 ## 初心者向け
 
 #### [Open PoTATo 概要](Abstract.md)
@@ -18,27 +17,20 @@
 
 
 
-
 ## 中級者向け
 
 #### [Research Mode 操作マニュアル](Research-Mode.md)
 #### [データの検索](ExSearch.md)
 #### [計測位置情報の設定](PositionSetting.md)
-
-
-
-
-## 上級者向け
-
-#### [Layout エディタ 操作マニュアル](LayoutEditor.md)
-
+#### [描画機能マニュアル-基本編](LayoutEditor.md)
 
 
 
 ## 開発者向け
 
+#### [描画機能マニュアル-拡張編](LayoutEditor-advanced.md)
 #### [レシピ・プラグインの開発](RecipeDevelopment.md)
-#### [Open PoTATo本体の開発](open-potato-developper.md)
+#### [Open PoTATo本体の開発](open-potato-developer.md)
 
 
 
