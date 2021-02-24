@@ -16,7 +16,7 @@
 
 Open PoTATo loading plug-ins are provided by fNIRS device manufacturers and vendors.
 
-Click [here](https://github.com/hkwgc/open-potato-add-on-lists/blob/master/list-add-on.md#Loading plug-ins) for a list of loading plug-ins.
+Click [here](https://github.com/hkwgc/open-potato-add-on-lists/blob/master/list-add-on.md) for a list of loading plug-ins.
 
 ## Installing loading plug-ins
 
