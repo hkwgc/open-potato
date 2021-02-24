@@ -71,5 +71,5 @@ Now, let’s try loading some of your own data. Please proceed to the [Installin
 
 To try operating Open PoTATo using sample data, please proceed to the [Open PoTATo first step-by-step guide] (Step-Guide.md).
 
-[Open PoTATo Document List] (index.md)
+[Back to Open PoTATo Document List](index.md)
 
