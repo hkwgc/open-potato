@@ -34,16 +34,16 @@ Open PoTATo does not include MATLAB and toolboxes.
 
 ## Install
 
-See [the installation manual.](op/html/ja/install-potato.md) (Currently Japanease only)
+See [the installation manual.](op/html/en/install-potato.md) (Currently Japanease only)
 
 ## Manuals
 
-You can find a list of the latest manuals [here](op/html/ja/index.md).
+You can find a list of the latest manuals [here](op/html/en/index.md).
 (Currently Japanese only. Please refer to the POTATo tutorial in [Reference](#Reference).)
 
 ## Developer Information
 
-See [information for developers (op/html/ja/index.md)] in the manual. (Currently Japanese only)
+See [information for developers (op/html/en/index.md)] in the manual. (Currently Japanese only)
 
 
 ## Licensing and Copyright
@@ -70,7 +70,11 @@ Sutoko et al., "Tutorial on platform for optical topography analysis tools," Neu
 ## Maintainer
 
 [Hiroshi KAWAGUCHI, Ph.D.](https://github.com/hkwgc)
+
 [Neurorehabilitation Group](https://unit.aist.go.jp/hiiri/nrehrg/english/index.html)
+
 [Human Information and Interaction Research Institute](https://unit.aist.go.jp/hiiri/index-en.html)
+
 [National Institute of Advanced Industrial Science and Technology(AIST)](https://www.aist.go.jp/index_en.html)
+
 Tsukuba, Japan
