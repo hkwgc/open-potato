@@ -278,8 +278,10 @@ update_curdata(get(ud.range,'UserData'),tmp([1 3]));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function sub_ResetColor(cbd)
-setappdata(gcbf,'CallbackData',cbd);
-waitfor(gcbf,'WindowButtonMotionFcn', '');
+% setappdata(gcbf,'CallbackData',cbd);
+fgh = get(cbd.ah,'Parent');
+setappdata(fgh,'CallbackData',cbd);
+waitfor(fgh,'WindowButtonMotionFcn', '');
 set(cbd.h,'FaceColor',[0.8 0.8, 0.8]);
 ReRange(cbd);
 

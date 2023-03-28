@@ -49,6 +49,8 @@ function P3R2_subAPI_groupingByKey_OpeningFcn(h,ev,hs, varargin) %#ok
 % Opning : do noting
 %==========================================================================
 hs.output = h;
+set(hs.rdbOR,'value',0); % HK 2023-03-27
+set(hs.rdbAND,'value',1);% HK 2023-03-27
 guidata(h, hs);
 
 %==========================================================================

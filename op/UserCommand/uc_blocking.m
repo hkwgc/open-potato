@@ -131,8 +131,20 @@ for id=1:length(header)
   % Block-Time-Data's Samplingperiod is
   %  Greatest Common Divisor of Continuous-Data's one.
   %-----------------------------------
-  bheader.samplingperiod = ...
-    gcd(hd.samplingperiod, bheader.samplingperiod);
+ 
+
+  %   samplingperiod_int=round(hd.samplingperiod); %add ito 2013.1.17
+  %   bh_samplingperiod_int=round(bheader.samplingperiod);%add ito 2013.1.17
+  %   bheader.samplingperiod = ...
+  %       gcd(samplingperiod_int, bh_samplingperiod_int); %add ito 2013.1.17
+
+  %   bheader.samplingperiod = ...
+  %     gcd(hd.samplingperiod, bheader.samplingperiod);
+  k =  bheader.samplingperiod/hd.samplingperiod;
+  mustBeInteger(k);
+  bheader.samplingperiod = k*hd.samplingperiod;
+
+  
 
   %-----------------------------------
   % Check Measure Mode is Same?
@@ -344,6 +356,7 @@ for id=1:length(header)
     inp_pos = get_pos - (stim_0(1)-bheader.stim(1)/tmp_unit);
     inp_pos(inp_pos<1)=1;
     inp_pos(inp_pos>size(tmp_pos,2))= size(tmp_pos,2);
+    %inp_pos = round(tmp_pos(round(inp_pos)));
     inp_pos = tmp_pos(inp_pos);
 
     %==========================================
