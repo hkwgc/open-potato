@@ -99,4 +99,4 @@ end
 fclose(fid);
 
 %--> Open Help View
-helpview(fname);
+web(fname);

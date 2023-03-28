@@ -81,7 +81,7 @@ if 0
     lang =OSP_DATA('GET','HELP_LANG');
     s=[p fs 'html' fs lang fs 'man' fs 'ProbePosition' fs 'ReadPosFile.html'];
     handles.menu_myHelp= uimenu(hObject,'Label','Platform-Help',...
-      'Callback',sprintf('helpview(''%s'')',s));
+      'Callback',sprintf('web(''%s'')',s));
     guidata(hObject, handles);
   end
 end

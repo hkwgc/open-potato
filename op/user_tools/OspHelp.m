@@ -9,7 +9,7 @@ function OspHelp(tag)
 %   osp_KeyBind ( if OSP GUI opened and typed 'h' key,
 %                 run this program)
 % * Lower Link
-%   See also : OSP_DATA, helpview, helpwin
+%   See also : OSP_DATA, web, helpwin
 
 % ======================================================================
 % Copyright(c) 2019, 
@@ -46,7 +46,7 @@ switch tag
     if FOR_MCR_CODE
       eval(['!start ' help_path 'index.html']);
     else
-      helpview([help_path 'index.html']);
+      web([help_path 'index.html']);
     end
 		
 	case {'uiFileSelect' 'uiFileSelect.m'} % File Selector
@@ -56,7 +56,7 @@ switch tag
         'AboutOsp' filesep ...
 			  'file_select.html']);
     else    
-      helpview([help_path ...
+      web([help_path ...
         'man' filesep ...
         'AboutOsp' filesep ...
 			  'file_select.html']);
@@ -68,7 +68,7 @@ switch tag
         'man' filesep ...
         'ProbePosition.html']);
     else
-      helpview([help_path ...
+      web([help_path ...
         'man' filesep ...
         'ProbePosition.html']);
     end
@@ -84,7 +84,7 @@ switch tag
           if FOR_MCR_CODE
             eval(['!start ' tmp_fname]);
           else
-            helpview(tmp_fname); 
+            web(tmp_fname); 
           end
           flag=true;
         end
@@ -99,7 +99,7 @@ switch tag
         if FOR_MCR_CODE
           eval(['!start ' tmp_fname]);
         else
-          helpview(tmp_fname); 
+          web(tmp_fname); 
         end
         flag=true;
 			end
@@ -117,7 +117,7 @@ switch tag
       if FOR_MCR_CODE
         eval(['!start ' help_path 'index.html']);
       else
-        helpview([help_path 'index.html']);
+        web([help_path 'index.html']);
       end
 		end
 end

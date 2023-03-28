@@ -2287,7 +2287,7 @@ if isempty(pth) || ~exist(pth,'dir'),
   help_html=[p filesep 'OspData' filesep 'Help_ProjectDirectory.htm'];
   if exist(help_html,'file') 
     if ~FOR_MCR_CODE
-      helpview(help_html);
+      web(help_html);
     else
       eval(['!' help_html]);
     end
