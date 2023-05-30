@@ -61,6 +61,9 @@ function varargout = preproSNIRF(fcn, varargin)
 % SNIRF format loading routine
 % DATE:2023-01-30
 % WRITTEN:H. Kawaguchi
+%
+% Update: 2023-05-30 
+%   
 
 %======== Launch Switch ========
 if strcmp(fcn,'createBasicInfo'),
@@ -200,35 +203,45 @@ samplingperiod = ...
 hdata.samplingperiod = samplingperiod;
 
 % stim
-nStim = numel(snirf.nirs.stim);
-nEachStim = zeros(nStim,1);
-for n = 1: nStim
-    nEachStim(n) = size(snirf.nirs.stim(n).data,2);
-end
-stim = zeros(sum(nEachStim),3);
-cnt = 1;
-for n = 1: nStim
-    idx = cnt:cnt+nEachStim(n)-1;
-    stim(idx,1) = n;
-    stim(idx,2) = 1000*snirf.nirs.stim(n).data(1,:)';
-    stim(idx,3) = stim(idx,2) + 1000*snirf.nirs.stim(n).data(2,:)';
-    cnt = cnt + nEachStim(n);
-end
-stim = sortrows(stim,2);
-stim(:,2) = ceil(stim(:,2)/samplingperiod);
-stim(:,3) = floor(stim(:,3)/samplingperiod);
 
-hdata.stim = stim;
 % stimTC
 stimTC = zeros(size(snirf.nirs.data.time));
 
-for n = 1:size(stim,1)
-    stimTC(stim(n,2):stim(n,3)) = stim(n,1);
+if isfield(snirf.nirs,'stim')
+    nStim = numel(snirf.nirs.stim);
+    nEachStim = zeros(nStim,1);
+    for n = 1: nStim
+        nEachStim(n) = size(snirf.nirs.stim(n).data,2);
+    end
+    stim = zeros(sum(nEachStim),3);
+    cnt = 1;
+    for n = 1: nStim
+        idx = cnt:cnt+nEachStim(n)-1;
+        stim(idx,1) = n;
+        stim(idx,2) = 1000*snirf.nirs.stim(n).data(1,:)';
+        stim(idx,3) = stim(idx,2) + 1000*snirf.nirs.stim(n).data(2,:)';
+        cnt = cnt + nEachStim(n);
+    end
+    stim = sortrows(stim,2);
+    stim(:,2) = ceil(stim(:,2)/samplingperiod);
+    stim(:,3) = floor(stim(:,3)/samplingperiod);
+
+    hdata.stim = stim;
+
+    % stimTC
+    for n = 1:size(stim,1)
+        stimTC(stim(n,2):stim(n,3)) = stim(n,1);
+    end
+
+else
+    warning('Cannot find stim.');
+    hdata.stim=[];
 end
 
 hdata.stimTC = stimTC;
+
 % StimMode
-hdata.StimMode = 1;
+hdata.StimMode = 2;
 
 % flag
 hdata.flag = false(1,size(data,1),size(data,2));
@@ -267,11 +280,12 @@ TAGs.wavelength = snirf.nirs.probe.wavelengths;
 pr = snirf.nirs.probe;
 TAGs.probe=pr;
 
-st = snirf.nirs.stim;
 
-st = rmfield(st,'data');
-TAGs.stim = st;
-
+if isfield(snirf.nirs,'stim')
+    st = snirf.nirs.stim;
+    st = rmfield(st,'data');
+    TAGs.stim = st;
+end
 
 
 
@@ -281,7 +295,7 @@ mlist = nirs.data.MeasurementList;
 
 fullChList = [mlist.sourceIndex;mlist.detectorIndex]';
 unqChList  = unique(fullChList,'rows');
-pigm     = {'oxyHb', 'deoxyHb'};
+pigm     = {'oxyHb', 'deoxyHb', 'totalHb'};
 
 % data [timepoints, channel, type] 
 nData = size(nirs.data.dataTimeSeries,2);
@@ -292,30 +306,22 @@ data = zeros(nData, nCh, nPigm);
 % wavelength List
 wl = nirs.probe.wavelengths;
 nWl = numel(wl);
-% Matrix convert delta OD to delta Hb
-E = zeros(nWl,nPigm);
-for m = 1:nWl
-    for n = 1:nPigm
-        E(m,n) = MolExtCoeff(wl(m), pigm{n});
-    end
-end
 
-% Convert delta OD to delta Hb
+% Convert data to delta Hb
 for n = 1:size(unqChList,1)
     ch = unqChList(n,:);
     dataID = find((fullChList(:,1)==ch(1)) & (fullChList(:,2)==ch(2))); % 1: sourceIndex, 2: detectorIndex
     I = zeros(nData,nWl);
-    dOD = zeros(size(I));
     for m = 1:numel(dataID)
         wlID = mlist(dataID(m)).wavelengthIndex;
-        I = nirs.data.dataTimeSeries(dataID(m), :);
-        dOD(:,wlID) = log(I(1)./I) ;
+        I(:,wlID)  = nirs.data.dataTimeSeries(dataID(m), :);
     end
-    dC = (E\dOD')';
-    data(:,n,:) = permute(dC,[1,3,2]);
+    data(:,n,:)=p3_chbtrans(I, wl, 1); % Intensity to potato Data 
 end
+
+
 % total Hb
-data = cat(3,data,sum(data,3));
+% data = cat(3,data,sum(data,3));
 
 
 probe = nirs.probe;

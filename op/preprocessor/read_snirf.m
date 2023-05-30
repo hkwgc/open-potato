@@ -176,12 +176,13 @@ snirf.nirs = nirs;
     function pr = ReadProbe(fileName,spath)
         required = {...
             'wavelengths'
+            };
+        % either Pos2D or Pos3D is required
+        optional ={...
             'sourcePos2D'
             'sourcePos3D'
             'detectorPos2D'
             'detectorPos3D'
-            };
-        optional ={...
             'wavelengthsEmission'
             'frequencies'
             'timeDelays'
@@ -199,9 +200,10 @@ snirf.nirs = nirs;
             'useLocalIndex'};
         
         pr = ReadValuesToStruct(fileName,spath,required,optional);
-
+        
+        % either Pos2D or Pos3D is required
         if ~CheckPosition(pr)
-            error('Neither Pos2D nor Pos3D not found.')
+            error('Neither Pos2D nor Pos3D is not found.')
         end
 
         function tf = CheckPosition(pr)
@@ -220,7 +222,7 @@ snirf.nirs = nirs;
             for num = 1:numel(required)
                 v = GetFieldData(fileName,spath, required{num},true);
                 if isempty(v)
-                    continue
+                    warning([required{num} ' is empty.'])
                 end
                 str.(required{num}) = v; %#ok<*SFLD>
             end
