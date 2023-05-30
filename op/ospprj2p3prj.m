@@ -124,7 +124,7 @@ for id=1:length(rslt)
   fprintf(fp,'&nbsp;&nbsp;%s<br>\n',rslt{id});
 end
 closehtml(fp);
-helpview(fname);
+web(fname);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Import Each Dir

@@ -2107,9 +2107,9 @@ if header.measuremode==-1,
   if ~isempty(st),
     error('[Platform] Error!! Multi File & Normal File Selected');
   end
-  if ~isfield(header.Pos,'ver'),
-    error('Cannot Edit Old Pos-Data');
-  end
+  %if ~isfield(header.Pos,'ver'),
+  %  error('Cannot Edit Old Pos-Data');
+  %end
   pos = header.Pos;
   if ~isfield(pos,'D2') || ~isfield(pos.D2,'P') || ...
       ~isfield(pos,'D3') || ...
