@@ -4,6 +4,14 @@ function varargout = preproSNIRF(fcn, varargin)
 %   (https://github.com/fNIRS/snirf)
 %   Plug-in Format Version beta1
 %
+%   Note: 
+%   In order to match the channel indexes of an fNIRS device and Open PoTATo,
+%   Open PoTATo assumes that the order of the measurementList is as follows.
+%   m: index of measurementList
+%   Chn(m): index of the channel of the device corresponding to measurementList(m)
+%    Chn(m) < Chn(m+1) or Chn(m) == Chn(m+1) 
+%  
+
 % ** CREATE BASIC INFORMATION **
 % Syntax:
 %  basic_info = preproSNIRF('createBasicIno');
@@ -294,7 +302,7 @@ function [data, hdata]= nirs2data(nirs);
 mlist = nirs.data.MeasurementList;
 
 fullChList = [mlist.sourceIndex;mlist.detectorIndex]';
-unqChList  = unique(fullChList,'rows');
+unqChList  = unique(fullChList,'rows','stable');
 pigm     = {'oxyHb', 'deoxyHb', 'totalHb'};
 
 % data [timepoints, channel, type] 
